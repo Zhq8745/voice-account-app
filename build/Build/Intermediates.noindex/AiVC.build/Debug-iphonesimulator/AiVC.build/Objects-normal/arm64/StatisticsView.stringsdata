@@ -1,0 +1,176 @@
+{
+  "source": "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/StatisticsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "统计",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "时间段",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 160
+        }
+      },
+      {
+        "comment": "",
+        "key": "支出总览",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "总支出",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "日均支出",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 197
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 200
+        }
+      },
+      {
+        "comment": "",
+        "key": "+8.2% 同比上期",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 210
+        }
+      },
+      {
+        "comment": "",
+        "key": "支出趋势",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 226
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无数据",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 235
+        }
+      },
+      {
+        "comment": "",
+        "key": "日期",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 243
+        }
+      },
+      {
+        "comment": "",
+        "key": "金额",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 244
+        }
+      },
+      {
+        "comment": "",
+        "key": "日期",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 250
+        }
+      },
+      {
+        "comment": "",
+        "key": "金额",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 251
+        }
+      },
+      {
+        "comment": "",
+        "key": "分类分布",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 294
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无数据",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 303
+        }
+      },
+      {
+        "comment": "",
+        "key": "金额",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 311
+        }
+      },
+      {
+        "comment": "",
+        "key": "分类详情",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 331
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无数据",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 340
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@%@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 429
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 434
+        }
+      }
+    ]
+  },
+  "version": 1
+}

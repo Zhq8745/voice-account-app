@@ -1,0 +1,128 @@
+{
+  "source": "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/VoiceInputView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "错误",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 216
+        }
+      },
+      {
+        "comment": "",
+        "key": "说出金额和分类，例如：\"午餐花了25元\"",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 204
+        }
+      },
+      {
+        "comment": "",
+        "key": "语音记账",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "完成",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在聆听...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "点击麦克风开始语音记账",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "识别完成",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "识别结果",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 139
+        }
+      },
+      {
+        "comment": "",
+        "key": "金额:",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 145
+        }
+      },
+      {
+        "comment": "",
+        "key": "¥%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 148
+        }
+      },
+      {
+        "comment": "",
+        "key": "分类:",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "备注:",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "重新录音",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 179
+        }
+      },
+      {
+        "comment": "",
+        "key": "确认记账",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "确定",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 217
+        }
+      }
+    ]
+  },
+  "version": 1
+}

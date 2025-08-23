@@ -1,0 +1,18 @@
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/CurrencyPickerView.swift":
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.swiftdeps"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.dia"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.swiftconstvalues"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.o"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.d"
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/EditRecordView.swift":
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.d"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.dia"
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.swiftdeps"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.o"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.swiftconstvalues"
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/ManualInputView.swift":
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.swiftdeps"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.swiftconstvalues"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.d"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.o"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.dia"

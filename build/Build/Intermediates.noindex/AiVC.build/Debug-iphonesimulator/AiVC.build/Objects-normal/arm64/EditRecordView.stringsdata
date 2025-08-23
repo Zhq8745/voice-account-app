@@ -1,0 +1,168 @@
+{
+  "source": "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/EditRecordView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "编辑记录",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "支出金额",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "¥",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "0.00",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "支出分类",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "选择分类",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "记录时间",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 121
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 126
+        }
+      },
+      {
+        "comment": "",
+        "key": "备注信息",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "添加备注（可选）",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 144
+        }
+      },
+      {
+        "comment": "",
+        "key": "输入方式",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 156
+        }
+      },
+      {
+        "comment": "",
+        "key": "语音输入",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "手动输入",
+        "location": {
+          "startingColumn": 77,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "选择分类",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 242
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 235
+        }
+      },
+      {
+        "comment": "",
+        "key": "确定",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 248
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无分类",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 270
+        }
+      },
+      {
+        "comment": "",
+        "key": "请先在设置中添加支出分类",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 274
+        }
+      }
+    ]
+  },
+  "version": 1
+}

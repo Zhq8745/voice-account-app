@@ -1,0 +1,18 @@
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/MainTabView.swift":
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.swiftdeps"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.o"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.d"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.swiftconstvalues"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.dia"
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/CategoryManagerView.swift":
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.o"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.swiftconstvalues"
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.swiftdeps"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.dia"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.d"
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Models/ExpenseRecord.swift":
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.o"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.swiftconstvalues"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.d"
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.swiftdeps"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.dia"

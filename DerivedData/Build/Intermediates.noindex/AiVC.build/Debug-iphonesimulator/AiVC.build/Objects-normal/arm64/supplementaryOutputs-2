@@ -1,0 +1,18 @@
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/AiVCApp.swift":
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.dia"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.o"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.swiftconstvalues"
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.swiftdeps"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.d"
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/EditCategoryView.swift":
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.swiftdeps"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.d"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.swiftconstvalues"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.o"
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.dia"
+"/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/ReminderSettingsView.swift":
+  diagnostics: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.dia"
+  dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.d"
+  object: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.o"
+  const-values: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.swiftconstvalues"
+  swift-dependencies: "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.swiftdeps"

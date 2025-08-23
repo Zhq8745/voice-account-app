@@ -1,0 +1,24 @@
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/VoiceInputView.swift":
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.d"
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.dia"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.o"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.swiftconstvalues"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.swiftdeps"
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/RecordDetailView.swift":
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.dia"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.o"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.swiftconstvalues"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.swiftdeps"
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.d"
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Item.swift":
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.dia"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.o"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.swiftconstvalues"
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.d"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.swiftdeps"
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Models/ExpenseCategory.swift":
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.swiftdeps"
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.dia"
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.d"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.o"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.swiftconstvalues"

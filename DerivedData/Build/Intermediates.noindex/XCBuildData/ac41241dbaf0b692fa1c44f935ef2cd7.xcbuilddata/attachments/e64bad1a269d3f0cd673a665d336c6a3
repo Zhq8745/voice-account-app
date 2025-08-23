@@ -1,0 +1,248 @@
+{
+  "" : {
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVC-master.dia",
+    "emit-module-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVC-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVC-master-emit-module.dia",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVC-master.swiftdeps"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/AiVCApp.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AiVCApp~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/ContentView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Item.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/Item~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Models/AppSettings.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AppSettings~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Models/ExpenseCategory.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseCategory~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Models/ExpenseRecord.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ExpenseRecord~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Services/SpeechRecognitionService.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SpeechRecognitionService~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/AccountingView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AccountingView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/AddCategoryView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/CategoryManagerView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CategoryManagerView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/CurrencyPickerView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CurrencyPickerView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/CustomNumericKeypad.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/CustomNumericKeypad~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/EditCategoryView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditCategoryView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/EditRecordView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/EditRecordView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/HistoryView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/HistoryView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/MainTabView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/ManualInputView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ManualInputView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/RecordDetailView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/RecordDetailView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/ReminderSettingsView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ReminderSettingsView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/SettingsView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/StatisticsView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/StatisticsView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/ThemePickerView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/AiVC/Views/VoiceInputView.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/VoiceInputView~partial.swiftmodule"
+  },
+  "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/AiVoiceAccount/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

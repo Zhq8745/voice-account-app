@@ -1,0 +1,24 @@
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/Settings/ThemePickerView.swift":
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.dia"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.o"
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.d"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.swiftconstvalues"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemePickerView.swiftdeps"
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/Settings/AddCategoryView.swift":
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.d"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.o"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.swiftdeps"
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.dia"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/AddCategoryView.swiftconstvalues"
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/MainTabView.swift":
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.d"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.swiftconstvalues"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.o"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.swiftdeps"
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/MainTabView.dia"
+"/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/SettingsView.swift":
+  diagnostics: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.dia"
+  swift-dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.swiftdeps"
+  object: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.o"
+  const-values: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.swiftconstvalues"
+  dependencies: "/Users/a1234/Desktop/voice-account-new-main/build/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/SettingsView.d"
