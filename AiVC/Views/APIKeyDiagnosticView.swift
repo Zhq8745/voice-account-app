@@ -204,6 +204,7 @@ struct APIKeyDiagnosticView: View {
             }
             .navigationTitle("API密钥诊断")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .preferredColorScheme(.dark)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

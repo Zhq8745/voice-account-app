@@ -1,5 +1,5 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/RecordDetailView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/RecordDetailView.swift",
   "tables": {
     "Localizable": [
       {
@@ -7,31 +7,7 @@
         "key": "删除记录",
         "location": {
           "startingColumn": 16,
-          "startingLine": 173
-        }
-      },
-      {
-        "comment": "",
-        "key": "记录详情",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 32
-        }
-      },
-      {
-        "comment": "",
-        "key": "返回",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 25
-        }
-      },
-      {
-        "comment": "",
-        "key": "编辑",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 38
+          "startingLine": 225
         }
       },
       {
@@ -39,7 +15,7 @@
         "key": "支出金额",
         "location": {
           "startingColumn": 34,
-          "startingLine": 57
+          "startingLine": 63
         }
       },
       {
@@ -47,23 +23,47 @@
         "key": "¥%@",
         "location": {
           "startingColumn": 34,
-          "startingLine": 61
+          "startingLine": 67
         }
       },
       {
         "comment": "",
-        "key": "编辑记录",
+        "key": "编辑",
         "location": {
           "startingColumn": 42,
-          "startingLine": 130
+          "startingLine": 142
         }
       },
       {
         "comment": "",
-        "key": "删除记录",
+        "key": "删除",
         "location": {
           "startingColumn": 42,
-          "startingLine": 148
+          "startingLine": 163
+        }
+      },
+      {
+        "comment": "",
+        "key": "返回",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 197
+        }
+      },
+      {
+        "comment": "",
+        "key": "记录详情",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 205
+        }
+      },
+      {
+        "comment": "",
+        "key": "编辑",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 211
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "编辑功能开发中",
         "location": {
           "startingColumn": 18,
-          "startingLine": 170
+          "startingLine": 222
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 20,
-          "startingLine": 174
+          "startingLine": 226
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "删除",
         "location": {
           "startingColumn": 20,
-          "startingLine": 175
+          "startingLine": 227
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "确定要删除这条记录吗？此操作无法撤销。",
         "location": {
           "startingColumn": 18,
-          "startingLine": 179
+          "startingLine": 231
         }
       }
     ]

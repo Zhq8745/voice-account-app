@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CategoryManagerView: View {
+    private let cloudSyncService = CloudSyncService.shared
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var categories: [ExpenseCategory]
@@ -53,6 +54,7 @@ struct CategoryManagerView: View {
             }
             .navigationTitle("分类管理")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .navigationBarItems(
                 leading: Button("完成") {
                     dismiss()
@@ -169,6 +171,8 @@ struct CategoryManagerView: View {
         withAnimation {
             modelContext.delete(category)
             try? modelContext.save()
+            // 触发自动同步
+            cloudSyncService.triggerAutoSync(for: category.id)
         }
     }
 }

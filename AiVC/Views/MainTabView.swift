@@ -6,43 +6,54 @@
 //
 
 import SwiftUI
+import Foundation
+import Combine
 
 struct MainTabView: View {
     @State private var selectedTab = 0
+    @EnvironmentObject private var authManager: AuthenticationManager
     
     var body: some View {
         TabView(selection: $selectedTab) {
             // 记账页面
-            AccountingView()
-                .tabItem {
-                    Image(systemName: selectedTab == 0 ? "plus.circle.fill" : "plus.circle")
-                    Text("记账")
-                }
-                .tag(0)
+            NavigationStack {
+                AccountingView()
+            }
+            .tabItem {
+                Image(systemName: selectedTab == 0 ? "plus.circle.fill" : "plus.circle")
+                Text("记账")
+            }
+            .tag(0)
             
             // 统计页面
-            StatisticsView()
-                .tabItem {
-                    Image(systemName: selectedTab == 1 ? "chart.pie.fill" : "chart.pie")
-                    Text("统计")
-                }
-                .tag(1)
+            NavigationStack {
+                StatisticsView()
+            }
+            .tabItem {
+                Image(systemName: selectedTab == 1 ? "chart.pie.fill" : "chart.pie")
+                Text("统计")
+            }
+            .tag(1)
             
             // 历史页面
-            HistoryView()
-                .tabItem {
-                    Image(systemName: selectedTab == 2 ? "clock.fill" : "clock")
-                    Text("历史")
-                }
-                .tag(2)
+            NavigationStack {
+                HistoryView()
+            }
+            .tabItem {
+                Image(systemName: selectedTab == 2 ? "clock.fill" : "clock")
+                Text("历史")
+            }
+            .tag(2)
             
             // 设置页面
-            SettingsView()
-                .tabItem {
-                    Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
-                    Text("设置")
-                }
-                .tag(3)
+            NavigationStack {
+                SettingsView()
+            }
+            .tabItem {
+                Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
+                Text("设置")
+            }
+            .tag(3)
         }
         .accentColor(.blue)
         .preferredColorScheme(.dark)

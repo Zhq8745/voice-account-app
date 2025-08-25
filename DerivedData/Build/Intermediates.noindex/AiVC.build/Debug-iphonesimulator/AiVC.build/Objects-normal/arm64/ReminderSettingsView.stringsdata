@@ -1,29 +1,45 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/ReminderSettingsView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/Settings/ReminderSettingsView.swift",
   "tables": {
     "Localizable": [
       {
         "comment": "",
-        "key": "提醒设置",
+        "key": "需要通知权限",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 32
+          "startingColumn": 16,
+          "startingLine": 348
         }
       },
       {
         "comment": "",
-        "key": "取消",
+        "key": "",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 25
+          "startingColumn": 32,
+          "startingLine": 93
         }
       },
       {
         "comment": "",
-        "key": "保存",
+        "key": "启用提醒",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 38
+          "startingColumn": 34,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "开启每日记账提醒",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "提醒时间",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 139
         }
       },
       {
@@ -31,31 +47,23 @@
         "key": "",
         "location": {
           "startingColumn": 40,
-          "startingLine": 71
+          "startingLine": 175
         }
       },
       {
         "comment": "",
-        "key": "记账提醒",
+        "key": "每日提醒时间",
         "location": {
-          "startingColumn": 42,
-          "startingLine": 60
+          "startingColumn": 38,
+          "startingLine": 163
         }
       },
       {
         "comment": "",
-        "key": "开启后将在设定时间提醒您记账",
+        "key": "设置每天的提醒时间",
         "location": {
-          "startingColumn": 42,
-          "startingLine": 64
-        }
-      },
-      {
-        "comment": "",
-        "key": "提醒时间",
-        "location": {
-          "startingColumn": 50,
-          "startingLine": 89
+          "startingColumn": 38,
+          "startingLine": 168
         }
       },
       {
@@ -63,39 +71,47 @@
         "key": "提醒说明",
         "location": {
           "startingColumn": 38,
-          "startingLine": 122
+          "startingLine": 245
         }
       },
       {
         "comment": "",
-        "key": "选择提醒时间",
+        "key": "每天在设定时间提醒您记录当日支出，帮助养成良好的记账习惯。",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 259
+          "startingColumn": 38,
+          "startingLine": 250
         }
       },
       {
         "comment": "",
-        "key": "选择时间",
+        "key": "记账提醒",
         "location": {
-          "startingColumn": 21,
-          "startingLine": 249
+          "startingColumn": 22,
+          "startingLine": 334
+        }
+      },
+      {
+        "comment": "",
+        "key": "去设置",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 349
         }
       },
       {
         "comment": "",
         "key": "取消",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 263
+          "startingColumn": 20,
+          "startingLine": 352
         }
       },
       {
         "comment": "",
-        "key": "确定",
+        "key": "请在设置中允许通知权限，以便接收记账提醒。",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 269
+          "startingColumn": 18,
+          "startingLine": 354
         }
       }
     ]

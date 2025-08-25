@@ -147,6 +147,7 @@ struct APIKeyConfigView: View {
             }
             .navigationTitle("API配置")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .alert(alertTitle, isPresented: $showingAlert) {
                 Button("确定", role: .cancel) { }
             } message: {

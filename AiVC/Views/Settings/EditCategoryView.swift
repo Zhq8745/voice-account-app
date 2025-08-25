@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct EditCategoryView: View {
+    private let cloudSyncService = CloudSyncService.shared
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -67,6 +68,7 @@ struct EditCategoryView: View {
             }
             .navigationTitle("编辑分类")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .navigationBarItems(
                 leading: Button("取消") {
                     dismiss()
@@ -298,6 +300,10 @@ struct EditCategoryView: View {
         category.colorHex = selectedColor.toHex()
         
         try? modelContext.save()
+        
+        // 触发自动同步
+        cloudSyncService.triggerAutoSync(for: category.id)
+        
         dismiss()
     }
     
@@ -305,6 +311,10 @@ struct EditCategoryView: View {
     private func deleteCategory() {
         modelContext.delete(category)
         try? modelContext.save()
+        
+        // 触发自动同步
+        cloudSyncService.triggerAutoSync(for: category.id)
+        
         dismiss()
     }
 }

@@ -1,8 +1,9 @@
 //
 //  TongYiQianWenService.swift
-//  AiVC
+//  声财
 //
-//  Created by AI Assistant on 2024/01/01.
+//  Created by AI Assistant
+// on 2024/01/01.
 //
 
 import Foundation
@@ -173,7 +174,7 @@ class TongYiQianWenService: ObservableObject {
         request.httpMethod = "POST"
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("AiVC/1.0", forHTTPHeaderField: "User-Agent")
+        request.setValue("声财/1.0", forHTTPHeaderField: "User-Agent")
         request.timeoutInterval = timeout
         
         let requestBody: [String: Any] = [

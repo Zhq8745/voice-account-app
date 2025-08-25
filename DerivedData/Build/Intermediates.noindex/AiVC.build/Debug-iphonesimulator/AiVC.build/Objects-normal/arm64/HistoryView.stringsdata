@@ -1,5 +1,5 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/HistoryView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/HistoryView.swift",
   "tables": {
     "Localizable": [
       {
@@ -7,63 +7,119 @@
         "key": "历史",
         "location": {
           "startingColumn": 30,
-          "startingLine": 75
+          "startingLine": 141
         }
       },
       {
         "comment": "",
-        "key": "搜索记录",
+        "key": "搜索记录...",
         "location": {
-          "startingColumn": 27,
-          "startingLine": 93
+          "startingColumn": 23,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "分类筛选",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 225
         }
       },
       {
         "comment": "",
         "key": "全部",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 138
+          "startingColumn": 30,
+          "startingLine": 240
         }
       },
       {
         "comment": "",
-        "key": "尝试调整搜索条件",
+        "key": "历史记录",
         "location": {
-          "startingColumn": 34,
-          "startingLine": 190
+          "startingColumn": 22,
+          "startingLine": 392
         }
       },
       {
         "comment": "",
-        "key": "暂无记录",
+        "key": "(%lld天)",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 397
+        }
+      },
+      {
+        "comment": "",
+        "key": "暂无历史记录",
         "location": {
           "startingColumn": 51,
-          "startingLine": 185
+          "startingLine": 431
         }
       },
       {
         "comment": "",
         "key": "未找到相关记录",
         "location": {
-          "startingColumn": 68,
-          "startingLine": 185
+          "startingColumn": 74,
+          "startingLine": 431
         }
       },
       {
         "comment": "",
-        "key": "%lld笔 · %@%@",
+        "key": "开始记录您的第一笔支出吧",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 273
+          "startingColumn": 51,
+          "startingLine": 435
+        }
+      },
+      {
+        "comment": "",
+        "key": "尝试调整搜索条件",
+        "location": {
+          "startingColumn": 92,
+          "startingLine": 435
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld笔",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 591
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@%@",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 601
+        }
+      },
+      {
+        "comment": "",
+        "key": "语音",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 816
         }
       },
       {
         "comment": "",
         "key": "-%@%@",
         "location": {
-          "startingColumn": 22,
-          "startingLine": 376
+          "startingColumn": 26,
+          "startingLine": 854
+        }
+      },
+      {
+        "comment": "",
+        "key": "支出",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 859
         }
       },
       {
@@ -71,23 +127,31 @@
         "key": "操作选项",
         "location": {
           "startingColumn": 29,
-          "startingLine": 387
+          "startingLine": 886
         }
       },
       {
         "comment": "",
-        "key": "编辑",
+        "key": "选择要执行的操作",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 887
+        }
+      },
+      {
+        "comment": "",
+        "key": "✏️ 编辑记录",
         "location": {
           "startingColumn": 35,
-          "startingLine": 389
+          "startingLine": 889
         }
       },
       {
         "comment": "",
-        "key": "删除",
+        "key": "🗑️ 删除记录",
         "location": {
           "startingColumn": 39,
-          "startingLine": 392
+          "startingLine": 892
         }
       },
       {
@@ -95,47 +159,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 34,
-          "startingLine": 395
-        }
-      },
-      {
-        "comment": "",
-        "key": "编辑记录",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 423
-        }
-      },
-      {
-        "comment": "",
-        "key": "取消",
-        "location": {
-          "startingColumn": 33,
-          "startingLine": 426
-        }
-      },
-      {
-        "comment": "",
-        "key": "编辑记录",
-        "location": {
-          "startingColumn": 22,
-          "startingLine": 410
-        }
-      },
-      {
-        "comment": "",
-        "key": "此功能将在后续实现",
-        "location": {
-          "startingColumn": 22,
-          "startingLine": 414
-        }
-      },
-      {
-        "comment": "",
-        "key": "当前记录：%@ - ¥%@",
-        "location": {
-          "startingColumn": 22,
-          "startingLine": 417
+          "startingLine": 895
         }
       }
     ]

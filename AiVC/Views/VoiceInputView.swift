@@ -29,6 +29,7 @@ struct VoiceInputView: View {
     @Query private var categories: [ExpenseCategory]
     @StateObject private var speechService = SpeechRecognitionService()
     @StateObject private var hybridParsingService = HybridParsingService()
+    @StateObject private var cloudSyncService = CloudSyncService.shared
     
     // 工作流程状态管理
     @State private var workflowState: VoiceWorkflowState = .idle
@@ -173,6 +174,7 @@ struct VoiceInputView: View {
         .onAppear {
             startPulseAnimation()
         }
+        .toolbar(.hidden, for: .tabBar)
     }
     
     private func startPulseAnimation() {
@@ -1135,6 +1137,10 @@ struct VoiceInputView: View {
         
         do {
             try modelContext.save()
+            
+            // 触发自动同步
+            cloudSyncService.triggerAutoSync(for: newExpense.id)
+            
             withAnimation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0)) {
                 workflowState = .completed
             }

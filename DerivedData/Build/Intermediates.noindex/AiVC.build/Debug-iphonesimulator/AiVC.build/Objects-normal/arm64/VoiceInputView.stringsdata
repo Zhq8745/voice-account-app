@@ -1,101 +1,197 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/VoiceInputView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/VoiceInputView.swift",
   "tables": {
     "Localizable": [
-      {
-        "comment": "",
-        "key": "错误",
-        "location": {
-          "startingColumn": 16,
-          "startingLine": 82
-        }
-      },
-      {
-        "comment": "",
-        "key": "确定",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 83
-        }
-      },
       {
         "comment": "",
         "key": "语音记账",
         "location": {
           "startingColumn": 18,
-          "startingLine": 103
-        }
-      },
-      {
-        "comment": "",
-        "key": "取消",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 110
-        }
-      },
-      {
-        "comment": "",
-        "key": "取消",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 92
-        }
-      },
-      {
-        "comment": "",
-        "key": "识别内容",
-        "location": {
-          "startingColumn": 22,
           "startingLine": 191
         }
       },
       {
         "comment": "",
-        "key": "识别结果",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 209
-        }
-      },
-      {
-        "comment": "",
-        "key": "重新录音",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 250
-        }
-      },
-      {
-        "comment": "",
-        "key": "确认保存",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 263
-        }
-      },
-      {
-        "comment": "",
-        "key": "去设置",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 299
-        }
-      },
-      {
-        "comment": "",
-        "key": "需要麦克风权限",
+        "key": "点击开始语音记账",
         "location": {
           "startingColumn": 22,
-          "startingLine": 288
+          "startingLine": 216
         }
       },
       {
         "comment": "",
-        "key": "请在设置中允许访问麦克风和语音识别功能",
+        "key": "说出金额、类别和备注信息",
         "location": {
           "startingColumn": 22,
-          "startingLine": 292
+          "startingLine": 221
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在录制...",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 236
+        }
+      },
+      {
+        "comment": "",
+        "key": "请清楚地说出您的账单信息",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 241
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI分析中...",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 320
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在理解您的语音内容",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 325
+        }
+      },
+      {
+        "comment": "",
+        "key": "继续记账",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 422
+        }
+      },
+      {
+        "comment": "",
+        "key": "请稍候...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 410
+        }
+      },
+      {
+        "comment": "",
+        "key": "账单已成功保存",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 414
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在分析语音内容...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 548
+        }
+      },
+      {
+        "comment": "",
+        "key": "重新解析",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 872
+        }
+      },
+      {
+        "comment": "",
+        "key": "0.00",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 777
+        }
+      },
+      {
+        "comment": "",
+        "key": "金额",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 771
+        }
+      },
+      {
+        "comment": "",
+        "key": "类别",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 800
+        }
+      },
+      {
+        "comment": "",
+        "key": "备注",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 843
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存账单",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 894
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 914
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI智能解析",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 1226
+        }
+      },
+      {
+        "comment": "",
+        "key": "本地解析",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 1226
+        }
+      },
+      {
+        "comment": "",
+        "key": "置信度",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 1236
+        }
+      },
+      {
+        "comment": "",
+        "key": "解析提示",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1261
+        }
+      },
+      {
+        "comment": "",
+        "key": "解析准确度",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 1289
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI建议",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1318
         }
       }
     ]

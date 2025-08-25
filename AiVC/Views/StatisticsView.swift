@@ -124,8 +124,7 @@ struct StatisticsView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
+        ZStack {
                 // 渐变背景
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -196,13 +195,13 @@ struct StatisticsView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
                 }
-            }
-            .navigationTitle("统计")
-            .preferredColorScheme(.dark)
-            .onAppear {
-                startAnimations()
-            }
         }
+        .navigationTitle("统计")
+        .preferredColorScheme(.dark)
+        .onAppear {
+            startAnimations()
+        }
+        .toolbar(.visible, for: .tabBar)
     }
     
     private func startAnimations() {
@@ -705,7 +704,6 @@ struct StatisticsView: View {
         
         return formatter.string(from: selectedDate)
     }
-}
 
 // 趋势数据点
 struct TrendDataPoint {
@@ -821,6 +819,8 @@ struct CategoryStatRow: View {
         )
         .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
+}
+
 }
 
 #Preview {

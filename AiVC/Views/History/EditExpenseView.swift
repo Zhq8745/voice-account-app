@@ -59,6 +59,7 @@ struct EditExpenseView: View {
             }
             .navigationTitle("编辑支出")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .navigationBarItems(
                 leading: Button("取消") {
                     dismiss()

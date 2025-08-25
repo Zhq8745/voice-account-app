@@ -1,6 +1,6 @@
 //
 //  SecurityManager.swift
-//  AiVC
+//  语记
 //
 //  Created by AI Assistant on 2024/01/01.
 //
@@ -20,7 +20,7 @@ class SecurityManager: ObservableObject {
     private init() {}
     
     // Keychain服务标识符
-    private let service = "com.aivc.api-keys"
+    private let service = "com.shengcai.api-keys"
     
     // API密钥类型
     enum APIKeyType: String, CaseIterable {
@@ -184,16 +184,16 @@ class SecurityManager: ObservableObject {
     }
     
     // 验证API密钥格式
-    func validateAPIKey(_ key: String, for type: APIKeyType) -> ValidationResult {
+    func validateAPIKey(_ key: String, for type: APIKeyType) -> ValidationService.ValidationResult {
         let trimmedKey = key.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // 基本验证
         guard !trimmedKey.isEmpty else {
-            return ValidationResult(isValid: false, message: "API密钥不能为空")
+            return ValidationService.ValidationResult(isValid: false, errors: ["API密钥不能为空"], message: "API密钥不能为空")
         }
         
         guard trimmedKey.count >= 10 else {
-            return ValidationResult(isValid: false, message: "API密钥长度过短")
+            return ValidationService.ValidationResult(isValid: false, errors: ["API密钥长度过短"], message: "API密钥长度过短")
         }
         
         // 根据不同类型进行特定验证
@@ -201,27 +201,27 @@ class SecurityManager: ObservableObject {
         case .tongYiQianWen:
             return validateTongYiQianWenKey(trimmedKey)
         case .backup:
-            return ValidationResult(isValid: true, message: "备用密钥格式正确")
+            return ValidationService.ValidationResult(isValid: true, errors: [], message: "验证通过")
         }
     }
     
     // 验证通义千问API密钥格式
-    private func validateTongYiQianWenKey(_ key: String) -> ValidationResult {
+    private func validateTongYiQianWenKey(_ key: String) -> ValidationService.ValidationResult {
         // 通义千问API密钥通常以sk-开头
         if key.hasPrefix("sk-") {
             if key.count >= 20 && key.count <= 100 {
                 // 检查是否包含有效字符
                 let validCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-_"))
                 if key.rangeOfCharacter(from: validCharacterSet.inverted) == nil {
-                    return ValidationResult(isValid: true, message: "通义千问API密钥格式正确")
+                    return ValidationService.ValidationResult(isValid: true, errors: [], message: "API密钥格式正确")
                 } else {
-                    return ValidationResult(isValid: false, message: "API密钥包含无效字符")
+                    return ValidationService.ValidationResult(isValid: false, errors: ["API密钥包含无效字符"], message: "API密钥包含无效字符")
                 }
             } else {
-                return ValidationResult(isValid: false, message: "API密钥长度不符合要求")
+                return ValidationService.ValidationResult(isValid: false, errors: ["API密钥长度不符合要求"], message: "API密钥长度不符合要求")
             }
         } else {
-            return ValidationResult(isValid: false, message: "通义千问API密钥应以'sk-'开头")
+            return ValidationService.ValidationResult(isValid: false, errors: ["通义千问API密钥应以'sk-'开头"], message: "通义千问API密钥应以'sk-'开头")
         }
     }
     
@@ -283,11 +283,7 @@ class SecurityManager: ObservableObject {
     }
 }
 
-// 验证结果结构
-struct ValidationResult {
-    let isValid: Bool
-    let message: String
-}
+
 
 // API密钥状态结构
 struct APIKeyStatus {
@@ -319,7 +315,7 @@ extension SecurityManager {
         let validation = validateAPIKey(key, for: .tongYiQianWen)
         
         guard validation.isValid else {
-            return (false, validation.message)
+            return (false, validation.errors.first ?? "验证失败")
         }
         
         let success = storeAPIKey(key, for: .tongYiQianWen)

@@ -1,29 +1,21 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/CurrencyPickerView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/Settings/CurrencyPickerView.swift",
   "tables": {
     "Localizable": [
       {
         "comment": "",
         "key": "货币单位",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 54
+          "startingColumn": 30,
+          "startingLine": 204
         }
       },
       {
         "comment": "",
-        "key": "取消",
+        "key": "设置",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 47
-        }
-      },
-      {
-        "comment": "",
-        "key": "保存",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 60
+          "startingColumn": 34,
+          "startingLine": 215
         }
       }
     ]

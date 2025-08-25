@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.aivc.expense-tracker</string>
+		<string>iCloud.com.shengcai.expense-tracker</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
@@ -18,7 +18,11 @@
 	<true/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.AiVoiceAccount.AiVC</string>
+		<string>$(AppIdentifierPrefix)com.shengcai.app</string>
+	</array>
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
 	</array>
 </dict>
 </plist>

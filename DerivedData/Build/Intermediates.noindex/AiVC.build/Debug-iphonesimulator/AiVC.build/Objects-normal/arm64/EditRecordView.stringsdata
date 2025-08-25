@@ -1,5 +1,5 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/EditRecordView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/EditRecordView.swift",
   "tables": {
     "Localizable": [
       {
@@ -7,7 +7,7 @@
         "key": "编辑记录",
         "location": {
           "startingColumn": 26,
-          "startingLine": 36
+          "startingLine": 37
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 28,
-          "startingLine": 29
+          "startingLine": 30
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "保存",
         "location": {
           "startingColumn": 28,
-          "startingLine": 42
+          "startingLine": 43
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "支出金额",
         "location": {
           "startingColumn": 34,
-          "startingLine": 62
+          "startingLine": 63
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "¥",
         "location": {
           "startingColumn": 38,
-          "startingLine": 67
+          "startingLine": 68
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "0.00",
         "location": {
           "startingColumn": 43,
-          "startingLine": 71
+          "startingLine": 72
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "支出分类",
         "location": {
           "startingColumn": 34,
-          "startingLine": 85
+          "startingLine": 86
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "选择分类",
         "location": {
           "startingColumn": 46,
-          "startingLine": 100
+          "startingLine": 101
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "记录时间",
         "location": {
           "startingColumn": 34,
-          "startingLine": 121
+          "startingLine": 122
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "",
         "location": {
           "startingColumn": 33,
-          "startingLine": 126
+          "startingLine": 127
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "备注信息",
         "location": {
           "startingColumn": 34,
-          "startingLine": 140
+          "startingLine": 141
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "添加备注（可选）",
         "location": {
           "startingColumn": 39,
-          "startingLine": 144
+          "startingLine": 145
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "输入方式",
         "location": {
           "startingColumn": 34,
-          "startingLine": 156
+          "startingLine": 157
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "语音输入",
         "location": {
           "startingColumn": 60,
-          "startingLine": 165
+          "startingLine": 166
         }
       },
       {
@@ -119,7 +119,7 @@
         "key": "手动输入",
         "location": {
           "startingColumn": 77,
-          "startingLine": 165
+          "startingLine": 166
         }
       },
       {
@@ -127,7 +127,7 @@
         "key": "选择分类",
         "location": {
           "startingColumn": 26,
-          "startingLine": 242
+          "startingLine": 245
         }
       },
       {
@@ -135,7 +135,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 28,
-          "startingLine": 235
+          "startingLine": 238
         }
       },
       {
@@ -143,7 +143,7 @@
         "key": "确定",
         "location": {
           "startingColumn": 28,
-          "startingLine": 248
+          "startingLine": 251
         }
       },
       {
@@ -151,7 +151,7 @@
         "key": "暂无分类",
         "location": {
           "startingColumn": 30,
-          "startingLine": 270
+          "startingLine": 273
         }
       },
       {
@@ -159,7 +159,7 @@
         "key": "请先在设置中添加支出分类",
         "location": {
           "startingColumn": 30,
-          "startingLine": 274
+          "startingLine": 277
         }
       }
     ]

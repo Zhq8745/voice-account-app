@@ -59,8 +59,7 @@ struct AccountingView: View {
     }
     
     var body: some View {
-        NavigationView {
-            GeometryReader { geometry in
+        GeometryReader { geometry in
                 ZStack {
                     // 现代化渐变背景
                     LinearGradient(
@@ -123,11 +122,10 @@ struct AccountingView: View {
                         .padding(.top, 10)
                     }
                 }
-            }
-            .navigationTitle("记账")
-            .navigationBarTitleDisplayMode(.large)
-            .preferredColorScheme(.dark)
         }
+        .navigationTitle("记账")
+        .navigationBarTitleDisplayMode(.large)
+        .preferredColorScheme(.dark)
         .sheet(isPresented: $showingManualInput) {
             ManualInputView()
         }
@@ -138,6 +136,7 @@ struct AccountingView: View {
             initializeDefaultData()
             startAnimations()
         }
+        .toolbar(.visible, for: .tabBar)
     }
     
     // 本月支出卡片
@@ -503,7 +502,6 @@ struct AccountingView: View {
         // 保存上下文
         try? modelContext.save()
     }
-}
 
 // 支出记录行视图
 struct ExpenseRowView: View {
@@ -562,6 +560,8 @@ struct ExpenseRowView: View {
 }
 
 
+
+}
 
 #Preview {
     AccountingView()

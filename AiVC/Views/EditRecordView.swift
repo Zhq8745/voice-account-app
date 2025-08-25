@@ -14,6 +14,7 @@ struct EditRecordView: View {
     @Query private var categories: [ExpenseCategory]
     
     let record: ExpenseRecord
+    private let cloudSyncService = CloudSyncService.shared
     
     @State private var amount: String = ""
     @State private var selectedCategory: ExpenseCategory?
@@ -181,6 +182,7 @@ struct EditRecordView: View {
             }
             .background(Color(.systemBackground))
         }
+        .toolbar(.hidden, for: .tabBar)
         .sheet(isPresented: $showingCategoryPicker) {
             EditCategoryPickerView(selectedCategory: $selectedCategory, categories: Array(categories))
         }
@@ -214,6 +216,8 @@ struct EditRecordView: View {
         
         do {
             try modelContext.save()
+            // 触发自动同步
+            cloudSyncService.triggerAutoSync(for: record.id)
             dismiss()
         } catch {
             print("更新记录失败: \(error)")

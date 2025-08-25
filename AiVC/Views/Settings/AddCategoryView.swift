@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AddCategoryView: View {
+    private let cloudSyncService = CloudSyncService.shared
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
@@ -63,6 +64,7 @@ struct AddCategoryView: View {
             }
             .navigationTitle("添加分类")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .navigationBarItems(
                 leading: Button("取消") {
                     dismiss()
@@ -252,6 +254,9 @@ struct AddCategoryView: View {
         
         modelContext.insert(newCategory)
         try? modelContext.save()
+        
+        // 触发自动同步
+        cloudSyncService.triggerAutoSync(for: newCategory.id)
         
         dismiss()
     }

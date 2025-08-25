@@ -7,9 +7,13 @@
 
 import SwiftUI
 import SwiftData
+import Foundation
+import Combine
 
 @main
 struct AiVCApp: App {
+    @StateObject private var authManager = AuthenticationManager.shared
+    private let cloudSyncService = CloudSyncService.shared
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             ExpenseRecord.self,
@@ -27,12 +31,23 @@ struct AiVCApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .onAppear {
-                    setupDefaultData()
+            Group {
+                if authManager.isAuthenticated {
+                    ContentView()
+                        .onAppear {
+                            setupDefaultData()
+                            setupCloudSync()
+                        }
+                } else {
+                    LoginView()
                 }
+            }
+            .onAppear {
+                authManager.checkAuthenticationStatus()
+            }
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(AuthenticationManager.shared)
     }
     
     // 设置默认数据
@@ -62,6 +77,19 @@ struct AiVCApp: App {
             context.insert(defaultSettings)
             
             try? context.save()
+        }
+    }
+    
+    // 设置云同步
+    private func setupCloudSync() {
+        // 初始化云同步服务
+        cloudSyncService.initialize(with: sharedModelContainer.mainContext)
+        
+        // App启动时触发一次自动同步
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            Task {
+                await cloudSyncService.performAutoSync()
+            }
         }
     }
 }

@@ -61,8 +61,7 @@ struct HistoryView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
+        ZStack {
                 // 渐变背景
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -138,13 +137,13 @@ struct HistoryView: View {
                         .animation(.easeOut(duration: 0.6).delay(0.3), value: listAnimation)
                 }
             }
-            .navigationTitle("历史")
-            .navigationBarTitleDisplayMode(.large)
-            .preferredColorScheme(.dark)
-            .onAppear {
-                startAnimations()
-            }
+        .navigationTitle("历史")
+        .navigationBarTitleDisplayMode(.large)
+        .preferredColorScheme(.dark)
+        .onAppear {
+            startAnimations()
         }
+        .toolbar(.visible, for: .tabBar)
         .sheet(isPresented: $showingEditSheet) {
             if let expense = editingExpense {
                 EditExpenseView(expense: expense)
@@ -507,7 +506,6 @@ struct HistoryView: View {
             try? modelContext.save()
         }
     }
-}
 
 // 历史记录分组视图
 struct HistoryGroupView: View {
@@ -900,6 +898,8 @@ struct HistoryRowView: View {
 }
 
 
+
+}
 
 #Preview {
     HistoryView()

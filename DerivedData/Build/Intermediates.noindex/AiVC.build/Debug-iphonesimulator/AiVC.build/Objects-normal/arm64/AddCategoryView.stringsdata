@@ -1,85 +1,93 @@
 {
-  "source": "/Users/a1234/Desktop/Test/AiVC/AiVC/Views/AddCategoryView.swift",
+  "source": "/Users/a1234/Desktop/voice-account-new-main/AiVC/Views/Settings/AddCategoryView.swift",
   "tables": {
     "Localizable": [
       {
         "comment": "",
         "key": "添加分类",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 43
+          "startingColumn": 30,
+          "startingLine": 65
         }
       },
       {
         "comment": "",
         "key": "取消",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 36
+          "startingColumn": 33,
+          "startingLine": 68
         }
       },
       {
         "comment": "",
         "key": "保存",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 49
-        }
-      },
-      {
-        "comment": "",
-        "key": "分类图标",
-        "location": {
           "startingColumn": 34,
-          "startingLine": 69
+          "startingLine": 71
         }
       },
       {
         "comment": "",
-        "key": "点击选择图标",
+        "key": "预览",
         "location": {
-          "startingColumn": 42,
-          "startingLine": 81
+          "startingColumn": 18,
+          "startingLine": 84
         }
       },
       {
         "comment": "",
         "key": "分类名称",
         "location": {
-          "startingColumn": 34,
-          "startingLine": 96
+          "startingColumn": 22,
+          "startingLine": 116
         }
       },
       {
         "comment": "",
         "key": "请输入分类名称",
         "location": {
-          "startingColumn": 39,
-          "startingLine": 100
+          "startingColumn": 31,
+          "startingLine": 131
         }
       },
       {
         "comment": "",
         "key": "选择图标",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 169
+          "startingColumn": 22,
+          "startingLine": 149
+        }
+      },
+      {
+        "comment": "",
+        "key": "当前图标",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 167
+        }
+      },
+      {
+        "comment": "",
+        "key": "选择颜色",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 205
+        }
+      },
+      {
+        "comment": "",
+        "key": "选择图标",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 308
         }
       },
       {
         "comment": "",
         "key": "取消",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 162
-        }
-      },
-      {
-        "comment": "",
-        "key": "确定",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 175
+          "startingColumn": 34,
+          "startingLine": 311
         }
       }
     ]

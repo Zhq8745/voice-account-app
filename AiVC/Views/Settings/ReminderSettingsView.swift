@@ -7,30 +7,118 @@
 
 import SwiftUI
 import SwiftData
+import UserNotifications
 
 struct ReminderSettingsView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     @Environment(\.modelContext) private var modelContext
     @Query private var settings: [AppSettings]
     
-    @State private var reminderEnabled: Bool = false
-    @State private var reminderTime: Date = Date()
+    @State private var reminderEnabled = false
+    @State private var reminderTime = Date()
+    @State private var showingPermissionAlert = false
+    @State private var animationOffset: CGFloat = 0
+    @State private var pulseAnimation: Bool = false
     
     private var currentSettings: AppSettings {
         settings.first ?? AppSettings()
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black
-                    .ignoresSafeArea()
+        ZStack {
+            // 渐变背景
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.black,
+                    Color(red: 0.05, green: 0.05, blue: 0.1),
+                    Color.black
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            
+            // 装饰性元素
+            Circle()
+                .fill(
+                    RadialGradient(
+                        gradient: Gradient(colors: [
+                            Color.green.opacity(0.1),
+                            Color.clear
+                        ]),
+                        center: .topTrailing,
+                        startRadius: 50,
+                        endRadius: 200
+                    )
+                )
+                .frame(width: 300, height: 300)
+                .position(x: UIScreen.main.bounds.width - 50, y: 100)
+            
+            VStack(spacing: 24) {
+                // 提醒开关
+                VStack(spacing: 0) {
+                    HStack {
+                        Image(systemName: "bell")
+                            .font(.system(size: 18))
+                            .foregroundColor(.blue)
+                            .frame(width: 24, height: 24)
+                        
+                        Text("启用提醒")
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        Toggle("", isOn: $reminderEnabled)
+                            .toggleStyle(SwitchToggleStyle(tint: .blue))
+                            .onChange(of: reminderEnabled) { _, newValue in
+                                if newValue {
+                                    saveSettings()
+                                } else {
+                                    saveSettings()
+                                }
+                            }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color(red: 0.12, green: 0.12, blue: 0.15),
+                                    Color(red: 0.08, green: 0.08, blue: 0.12)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(
+                                    LinearGradient(
+                                        colors: [Color.white.opacity(0.1), Color.clear],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    ),
+                                    lineWidth: 1
+                                )
+                        )
+                        .shadow(
+                            color: Color.black.opacity(0.3),
+                            radius: 10,
+                            x: 0,
+                            y: 5
+                        )
+                )
                 
-                VStack(spacing: 24) {
-                    // 开关设置
+                // 时间设置
+                if reminderEnabled {
                     VStack(spacing: 0) {
                         HStack {
-                            Text("记账提醒")
+                            Text("提醒时间")
                                 .font(.headline)
                                 .foregroundColor(.white)
                             Spacer()
@@ -40,129 +128,215 @@ struct ReminderSettingsView: View {
                         
                         VStack(spacing: 0) {
                             HStack {
-                                Image(systemName: "bell")
+                                Image(systemName: "clock")
                                     .font(.system(size: 18))
                                     .foregroundColor(.blue)
                                     .frame(width: 24, height: 24)
                                 
-                                Text("启用提醒")
+                                Text("每日提醒时间")
                                     .font(.subheadline)
                                     .foregroundColor(.white)
                                 
                                 Spacer()
                                 
-                                Toggle("", isOn: $reminderEnabled)
-                                    .toggleStyle(SwitchToggleStyle(tint: .blue))
+                                DatePicker("", selection: $reminderTime, displayedComponents: .hourAndMinute)
+                                    .labelsHidden()
+                                    .colorScheme(.dark)
+                                    .onChange(of: reminderTime) { _, _ in
+                                        saveSettings()
+                                    }
                             }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            
+                            Divider()
+                                .background(
+                                    LinearGradient(
+                                        colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .padding(.horizontal, 16)
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("提醒说明")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                                
+                                Text("每天在设定时间提醒您记录当日支出，帮助养成良好的记账习惯。")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(nil)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 12)
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                                .fill(
+                                    LinearGradient(
+                                        colors: [
+                                            Color(red: 0.12, green: 0.12, blue: 0.15),
+                                            Color(red: 0.08, green: 0.08, blue: 0.12)
+                                        ],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(
+                                            LinearGradient(
+                                                colors: [Color.white.opacity(0.1), Color.clear],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            ),
+                                            lineWidth: 1
+                                        )
+                                )
+                                .shadow(
+                                    color: Color.black.opacity(0.3),
+                                    radius: 10,
+                                    x: 0,
+                                    y: 5
+                                )
                         )
                     }
-                    
-                    // 时间设置
-                    if reminderEnabled {
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text("提醒时间")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.bottom, 12)
-                            
-                            VStack(spacing: 0) {
-                                HStack {
-                                    Image(systemName: "clock")
-                                        .font(.system(size: 18))
-                                        .foregroundColor(.blue)
-                                        .frame(width: 24, height: 24)
-                                    
-                                    Text("每日提醒时间")
-                                        .font(.subheadline)
-                                        .foregroundColor(.white)
-                                    
-                                    Spacer()
-                                    
-                                    DatePicker("", selection: $reminderTime, displayedComponents: .hourAndMinute)
-                                        .labelsHidden()
-                                        .colorScheme(.dark)
-                                }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
-                                
-                                Divider()
-                                    .background(Color.gray.opacity(0.3))
-                                    .padding(.horizontal, 16)
-                                
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text("提醒说明")
-                                        .font(.subheadline)
-                                        .foregroundColor(.white)
-                                    
-                                    Text("每天在设定时间提醒您记录当日支出，帮助养成良好的记账习惯。")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                        .lineLimit(nil)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
-                            }
-                            .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
-                            )
-                        }
-                        .transition(.opacity.combined(with: .scale(scale: 0.95)))
-                    }
-                    
-                    Spacer()
+                    .transition(.opacity.combined(with: .scale(scale: 0.95)))
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 16)
+                
+                Spacer()
             }
-            .navigationTitle("记账提醒")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(
-                leading: Button("取消") {
-                    dismiss()
-                },
-                trailing: Button("保存") {
-                    saveSettings()
-                }
-                .foregroundColor(.blue)
-            )
-            .preferredColorScheme(.dark)
+            .padding(.horizontal, 16)
+            .padding(.top, 16)
         }
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.translation.width > 100 && abs(value.translation.height) < 50 {
+                        dismiss()
+                    }
+                }
+        )
+        .navigationTitle("记账提醒")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 16, weight: .medium))
+                        Text("设置")
+                            .font(.system(size: 16))
+                    }
+                    .foregroundColor(.white)
+                }
+            }
+        }
+        .toolbarBackground(.black, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbar(.hidden, for: .tabBar)
+        .preferredColorScheme(.dark)
         .onAppear {
-            loadSettings()
+            loadCurrentSettings()
+        }
+        .alert("需要通知权限", isPresented: $showingPermissionAlert) {
+            Button("去设置") {
+                openAppSettings()
+            }
+            Button("取消", role: .cancel) { }
+        } message: {
+            Text("请在设置中允许通知权限，以便接收记账提醒。")
         }
     }
     
-    private func loadSettings() {
-        let settings = currentSettings
-        reminderEnabled = settings.reminderEnabled
-        reminderTime = settings.reminderTime
+    private func loadCurrentSettings() {
+        reminderEnabled = currentSettings.reminderEnabled
+        reminderTime = currentSettings.reminderTime
     }
     
     private func saveSettings() {
-        if let existingSettings = settings.first {
-            existingSettings.reminderEnabled = reminderEnabled
-            existingSettings.reminderTime = reminderTime
+        if reminderEnabled {
+            requestNotificationPermission { granted in
+                DispatchQueue.main.async {
+                    if granted {
+                        updateSettings()
+                        scheduleNotification()
+                    } else {
+                        showingPermissionAlert = true
+                    }
+                }
+            }
         } else {
-            let newSettings = AppSettings()
-            newSettings.reminderEnabled = reminderEnabled
-            newSettings.reminderTime = reminderTime
-            modelContext.insert(newSettings)
+            updateSettings()
+            cancelNotification()
+        }
+    }
+    
+    private func updateSettings() {
+        let settingsToUpdate: AppSettings
+        if let existingSettings = settings.first {
+            settingsToUpdate = existingSettings
+        } else {
+            settingsToUpdate = AppSettings()
+            modelContext.insert(settingsToUpdate)
         }
         
-        try? modelContext.save()
-        dismiss()
+        settingsToUpdate.reminderEnabled = reminderEnabled
+        settingsToUpdate.reminderTime = reminderTime
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("保存提醒设置失败: \(error)")
+        }
+    }
+    
+    private func requestNotificationPermission(completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            completion(granted)
+        }
+    }
+    
+    private func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+        
+        // 取消现有通知
+        center.removePendingNotificationRequests(withIdentifiers: ["daily_reminder"])
+        
+        // 创建新通知
+        let content = UNMutableNotificationContent()
+        content.title = "记账提醒"
+        content.body = "别忘了记录今天的支出哦！"
+        content.sound = .default
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: reminderTime)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: "daily_reminder", content: content, trigger: trigger)
+        
+        center.add(request) { error in
+            if let error = error {
+                print("添加通知失败: \(error)")
+            }
+        }
+    }
+    
+    private func cancelNotification() {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["daily_reminder"])
+    }
+    
+    private func openAppSettings() {
+        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+            openURL(settingsUrl)
+        }
     }
 }
 

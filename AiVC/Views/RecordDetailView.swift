@@ -18,55 +18,65 @@ struct RecordDetailView: View {
     @State private var showingDeleteAlert = false
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // 顶部标题栏
-                HStack {
-                    Button("返回") {
-                        dismiss()
+        ZStack {
+            // 渐变背景
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.black,
+                    Color(red: 0.05, green: 0.05, blue: 0.1),
+                    Color.black
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            .gesture(
+                DragGesture()
+                    .onEnded { value in
+                        // 检测右滑手势
+                        if value.translation.width > 100 && abs(value.translation.height) < 50 {
+                            dismiss()
+                        }
                     }
-                    .foregroundColor(.blue)
-                    
-                    Spacer()
-                    
-                    Text("记录详情")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    
-                    Spacer()
-                    
-                    Button("编辑") {
-                        showingEditView = true
-                    }
-                    .foregroundColor(.blue)
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 15)
-                .background(Color.white)
-                .overlay(
-                    Rectangle()
-                        .frame(height: 0.5)
-                        .foregroundColor(Color.gray.opacity(0.3))
-                        .offset(y: 15)
+            )
+            
+            // 装饰性元素
+            Circle()
+                .fill(
+                    RadialGradient(
+                        gradient: Gradient(colors: [
+                            Color.blue.opacity(0.1),
+                            Color.clear
+                        ]),
+                        center: .topTrailing,
+                        startRadius: 50,
+                        endRadius: 200
+                    )
                 )
-                
-                ScrollView {
-                    VStack(spacing: 24) {
+                .frame(width: 300, height: 300)
+                .position(x: UIScreen.main.bounds.width - 50, y: 100)
+            
+            ScrollView {
+                VStack(spacing: 24) {
                         // 金额显示
                         VStack(spacing: 16) {
                             Text("支出金额")
                                 .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.white.opacity(0.8))
                             
                             Text("¥\(String(format: "%.2f", record.amount))")
                                 .font(.system(size: 48, weight: .bold))
-                                .foregroundColor(.primary)
+                                .foregroundColor(.white)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 32)
                         .background(
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(.systemGray6))
+                                .fill(Color.white.opacity(0.1))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                )
                         )
                         .padding(.horizontal, 20)
                         .padding(.top, 24)
@@ -114,28 +124,34 @@ struct RecordDetailView: View {
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(Color(.systemBackground))
-                                .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
+                                .fill(Color.white.opacity(0.1))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                )
                         )
                         .padding(.horizontal, 20)
                         
                         // 操作按钮
-                        VStack(spacing: 12) {
+                        HStack(spacing: 16) {
                             Button(action: {
                                 showingEditView = true
                             }) {
                                 HStack {
                                     Image(systemName: "pencil")
-                                        .font(.system(size: 16, weight: .medium))
-                                    Text("编辑记录")
-                                        .font(.system(size: 16, weight: .medium))
+                                    Text("编辑")
                                 }
+                                .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 16)
+                                .padding(.vertical, 12)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.blue)
+                                        .fill(Color.blue.opacity(0.8))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.blue, lineWidth: 1)
+                                        )
                                 )
                             }
                             
@@ -144,27 +160,63 @@ struct RecordDetailView: View {
                             }) {
                                 HStack {
                                     Image(systemName: "trash")
-                                        .font(.system(size: 16, weight: .medium))
-                                    Text("删除记录")
-                                        .font(.system(size: 16, weight: .medium))
+                                    Text("删除")
                                 }
-                                .foregroundColor(.red)
+                                .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 16)
+                                .padding(.vertical, 12)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.red.opacity(0.1))
+                                        .fill(Color.red.opacity(0.8))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.red, lineWidth: 1)
+                                        )
                                 )
                             }
                         }
                         .padding(.horizontal, 20)
+                        .padding(.bottom, 40)
                         
                         Spacer(minLength: 100)
                     }
-                }
             }
             .background(Color.gray.opacity(0.1))
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 16, weight: .medium))
+                        Text("返回")
+                            .font(.system(size: 16, weight: .medium))
+                    }
+                    .foregroundColor(.white)
+                }
+            }
+            
+            ToolbarItem(placement: .principal) {
+                Text("记录详情")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.white)
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("编辑") {
+                    showingEditView = true
+                }
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(.white)
+            }
+        }
+        .toolbar(.hidden, for: .tabBar)
+        .preferredColorScheme(.dark)
         .sheet(isPresented: $showingEditView) {
             // EditRecordView(record: record)
             Text("编辑功能开发中")
@@ -208,17 +260,17 @@ struct DetailRowView: View {
         HStack(spacing: 16) {
             Image(systemName: icon)
                 .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.blue)
+                .foregroundColor(.blue.opacity(0.8))
                 .frame(width: 20, height: 20)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white.opacity(0.7))
                 
                 Text(content)
                     .font(.system(size: 16))
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.leading)
             }
             

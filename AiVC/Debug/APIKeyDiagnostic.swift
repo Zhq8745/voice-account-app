@@ -1,8 +1,8 @@
 //
 //  APIKeyDiagnostic.swift
-//  AiVC
+//  语记
 //
-//  Created by AI Assistant on 2024/01/01.
+//  Created by AI Assistant on 2025/01/21.
 //
 
 import Foundation
@@ -65,7 +65,7 @@ class APIKeyDiagnostic {
     // 检查Keychain存储状态
     private func checkKeychainStatus() {
         for type in SecurityManager.APIKeyType.allCases {
-            let serviceName = "AiVC_\(type.rawValue)"
+            let serviceName = "语记_\(type.rawValue)"
             let account = "api_key"
             
             let query: [String: Any] = [

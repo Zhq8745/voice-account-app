@@ -1,29 +1,36 @@
 //
 //  SettingsView.swift
-//  AiVC
+//  语记
 //
 //  Created by AI Assistant
 //
 
 import SwiftUI
 import SwiftData
+import Foundation
+import Combine
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var authManager: AuthenticationManager
     @Query private var settings: [AppSettings]
     @Query private var categories: [ExpenseCategory]
     
     @State private var showingCategoryManager = false
     @State private var showingAddCategory = false
     @State private var editingCategory: ExpenseCategory?
-    @State private var showingAPIKeyDiagnostic = false
+    @State private var showingLogoutAlert = false
     // @State private var showingAPIKeyConfig = false // 已移除API密钥配置
-    @State private var diagnosticResult = ""
+    
+
     
     // 动画状态
     @State private var pulseAnimation = false
     @State private var cardScale: CGFloat = 0.95
     @State private var listAnimation = false
+    
+    // 云同步服务
+    private let cloudSyncService = CloudSyncService.shared
     
     // 当前设置
     private var currentSettings: AppSettings {
@@ -38,8 +45,7 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
+        ZStack {
                 // 渐变背景
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -107,18 +113,10 @@ struct SettingsView: View {
                                 value: listAnimation
                             )
                         
+
+                        
                         // 分类管理
                         categoryManagement
-                            .scaleEffect(cardScale)
-                            .opacity(listAnimation ? 1 : 0)
-                            .animation(
-                                Animation.spring(response: 0.8, dampingFraction: 0.8)
-                                    .delay(0.2),
-                                value: listAnimation
-                            )
-                        
-                        // 调试设置
-                        debugSettings
                             .scaleEffect(cardScale)
                             .opacity(listAnimation ? 1 : 0)
                             .animation(
@@ -127,13 +125,26 @@ struct SettingsView: View {
                                 value: listAnimation
                             )
                         
+                        // 账户管理
+                        accountSection
+                            .scaleEffect(cardScale)
+                            .opacity(listAnimation ? 1 : 0)
+                            .animation(
+                                Animation.spring(response: 0.8, dampingFraction: 0.8)
+                                    .delay(0.35),
+                                value: listAnimation
+                            )
+                        
+                        // 调试设置
+
+                        
                         // 关于信息
                         aboutSection
                             .scaleEffect(cardScale)
                             .opacity(listAnimation ? 1 : 0)
                             .animation(
                                 Animation.spring(response: 0.8, dampingFraction: 0.8)
-                                    .delay(0.3),
+                                    .delay(0.45),
                                 value: listAnimation
                             )
                         
@@ -142,13 +153,13 @@ struct SettingsView: View {
                     .padding(.horizontal, 16)
                     .padding(.top, 16)
                 }
-            }
-            .navigationTitle("设置")
-            .navigationBarTitleDisplayMode(.large)
-            .preferredColorScheme(.dark)
-            .onAppear {
-                startAnimations()
-            }
+        }
+        .navigationTitle("设置")
+        .navigationBarTitleDisplayMode(.large)
+        .preferredColorScheme(.dark)
+        .toolbar(.visible, for: .tabBar)
+        .onAppear {
+            startAnimations()
         }
         .sheet(isPresented: $showingCategoryManager) {
             CategoryManagerView()
@@ -159,10 +170,29 @@ struct SettingsView: View {
         .sheet(item: $editingCategory) { category in
             EditCategoryView(category: category)
         }
-        .sheet(isPresented: $showingAPIKeyDiagnostic) {
-            APIKeyDiagnosticView(diagnosticResult: $diagnosticResult)
+        .alert("确认注销", isPresented: $showingLogoutAlert) {
+            Button("取消", role: .cancel) { }
+            Button("注销", role: .destructive) {
+                Task {
+                    await performLogout()
+                }
+            }
+        } message: {
+            Text("注销后将清除所有本地数据，确定要继续吗？")
         }
-        // API密钥配置已移除，开发者统一配置
+        // 移除API密钥配置相关的sheet
+    }
+    
+    // 执行注销
+    private func performLogout() async {
+        do {
+            await authManager.logout()
+            // 注销成功，AuthenticationManager会自动更新认证状态
+            // 语记App会监听到状态变化并自动切换到登录界面
+        } catch {
+            // 处理注销错误（如果需要的话）
+            print("注销失败: \(error.localizedDescription)")
+        }
     }
     
     // 启动动画
@@ -251,14 +281,14 @@ struct SettingsView: View {
                     )
                     .padding(.horizontal, 16)
                 
-                // 主题模式
-                SettingsRow(
-                    icon: "moon",
-                    title: "主题模式",
-                    value: currentSettings.themeMode
-                ) {
-                    ThemePickerView()
-                }
+                // 主题模式设置已隐藏
+                // SettingsRow(
+                //     icon: "moon",
+                //     title: "主题模式",
+                //     value: currentSettings.themeMode
+                // ) {
+                //     ThemePickerView()
+                // }
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
@@ -501,6 +531,160 @@ struct SettingsView: View {
         }
     }
     
+    // 账户管理
+    private var accountSection: some View {
+        VStack(spacing: 0) {
+            // 标题
+            HStack {
+                Image(systemName: "person.circle.fill")
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [Color.blue, Color.purple],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                
+                Text("账户管理")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                Text("2")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Color.gray.opacity(0.2))
+                    )
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 12)
+            
+            VStack(spacing: 0) {
+                // 当前用户信息
+                HStack(spacing: 12) {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [Color.blue, Color.cyan],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 32, height: 32)
+                        .overlay(
+                            Image(systemName: "person")
+                                .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.white)
+                        )
+                    
+                    Text("当前用户")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    Text(authManager.currentUser?.username ?? "未知用户")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(
+                            Capsule()
+                                .fill(Color.gray.opacity(0.2))
+                        )
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                
+                Divider()
+                    .background(
+                        LinearGradient(
+                            colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .padding(.horizontal, 16)
+                
+                // 注销按钮
+                Button(action: {
+                    showingLogoutAlert = true
+                }) {
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color.red, Color.orange],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 32, height: 32)
+                            .overlay(
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.white)
+                            )
+                        
+                        Text("注销登录")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                }
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 0.12, green: 0.12, blue: 0.15),
+                                Color(red: 0.08, green: 0.08, blue: 0.12)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.1),
+                                        Color.clear,
+                                        Color.white.opacity(0.05)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1
+                            )
+                    )
+                    .shadow(
+                        color: Color.black.opacity(0.3),
+                        radius: 10,
+                        x: 0,
+                        y: 5
+                    )
+            )
+        }
+    }
+    
     // 关于信息
     private var aboutSection: some View {
         VStack(spacing: 0) {
@@ -584,35 +768,37 @@ struct SettingsView: View {
                     .padding(.horizontal, 16)
                 
                 // 隐私政策
-                HStack(spacing: 12) {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.purple, Color.pink],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
+                NavigationLink(destination: PrivacyPolicyView()) {
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color.purple, Color.pink],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
                             )
-                        )
-                        .frame(width: 32, height: 32)
-                        .overlay(
-                            Image(systemName: "hand.raised")
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.white)
-                        )
-                    
-                    Text("隐私政策")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                            .frame(width: 32, height: 32)
+                            .overlay(
+                                Image(systemName: "hand.raised")
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.white)
+                            )
+                        
+                        Text("隐私政策")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
                 
                 Divider()
                     .background(
@@ -625,35 +811,37 @@ struct SettingsView: View {
                     .padding(.horizontal, 16)
                 
                 // 用户协议
-                HStack(spacing: 12) {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.orange, Color.red],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
+                NavigationLink(destination: TermsOfServiceView()) {
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color.orange, Color.red],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
                             )
-                        )
-                        .frame(width: 32, height: 32)
-                        .overlay(
-                            Image(systemName: "doc.text")
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.white)
-                        )
-                    
-                    Text("用户协议")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                            .frame(width: 32, height: 32)
+                            .overlay(
+                                Image(systemName: "doc.text")
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.white)
+                            )
+                        
+                        Text("用户协议")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
@@ -697,125 +885,6 @@ struct SettingsView: View {
         withAnimation {
             modelContext.delete(category)
             try? modelContext.save()
-        }
-    }
-    
-    // 调试设置
-    private var debugSettings: some View {
-        VStack(spacing: 0) {
-            // 标题
-            HStack {
-                Image(systemName: "wrench.and.screwdriver.fill")
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color.orange, Color.red],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                
-                Text("调试设置")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                
-                Spacer()
-                
-                Text("1")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(
-                        Capsule()
-                            .fill(Color.gray.opacity(0.2))
-                    )
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 12)
-            
-            VStack(spacing: 0) {
-                // API密钥诊断
-                Button(action: {
-                    APIKeyDiagnostic.runDiagnostic()
-                    showingAPIKeyDiagnostic = true
-                }) {
-                    HStack(spacing: 12) {
-                        Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color.orange, Color.red],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                            .frame(width: 32, height: 32)
-                            .overlay(
-                                Image(systemName: "key.fill")
-                                    .font(.system(size: 16, weight: .medium))
-                                    .foregroundColor(.white)
-                            )
-                        
-                        Text("API密钥诊断")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                        
-                        Spacer()
-                        
-                        Text("检查配置")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background(
-                                Capsule()
-                                    .fill(Color.gray.opacity(0.2))
-                            )
-                        
-                        Image(systemName: "chevron.right")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.12, green: 0.12, blue: 0.15),
-                                Color(red: 0.08, green: 0.08, blue: 0.12)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.1),
-                                        Color.clear,
-                                        Color.white.opacity(0.05)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: 10,
-                        x: 0,
-                        y: 5
-                    )
-            )
         }
     }
 }
