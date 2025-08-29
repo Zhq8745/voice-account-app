@@ -29,16 +29,8 @@ struct CurrencyPickerView: View {
     
     var body: some View {
         ZStack {
-                // 渐变背景
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.black,
-                        Color(red: 0.05, green: 0.05, blue: 0.1),
-                        Color.black
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+            // 深色背景
+            Color.black
                 .ignoresSafeArea()
                 .gesture(
                     DragGesture()
@@ -49,22 +41,6 @@ struct CurrencyPickerView: View {
                             }
                         }
                 )
-                
-                // 装饰性元素
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            gradient: Gradient(colors: [
-                                Color.green.opacity(0.1),
-                                Color.clear
-                            ]),
-                            center: .topTrailing,
-                            startRadius: 50,
-                            endRadius: 200
-                        )
-                    )
-                    .frame(width: 300, height: 300)
-                    .position(x: UIScreen.main.bounds.width - 50, y: 100)
                 
                 VStack(spacing: 24) {
                     // 货币列表
@@ -85,7 +61,7 @@ struct CurrencyPickerView: View {
                                             LinearGradient(
                                                 colors: selectedCurrency == code ? 
                                                     [Color.green, Color.mint] : 
-                                                    [Color.gray.opacity(0.3), Color.gray.opacity(0.2)],
+                                                    [Color(.systemGray6).opacity(0.3), Color(.systemGray6).opacity(0.2)],
                                                 startPoint: .topLeading,
                                                 endPoint: .bottomTrailing
                                             )
@@ -171,30 +147,20 @@ struct CurrencyPickerView: View {
                             
                             if index < AppSettings.currencies.count - 1 {
                                 Divider()
-                                    .background(Color.gray.opacity(0.2))
+                                    .background(Color(.systemGray6).opacity(0.2))
                                     .padding(.horizontal, 20)
                             }
                         }
                     }
                     .background(
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color(red: 0.12, green: 0.12, blue: 0.15),
-                                        Color(red: 0.08, green: 0.08, blue: 0.12)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                            .shadow(
-                                color: Color.black.opacity(0.3),
-                                radius: 10,
-                                x: 0,
-                                y: 5
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
                             )
                     )
+                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
                     
                     Spacer()
                 }

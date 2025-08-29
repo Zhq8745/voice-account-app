@@ -245,6 +245,16 @@
     "swift-dependencies" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ValidationService.swiftdeps",
     "swiftmodule" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ValidationService~partial.swiftmodule"
   },
+  "/Users/a1234/Desktop/voice-account-new-main/AiVC/Theme/ThemeColors.swift" : {
+    "const-values" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.swiftconstvalues",
+    "dependencies" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.d",
+    "diagnostics" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.dia",
+    "index-unit-output-path" : "/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.o",
+    "llvm-bc" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.bc",
+    "object" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.o",
+    "swift-dependencies" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors.swiftdeps",
+    "swiftmodule" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/ThemeColors~partial.swiftmodule"
+  },
   "/Users/a1234/Desktop/voice-account-new-main/AiVC/ViewModels/LoginViewModel.swift" : {
     "const-values" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/LoginViewModel.swiftconstvalues",
     "dependencies" : "/Users/a1234/Desktop/voice-account-new-main/DerivedData/Build/Intermediates.noindex/AiVC.build/Debug-iphonesimulator/AiVC.build/Objects-normal/arm64/LoginViewModel.d",

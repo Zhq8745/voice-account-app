@@ -62,61 +62,11 @@ struct HistoryView: View {
     
     var body: some View {
         ZStack {
-                // 渐变背景
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 0.05, green: 0.05, blue: 0.08),
-                        Color(red: 0.12, green: 0.12, blue: 0.15),
-                        Color(red: 0.08, green: 0.08, blue: 0.12)
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+            // 统一纯色背景
+            Color.black
                 .ignoresSafeArea()
-                
-                // 装饰性圆形
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            gradient: Gradient(colors: [
-                                Color.blue.opacity(0.15),
-                                Color.clear
-                            ]),
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: 200
-                        )
-                    )
-                    .frame(width: 400, height: 400)
-                    .position(x: UIScreen.main.bounds.width * 0.8, y: 100)
-                    .scaleEffect(pulseAnimation ? 1.2 : 1.0)
-                    .opacity(pulseAnimation ? 0.6 : 0.3)
-                    .animation(
-                        Animation.easeInOut(duration: 3.0).repeatForever(autoreverses: true),
-                        value: pulseAnimation
-                    )
-                
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            gradient: Gradient(colors: [
-                                Color.purple.opacity(0.1),
-                                Color.clear
-                            ]),
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: 150
-                        )
-                    )
-                    .frame(width: 300, height: 300)
-                    .position(x: UIScreen.main.bounds.width * 0.2, y: UIScreen.main.bounds.height * 0.7)
-                    .scaleEffect(pulseAnimation ? 0.8 : 1.1)
-                    .opacity(pulseAnimation ? 0.4 : 0.2)
-                    .animation(
-                        Animation.easeInOut(duration: 4.0).repeatForever(autoreverses: true),
-                        value: pulseAnimation
-                    )
-                
+            
+            ScrollView {
                 VStack(spacing: 24) {
                     // 搜索栏
                     searchBar
@@ -135,8 +85,12 @@ struct HistoryView: View {
                         .scaleEffect(cardScale)
                         .opacity(listAnimation ? 1 : 0)
                         .animation(.easeOut(duration: 0.6).delay(0.3), value: listAnimation)
+                    
+                    Spacer(minLength: 150)
                 }
+                .padding(.bottom, 40)
             }
+        }
         .navigationTitle("历史")
         .navigationBarTitleDisplayMode(.large)
         .preferredColorScheme(.dark)
@@ -178,205 +132,167 @@ struct HistoryView: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 16)
         .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0.15, green: 0.15, blue: 0.18),
-                            Color(red: 0.12, green: 0.12, blue: 0.15)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color(.systemGray6).opacity(0.2))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.blue.opacity(0.3),
-                                    Color.purple.opacity(0.2)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                )
-                .shadow(
-                    color: Color.black.opacity(0.3),
-                    radius: 8,
-                    x: 0,
-                    y: 4
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .padding(.horizontal, 16)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
+        .padding(.horizontal, 24)
     }
     
     // 分类筛选
     private var categoryFilter: some View {
+        categoryFilterContent
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
+            )
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
+            .padding(.horizontal, 24)
+    }
+    
+    private var categoryFilterContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                    .font(.system(size: 18, weight: .medium))
-                    .foregroundColor(.blue)
-                
-                Text("分类筛选")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.white)
-                
-                Spacer()
-            }
+            categoryFilterHeader
+            categoryFilterButtons
+        }
+        .padding(.horizontal, 24)
+        .padding(.vertical, 16)
+    }
+    
+    private var categoryFilterHeader: some View {
+        HStack {
+            Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                .font(.system(size: 18, weight: .medium))
+                .foregroundColor(.blue)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    // 全部分类按钮
-                    Button(action: {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            selectedCategory = nil
-                        }
-                    }) {
-                        Text("全部")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(selectedCategory == nil ? .black : .white)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(
-                                        selectedCategory == nil ?
-                                        LinearGradient(
-                                            gradient: Gradient(colors: [.blue, .purple]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ) :
-                                        LinearGradient(
-                                            gradient: Gradient(colors: [
-                                                Color(red: 0.15, green: 0.15, blue: 0.18),
-                                                Color(red: 0.12, green: 0.12, blue: 0.15)
-                                            ]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(
-                                                selectedCategory == nil ?
-                                                Color.clear :
-                                                Color.gray.opacity(0.3),
-                                                lineWidth: 1
-                                            )
-                                    )
-                                    .shadow(
-                                        color: selectedCategory == nil ?
-                                        Color.blue.opacity(0.3) :
-                                        Color.black.opacity(0.2),
-                                        radius: selectedCategory == nil ? 6 : 3,
-                                        x: 0,
-                                        y: selectedCategory == nil ? 3 : 2
-                                    )
-                            )
-                    }
-                    .scaleEffect(selectedCategory == nil ? 1.05 : 1.0)
-                    .animation(.easeInOut(duration: 0.2), value: selectedCategory == nil)
-                    
-                    // 分类按钮
-                    ForEach(categories, id: \.id) { category in
-                        Button(action: {
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                selectedCategory = selectedCategory?.id == category.id ? nil : category
-                            }
-                        }) {
-                            HStack(spacing: 8) {
-                                Image(systemName: category.iconName)
-                                    .font(.system(size: 12, weight: .medium))
-                                Text(category.name)
-                                    .font(.system(size: 14, weight: .medium))
-                            }
-                            .foregroundColor(selectedCategory?.id == category.id ? .black : .white)
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(
-                                        selectedCategory?.id == category.id ?
-                                        LinearGradient(
-                                            gradient: Gradient(colors: [category.color, category.color.opacity(0.8)]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ) :
-                                        LinearGradient(
-                                            gradient: Gradient(colors: [
-                                                Color(red: 0.15, green: 0.15, blue: 0.18),
-                                                Color(red: 0.12, green: 0.12, blue: 0.15)
-                                            ]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(
-                                                selectedCategory?.id == category.id ?
-                                                Color.clear :
-                                                Color.gray.opacity(0.3),
-                                                lineWidth: 1
-                                            )
-                                    )
-                                    .shadow(
-                                        color: selectedCategory?.id == category.id ?
-                                        category.color.opacity(0.4) :
-                                        Color.black.opacity(0.2),
-                                        radius: selectedCategory?.id == category.id ? 6 : 3,
-                                        x: 0,
-                                        y: selectedCategory?.id == category.id ? 3 : 2
-                                    )
-                            )
-                        }
-                        .scaleEffect(selectedCategory?.id == category.id ? 1.05 : 1.0)
-                        .animation(.easeInOut(duration: 0.2), value: selectedCategory?.id == category.id)
+            Text("分类筛选")
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundColor(.white)
+            
+            Spacer()
+        }
+    }
+    
+    private var categoryFilterButtons: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                allCategoriesButton
+                categoryButtons
+            }
+            .padding(.horizontal, 16)
+        }
+    }
+    
+    private var allCategoriesButton: some View {
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                selectedCategory = nil
+            }
+        }) {
+            Text("全部")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(selectedCategory == nil ? .black : .white)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(
+                            selectedCategory == nil ?
+                            AnyShapeStyle(Color.cyan.opacity(0.8)) :
+                            AnyShapeStyle(Color(.systemGray6).opacity(0.2))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(
+                                    selectedCategory == nil ?
+                                    Color.clear :
+                                    Color(.systemGray6).opacity(0.3),
+                                    lineWidth: 1
+                                )
+                        )
+                        .shadow(
+                            color: selectedCategory == nil ?
+                            Color.blue.opacity(0.3) :
+                            Color.black.opacity(0.2),
+                            radius: selectedCategory == nil ? 6 : 3,
+                            x: 0,
+                            y: selectedCategory == nil ? 3 : 2
+                        )
+                )
+        }
+        .scaleEffect(selectedCategory == nil ? 1.05 : 1.0)
+        .animation(.easeInOut(duration: 0.2), value: selectedCategory == nil)
+    }
+    
+    private var categoryButtons: some View {
+        ForEach(categories, id: \.id) { category in
+            CategoryButton(
+                category: category,
+                isSelected: selectedCategory?.id == category.id,
+                onTap: {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        selectedCategory = selectedCategory?.id == category.id ? nil : category
                     }
                 }
-                .padding(.horizontal, 16)
-            }
+            )
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
+    }
+    
+    private struct CategoryButton: View {
+        let category: ExpenseCategory
+        let isSelected: Bool
+        let onTap: () -> Void
+        
+        var body: some View {
+            Button(action: onTap) {
+                categoryButtonContent
+            }
+            .scaleEffect(isSelected ? 1.05 : 1.0)
+            .animation(.easeInOut(duration: 0.2), value: isSelected)
+        }
+        
+        private var categoryButtonContent: some View {
+            HStack(spacing: 8) {
+                Image(systemName: category.iconName)
+                    .font(.system(size: 12, weight: .medium))
+                Text(category.name)
+                    .font(.system(size: 14, weight: .medium))
+            }
+            .foregroundColor(isSelected ? .black : .white)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(categoryButtonBackground)
+        }
+        
+        private var categoryButtonBackground: some View {
+            RoundedRectangle(cornerRadius: 20)
                 .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0.15, green: 0.15, blue: 0.18),
-                            Color(red: 0.12, green: 0.12, blue: 0.15)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+                    isSelected ?
+                    AnyShapeStyle(category.color) :
+                    AnyShapeStyle(Color(.systemGray6).opacity(0.2))
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: 20)
                         .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.blue.opacity(0.3),
-                                    Color.purple.opacity(0.2)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
+                            isSelected ? Color.clear : Color(.systemGray6).opacity(0.3),
                             lineWidth: 1
                         )
                 )
                 .shadow(
-                    color: Color.black.opacity(0.3),
-                    radius: 8,
+                    color: isSelected ? category.color.opacity(0.4) : Color.black.opacity(0.2),
+                    radius: isSelected ? 6 : 3,
                     x: 0,
-                    y: 4
+                    y: isSelected ? 3 : 2
                 )
-        )
-        .padding(.horizontal, 16)
+        }
     }
     
     // 历史记录列表
@@ -400,25 +316,14 @@ struct HistoryView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
             .padding(.top, 16)
             
             // 记录内容
             if groupedExpenses.isEmpty {
                 VStack(spacing: 20) {
                     Circle()
-                        .fill(
-                            RadialGradient(
-                                gradient: Gradient(colors: [
-                                    Color.blue.opacity(0.3),
-                                    Color.purple.opacity(0.1),
-                                    Color.clear
-                                ]),
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 60
-                            )
-                        )
+                        .fill(Color(.systemGray6).opacity(0.3))
                         .frame(width: 120, height: 120)
                         .overlay(
                             Image(systemName: "clock.arrow.circlepath")
@@ -439,64 +344,35 @@ struct HistoryView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 60)
             } else {
-                ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(groupedExpenses, id: \.date) { group in
-                            HistoryGroupView(
-                                date: group.date,
-                                expenses: group.expenses,
-                                settings: currentSettings,
-                                onEdit: { expense in
-                                    editingExpense = expense
-                                    showingEditSheet = true
-                                },
-                                onDelete: { expense in
-                                    deleteExpense(expense)
-                                }
-                            )
-                        }
-                        
-                        Spacer(minLength: 100)
+                LazyVStack(spacing: 12) {
+                    ForEach(groupedExpenses, id: \.date) { group in
+                        HistoryGroupView(
+                            date: group.date,
+                            expenses: group.expenses,
+                            settings: currentSettings,
+                            onEdit: { expense in
+                                editingExpense = expense
+                                showingEditSheet = true
+                            },
+                            onDelete: { expense in
+                                deleteExpense(expense)
+                            }
+                        )
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 20)
                 }
+                .padding(.horizontal, 24)
             }
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0.15, green: 0.15, blue: 0.18),
-                            Color(red: 0.12, green: 0.12, blue: 0.15)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(Color(.systemGray6).opacity(0.2))
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.blue.opacity(0.3),
-                                    Color.purple.opacity(0.2)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                )
-                .shadow(
-                    color: Color.black.opacity(0.3),
-                    radius: 12,
-                    x: 0,
-                    y: 6
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .padding(.horizontal, 16)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
+        .padding(.horizontal, 24)
     }
     
     // 删除支出记录
@@ -506,6 +382,7 @@ struct HistoryView: View {
             try? modelContext.save()
         }
     }
+}
 
 // 历史记录分组视图
 struct HistoryGroupView: View {
@@ -539,7 +416,7 @@ struct HistoryGroupView: View {
     }
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 20) {
             // 日期头部
             Button(action: {
                 withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
@@ -560,12 +437,10 @@ struct HistoryGroupView: View {
                 HStack(spacing: 16) {
                     // 日期图标
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [.blue, .purple]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
+                        .fill(Color.cyan.opacity(0.8))
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                         .frame(width: 44, height: 44)
                         .overlay(
@@ -574,7 +449,7 @@ struct HistoryGroupView: View {
                                 .foregroundColor(.white)
                         )
                         .shadow(
-                            color: Color.blue.opacity(0.3),
+                            color: Color.cyan.opacity(0.3),
                             radius: 4,
                             x: 0,
                             y: 2
@@ -588,13 +463,17 @@ struct HistoryGroupView: View {
                         HStack(spacing: 8) {
                             Text("\(expenses.count)笔")
                                 .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color.cyan)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 2)
                                 .background(
+                            Capsule()
+                                .fill(Color.cyan.opacity(0.2))
+                                .overlay(
                                     Capsule()
-                                        .fill(Color.blue.opacity(0.2))
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                 )
+                        )
                             
                             Text("\(settings.currencySymbol)\(String(format: "%.2f", dayTotal))")
                                 .font(.system(size: 14, weight: .medium))
@@ -606,15 +485,10 @@ struct HistoryGroupView: View {
                     
                     // 展开/收起图标
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 0.2, green: 0.2, blue: 0.25),
-                                    Color(red: 0.15, green: 0.15, blue: 0.18)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
+                        .fill(Color(.systemGray6).opacity(0.2))
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                         .frame(width: 32, height: 32)
                         .overlay(
@@ -628,45 +502,21 @@ struct HistoryGroupView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 16)
                 .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 0.18, green: 0.18, blue: 0.22),
-                                    Color(red: 0.15, green: 0.15, blue: 0.18)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color(.systemGray6).opacity(0.2))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color.blue.opacity(0.3),
-                                            Color.purple.opacity(0.2)
-                                        ]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-                                    lineWidth: 1
-                                )
-                        )
-                        .shadow(
-                            color: Color.black.opacity(0.2),
-                            radius: 6,
-                            x: 0,
-                            y: 3
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                 )
+                .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
             }
             .scaleEffect(headerScale)
             .buttonStyle(PlainButtonStyle())
             
             // 记录列表
             if isExpanded {
-                VStack(spacing: 1) {
+                VStack(spacing: 0) {
                     ForEach(expenses.indices, id: \.self) { index in
                         HistoryRowView(
                             expense: expenses[index],
@@ -674,53 +524,24 @@ struct HistoryGroupView: View {
                             onEdit: { onEdit(expenses[index]) },
                             onDelete: { onDelete(expenses[index]) }
                         )
-                        .background(
-                            RoundedRectangle(cornerRadius: index == 0 ? 12 : (index == expenses.count - 1 ? 12 : 0))
-                                .fill(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color(red: 0.16, green: 0.16, blue: 0.20),
-                                            Color(red: 0.13, green: 0.13, blue: 0.16)
-                                        ]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
-                        )
                         
                         if index < expenses.count - 1 {
                             Divider()
-                                .background(Color.gray.opacity(0.2))
-                                .padding(.horizontal, 20)
+                                .background(Color.white.opacity(0.1))
+                                .padding(.horizontal, 24)
                         }
                     }
                 }
+                .padding(.bottom, 20)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 0.16, green: 0.16, blue: 0.20),
-                                    Color(red: 0.13, green: 0.13, blue: 0.16)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color(.systemGray6).opacity(0.2))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(
-                                    Color.gray.opacity(0.2),
-                                    lineWidth: 1
-                                )
-                        )
-                        .shadow(
-                            color: Color.black.opacity(0.2),
-                            radius: 4,
-                            x: 0,
-                            y: 2
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                 )
+                .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
                 .transition(
                     .asymmetric(
                         insertion: .opacity.combined(with: .scale(scale: 0.95)).combined(with: .offset(y: -10)),
@@ -760,30 +581,11 @@ struct HistoryRowView: View {
             HStack(spacing: 16) {
                 // 分类图标
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                expense.category?.color ?? .gray,
-                                (expense.category?.color ?? .gray).opacity(0.7)
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(expense.category?.color ?? .gray)
                     .frame(width: 48, height: 48)
                     .overlay(
                         Circle()
-                            .stroke(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.white.opacity(0.3),
-                                        Color.clear
-                                    ]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                     )
                     .overlay(
                         Image(systemName: expense.category?.iconName ?? "questionmark")
@@ -809,17 +611,21 @@ struct HistoryRowView: View {
                             HStack(spacing: 4) {
                                 Image(systemName: "mic.fill")
                                     .font(.system(size: 10, weight: .medium))
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color.cyan)
                                 
                                 Text("语音")
                                     .font(.system(size: 10, weight: .medium))
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color.cyan)
                             }
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
                             .background(
                                 Capsule()
-                                    .fill(Color.blue.opacity(0.2))
+                                    .fill(Color.cyan.opacity(0.2))
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                    )
                             )
                         }
                         
@@ -856,16 +662,20 @@ struct HistoryRowView: View {
                     // 金额标签
                     Text("支出")
                         .font(.system(size: 10, weight: .medium))
-                        .foregroundColor(.red)
+                        .foregroundColor(Color.red)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
                         .background(
                             Capsule()
                                 .fill(Color.red.opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                         )
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 24)
             .padding(.vertical, 16)
         }
         .scaleEffect(rowScale)
@@ -895,10 +705,6 @@ struct HistoryRowView: View {
             )
         }
     }
-}
-
-
-
 }
 
 #Preview {

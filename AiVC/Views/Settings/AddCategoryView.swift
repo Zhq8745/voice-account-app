@@ -39,8 +39,9 @@ struct AddCategoryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black
-                    .ignoresSafeArea()
+            // 深色背景
+            Color.black
+                .ignoresSafeArea()
                 
                 ScrollView {
                     VStack(spacing: 24) {
@@ -72,7 +73,7 @@ struct AddCategoryView: View {
                 trailing: Button("保存") {
                     saveCategory()
                 }
-                .foregroundColor(.blue)
+                .foregroundColor(Color.cyan)
                 .disabled(categoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             )
             .preferredColorScheme(.dark)
@@ -84,7 +85,7 @@ struct AddCategoryView: View {
         VStack(spacing: 16) {
             Text("预览")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(Color.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(spacing: 16) {
@@ -94,18 +95,22 @@ struct AddCategoryView: View {
                     .overlay(
                         Image(systemName: selectedIcon)
                             .font(.system(size: 32))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.white)
                     )
                 
                 Text(categoryName.isEmpty ? "分类名称" : categoryName)
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 32)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -116,7 +121,7 @@ struct AddCategoryView: View {
             HStack {
                 Text("分类名称")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -126,7 +131,7 @@ struct AddCategoryView: View {
                 HStack {
                     Image(systemName: "textformat")
                         .font(.system(size: 18))
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.cyan)
                         .frame(width: 24, height: 24)
                     
                     TextField("请输入分类名称", text: $categoryName)
@@ -138,7 +143,11 @@ struct AddCategoryView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -149,7 +158,7 @@ struct AddCategoryView: View {
             HStack {
                 Text("选择图标")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -167,7 +176,7 @@ struct AddCategoryView: View {
                         
                         Text("当前图标")
                             .font(.subheadline)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.white)
                         
                         Spacer()
                         
@@ -191,7 +200,11 @@ struct AddCategoryView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
         .sheet(isPresented: $showingIconPicker) {
@@ -205,7 +218,7 @@ struct AddCategoryView: View {
             HStack {
                 Text("选择颜色")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -292,12 +305,16 @@ struct IconPickerView: View {
                                 dismiss()
                             }) {
                                 Circle()
-                                    .fill(selectedIcon == icon ? Color.blue : Color(red: 0.11, green: 0.11, blue: 0.12))
-                                    .frame(width: 60, height: 60)
+                                .fill(selectedIcon == icon ? Color.cyan : Color(.systemGray6).opacity(0.2))
+                                .frame(width: 60, height: 60)
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                                     .overlay(
                                         Image(systemName: icon)
                                             .font(.system(size: 24))
-                                            .foregroundColor(.white)
+                                            .foregroundColor(Color.white)
                                     )
                             }
                             .buttonStyle(PlainButtonStyle())

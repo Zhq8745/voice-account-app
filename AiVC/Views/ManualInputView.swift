@@ -18,11 +18,14 @@ struct ManualInputView: View {
     
     @State private var amount: String = ""
     @State private var selectedCategory: ExpenseCategory?
-    @State private var note: String = ""
     @State private var selectedDate = Date()
+    @State private var note = ""
+    @State private var showingDatePicker = false
     @State private var showingCategoryPicker = false
     @State private var showingError = false
     @State private var errorMessage = ""
+    @State private var pulseAnimation = false
+    @State private var cardScale: CGFloat = 1.0
     
     private var currentSettings: AppSettings {
         settings.first ?? AppSettings()
@@ -32,62 +35,54 @@ struct ManualInputView: View {
         !amount.isEmpty && Double(amount) != nil && Double(amount)! > 0
     }
     
+    // 日期格式化器
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "zh_CN")
+        return formatter
+    }
+    
+    // 时间格式化器
+    private var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "zh_CN")
+        return formatter
+    }
+    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack {
-                    // 背景渐变
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.black.opacity(0.95),
-                            Color.blue.opacity(0.1),
-                            Color.purple.opacity(0.1),
-                            Color.black.opacity(0.95)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                    .ignoresSafeArea()
+                    // 统一纯色背景
+                    Color.black
+                        .ignoresSafeArea()
                     
-                    // 装饰性背景元素
-                    ForEach(0..<3, id: \.self) { index in
-                        Circle()
-                            .fill(
-                                RadialGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.blue.opacity(0.08),
-                                        Color.clear
-                                    ]),
-                                    center: .center,
-                                    startRadius: 0,
-                                    endRadius: 100
-                                )
-                            )
-                            .frame(width: 200, height: 200)
-                            .offset(
-                                x: CGFloat.random(in: -geometry.size.width/2...geometry.size.width/2),
-                                y: CGFloat.random(in: -geometry.size.height/2...geometry.size.height/2)
-                            )
-                    }
-                    
+                    // 主要内容区域
                     ScrollView {
-                        VStack(spacing: 24) {
-                            // 金额输入区域
-                            amountInputSection
+                        VStack(spacing: 20) {
+                            // 金额输入卡片
+                            amountInputCard
+                                .scaleEffect(cardScale)
+                                .animation(
+                                    .spring(response: 0.6, dampingFraction: 0.8),
+                                    value: cardScale
+                                )
                             
-                            // 分类选择区域
-                            categorySelectionSection
+                            // 分类选择卡片
+                            categorySelectionCard
                             
-                            // 备注输入区域
-                            noteInputSection
+                            // 备注和日期卡片
+                            noteAndDateCard
                             
-                            // 日期选择区域
-                            dateSelectionSection
-                            
-                            Spacer(minLength: 50)
+                            // 保存按钮 - 整合到底部布局模块中
+                            bottomSaveButton
+                                .padding(.top, 10)
                         }
-                        .padding(.horizontal, 24)
-                        .padding(.top, 20)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
+                        .padding(.bottom, geometry.safeAreaInsets.bottom + 20)
                     }
                 }
             }
@@ -95,23 +90,7 @@ struct ManualInputView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(.hidden, for: .tabBar)
             .preferredColorScheme(.dark)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("取消") {
-                        dismiss()
-                    }
-                    .foregroundColor(.white.opacity(0.85))
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("保存") {
-                        saveExpense()
-                    }
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(isValidInput ? .green : .gray)
-                    .disabled(!isValidInput)
-                }
-            }
+            .toolbarColorScheme(.dark, for: .navigationBar)
         }
         .alert("错误", isPresented: $showingError) {
             Button("确定") { }
@@ -120,141 +99,383 @@ struct ManualInputView: View {
         }
         .onAppear {
             selectedCategory = categories.first
+            startAnimations()
         }
     }
     
-    // 金额输入区域
-    private var amountInputSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(spacing: 14) {
-                Image(systemName: "yensign.circle")
-                    .foregroundColor(.green)
-                    .font(.system(size: 20, weight: .semibold))
-                Text("金额")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
-            }
-            .padding(.bottom, 6)
-            
+    // 启动动画
+    private func startAnimations() {
+        withAnimation(.easeInOut(duration: 2.0).repeatForever(autoreverses: true)) {
+            pulseAnimation.toggle()
+        }
+        
+        withAnimation(.spring(response: 0.8, dampingFraction: 0.8).delay(0.2)) {
+            cardScale = 1.0
+        }
+    }
+    
+    // 金额输入卡片 - 采用首页按钮风格
+    private var amountInputCard: some View {
+        VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text(currentSettings.currencySymbol)
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.green.opacity(0.8))
-                
-                TextField("0.00", text: $amount)
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.white)
-                    .keyboardType(.decimalPad)
-                    .textFieldStyle(PlainTextFieldStyle())
+                HStack(spacing: 8) {
+                    ZStack {
+                        Circle()
+                            .fill(.green)
+                            .frame(width: 32, height: 32)
+                            .shadow(color: Color.green.opacity(0.3), radius: 6, x: 0, y: 3)
+                        
+                        Image(systemName: "yensign")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.white)
+                    }
+                    Text("输入金额")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                }
+                Spacer()
             }
-            .padding(.horizontal, 22)
-            .padding(.vertical, 20)
-            .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(Color.white.opacity(0.12))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.green.opacity(0.7), lineWidth: 2)
-                    )
-            )
-            .shadow(color: .green.opacity(0.15), radius: 6, x: 0, y: 3)
+            
+            VStack(spacing: 16) {
+                HStack(alignment: .bottom, spacing: 8) {
+                    Text(currentSettings.currencySymbol)
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(.green.opacity(0.8))
+                    
+                    TextField("0.00", text: $amount)
+                        .font(.system(size: 42, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .multilineTextAlignment(.leading)
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(.systemGray6).opacity(0.2))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                )
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                
+                if !amount.isEmpty {
+                    HStack {
+                        ZStack {
+                            Circle()
+                                .fill(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [
+                                            .green,
+                                            .green.opacity(0.8)
+                                        ]),
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+                                .frame(width: 16, height: 16)
+                            
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 8, weight: .bold))
+                                .foregroundColor(.white)
+                        }
+                        Text("金额有效")
+                            .font(.caption)
+                            .foregroundColor(.green)
+                        Spacer()
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
+            }
         }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                )
+                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+        )
     }
     
-    // 分类选择区域
-    private var categorySelectionSection: some View {
+    // 分类选择卡片 - 采用首页按钮风格
+    private var categorySelectionCard: some View {
         VStack(alignment: .leading, spacing: 16) {
-            HStack(spacing: 14) {
-                Image(systemName: "tag.circle")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 20, weight: .semibold))
-                Text("分类")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
+            HStack {
+                HStack(spacing: 8) {
+                    ZStack {
+                        Circle()
+                            .fill(.cyan)
+                            .frame(width: 32, height: 32)
+                            .shadow(color: Color.cyan.opacity(0.3), radius: 6, x: 0, y: 3)
+                        
+                        Image(systemName: "tag")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.white)
+                    }
+                    Text("选择分类")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                }
+                Spacer()
             }
-            .padding(.bottom, 6)
             
+            // 使用水平滑动布局显示分类
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
+                HStack(spacing: 16) {
                     ForEach(categories, id: \.id) { category in
                         CategoryButton(
                             category: category,
                             isSelected: selectedCategory?.id == category.id
                         ) {
-                            selectedCategory = category
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                selectedCategory = category
+                            }
                         }
                     }
                 }
-                .padding(.horizontal, 4)
+                .padding(.horizontal, 20)
             }
+            .padding(.horizontal, -4)
         }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.systemGray6).opacity(0.2))
+                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+        )
     }
     
-    // 备注输入区域
-    private var noteInputSection: some View {
+    // 备注和日期卡片 - 采用首页按钮风格
+    private var noteAndDateCard: some View {
         VStack(alignment: .leading, spacing: 16) {
-            HStack(spacing: 14) {
-                Image(systemName: "note.text")
-                    .foregroundColor(.orange)
-                    .font(.system(size: 20, weight: .semibold))
-                Text("备注")
-                    .font(.system(size: 18, weight: .bold))
+            // 添加备注部分
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    HStack(spacing: 8) {
+                        ZStack {
+                            Circle()
+                                .fill(.cyan)
+                                .frame(width: 32, height: 32)
+                                .shadow(color: Color.cyan.opacity(0.3), radius: 6, x: 0, y: 3)
+                            
+                            Image(systemName: "note.text")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.white)
+                        }
+                        Text("添加备注")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                }
+                
+                TextField("添加备注信息（可选）", text: $note)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.black.opacity(0.3))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
                     .foregroundColor(.white)
+                    .font(.body)
             }
-            .padding(.bottom, 6)
             
-            TextField("添加备注信息（可选）", text: $note, axis: .vertical)
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.white)
-                .textFieldStyle(PlainTextFieldStyle())
-                .lineLimit(3...6)
-                .padding(.horizontal, 22)
-                .padding(.vertical, 20)
-                .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.white.opacity(0.12))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.orange.opacity(0.7), lineWidth: 2)
-                        )
+            // 选择日期部分
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    HStack(spacing: 8) {
+                        ZStack {
+                            Circle()
+                                .fill(.cyan)
+                                .frame(width: 32, height: 32)
+                                .shadow(color: Color.cyan.opacity(0.3), radius: 6, x: 0, y: 3)
+                            
+                            Image(systemName: "calendar")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.white)
+                        }
+                        Text("选择日期")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                }
+                
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        showingDatePicker.toggle()
+                    }
+                }) {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("日期")
+                                .font(.caption)
+                                .foregroundColor(.white.opacity(0.6))
+                            Text(dateFormatter.string(from: selectedDate))
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing, spacing: 2) {
+                            Text("时间")
+                                .font(.caption)
+                                .foregroundColor(.white.opacity(0.6))
+                            Text(timeFormatter.string(from: selectedDate))
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.cyan)
+                        }
+                        
+                        Image(systemName: showingDatePicker ? "chevron.up" : "chevron.down")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundColor(.white.opacity(0.6))
+                    }
+                    .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.black.opacity(0.3))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
+                }
+                .buttonStyle(PlainButtonStyle())
+                
+                if showingDatePicker {
+                    DatePicker(
+                        "选择日期和时间",
+                        selection: $selectedDate,
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .labelsHidden()
+                    .colorScheme(.dark)
+                    .padding(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.black.opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
+                    .transition(.opacity.combined(with: .scale(scale: 0.95)))
+                }
+            }
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
-                .shadow(color: .orange.opacity(0.15), radius: 6, x: 0, y: 3)
-        }
+                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+        )
     }
+}
+
+// 分类按钮组件 - 采用首页按钮风格
+struct CategoryButton: View {
+    let category: ExpenseCategory
+    let isSelected: Bool
+    let action: () -> Void
     
-    // 日期选择区域
-    private var dateSelectionSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(spacing: 14) {
-                Image(systemName: "calendar.circle")
-                    .foregroundColor(.purple)
-                    .font(.system(size: 20, weight: .semibold))
-                Text("日期")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.white)
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 6) {
+                ZStack {
+                    Circle()
+                        .fill(
+                            isSelected ? Color.cyan : Color.white.opacity(0.1)
+                        )
+                        .frame(width: 40, height: 40)
+                        .overlay(
+                            Circle()
+                                .stroke(
+                                    isSelected ? Color.clear : Color.white.opacity(0.2),
+                                    lineWidth: 1
+                                )
+                        )
+                        .shadow(
+                            color: isSelected ? Color.cyan.opacity(0.4) : Color.clear,
+                            radius: isSelected ? 6 : 0,
+                            x: 0,
+                            y: isSelected ? 3 : 0
+                        )
+                    
+                    Image(systemName: category.iconName)
+                        .font(.system(size: 16))
+                        .foregroundColor(isSelected ? .white : .white.opacity(0.8))
+                }
+                
+                Text(category.name)
+                    .font(.system(size: 11, weight: isSelected ? .semibold : .medium))
+                    .foregroundColor(isSelected ? .white : .white.opacity(0.8))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
-            .padding(.bottom, 6)
-            
-            DatePicker(
-                "选择日期",
-                selection: $selectedDate,
-                in: ...Date(),
-                displayedComponents: [.date, .hourAndMinute]
-            )
-            .datePickerStyle(.compact)
-            .colorScheme(.dark)
-            .padding(.horizontal, 22)
-            .padding(.vertical, 20)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .scaleEffect(isSelected ? 1.02 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
+    }
+}
+
+extension ManualInputView {
+    // 底部保存按钮
+    private var bottomSaveButton: some View {
+        Button(action: { saveExpense() }) {
+            HStack(spacing: 8) {
+                Image(systemName: "checkmark")
+                    .font(.system(size: 18, weight: .semibold))
+                Text("保存记录")
+                    .font(.system(size: 18, weight: .semibold))
+            }
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
             .background(
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(Color.white.opacity(0.12))
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(
+                        amount.isEmpty || selectedCategory == nil ?
+                        Color.white.opacity(0.15) :
+                        Color.cyan
+                    )
                     .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.purple.opacity(0.7), lineWidth: 2)
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.white.opacity(0.2), lineWidth: 1)
                     )
             )
-            .shadow(color: .purple.opacity(0.15), radius: 6, x: 0, y: 3)
+            .shadow(
+                color: (amount.isEmpty || selectedCategory == nil) ? Color.clear : Color.cyan.opacity(0.3),
+                radius: 8,
+                x: 0,
+                y: 4
+            )
         }
+        .buttonStyle(PlainButtonStyle())
+        .disabled(amount.isEmpty || selectedCategory == nil)
+        .opacity((amount.isEmpty || selectedCategory == nil) ? 0.6 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: amount.isEmpty || selectedCategory == nil)
     }
     
     // 保存支出记录
@@ -287,56 +508,7 @@ struct ManualInputView: View {
     }
 }
 
-// 分类按钮组件
-struct CategoryButton: View {
-    let category: ExpenseCategory
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            VStack(spacing: 10) {
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                category.color.opacity(0.9),
-                                category.color
-                            ]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: 56, height: 56)
-                    .overlay(
-                        Image(systemName: category.iconName)
-                            .font(.system(size: 22, weight: .semibold))
-                            .foregroundColor(.white)
-                    )
-                    .overlay(
-                        Circle()
-                            .stroke(
-                                isSelected ? Color.blue.opacity(0.8) : Color.white.opacity(0.2),
-                                lineWidth: isSelected ? 3 : 1
-                            )
-                    )
-                    .shadow(
-                        color: isSelected ? category.color.opacity(0.4) : category.color.opacity(0.2),
-                        radius: isSelected ? 8 : 4,
-                        x: 0,
-                        y: isSelected ? 4 : 2
-                    )
-                
-                Text(category.name)
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(isSelected ? .blue : .white.opacity(0.8))
-                    .lineLimit(1)
-            }
-        }
-        .scaleEffect(isSelected ? 1.05 : 1.0)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)
-    }
-}
+
 
 #Preview {
     ManualInputView()

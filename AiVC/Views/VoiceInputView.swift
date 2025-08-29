@@ -68,44 +68,9 @@ struct VoiceInputView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                // 背景渐变
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.black.opacity(0.95),
-                        Color.blue.opacity(0.1),
-                        Color.purple.opacity(0.1),
-                        Color.black.opacity(0.95)
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-                
-                // 装饰性背景元素
-                ForEach(0..<5, id: \.self) { index in
-                    Circle()
-                        .fill(
-                            RadialGradient(
-                                gradient: Gradient(colors: [
-                                    Color.blue.opacity(0.1),
-                                    Color.clear
-                                ]),
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 100
-                            )
-                        )
-                        .frame(width: 200, height: 200)
-                        .offset(
-                            x: CGFloat.random(in: -geometry.size.width/2...geometry.size.width/2),
-                            y: CGFloat.random(in: -geometry.size.height/2...geometry.size.height/2)
-                        )
-                        .animation(
-                            .easeInOut(duration: Double.random(in: 3...6))
-                            .repeatForever(autoreverses: true),
-                            value: pulseAnimation
-                        )
-                }
+                // 背景
+                Color.black
+                    .ignoresSafeArea()
                 
                 VStack(spacing: 20) {
                     // 顶部导航
@@ -164,11 +129,11 @@ struct VoiceInputView: View {
                         .spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0.2),
                         value: workflowState
                     )
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                     
                     Spacer(minLength: 30)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
             }
         }
         .onAppear {
@@ -195,12 +160,8 @@ struct VoiceInputView: View {
                 .foregroundColor(.white)
             
             Spacer()
-            
-            // 占位符保持对称
-            Color.clear
-                .frame(width: 28, height: 28)
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 24)
         .padding(.top, 5)
     }
     
@@ -211,7 +172,7 @@ struct VoiceInputView: View {
             VStack(spacing: 12) {
                 Image(systemName: "waveform.circle")
                     .font(.system(size: 60))
-                    .foregroundColor(.cyan)
+                    .foregroundColor(Color.cyan)
                     .opacity(0.8)
                 
                 Text("点击开始语音记账")
@@ -244,40 +205,7 @@ struct VoiceInputView: View {
                     .foregroundColor(.white.opacity(0.8))
             }
             
-            // 增强的声波可视化效果
-            HStack(spacing: 6) {
-                ForEach(0..<7) { index in
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.red.opacity(0.9),
-                                    Color.orange.opacity(0.7)
-                                ]),
-                                startPoint: .bottom,
-                                endPoint: .top
-                            )
-                        )
-                        .frame(width: 5, height: CGFloat.random(in: 15...80))
-                        .animation(
-                            Animation.easeInOut(duration: Double.random(in: 0.3...0.8))
-                                .repeatForever(autoreverses: true)
-                                .delay(Double(index) * 0.08),
-                            value: pulseAnimation
-                        )
-                        .shadow(color: .red.opacity(0.3), radius: 2, x: 0, y: 1)
-                }
-            }
-            .padding(.vertical, 15)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.black.opacity(0.3))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.red.opacity(0.3), lineWidth: 1)
-                    )
-            )
-            .padding(.horizontal, 40)
+
             
             // 麦克风按钮
             getMicrophoneButton()
@@ -292,10 +220,10 @@ struct VoiceInputView: View {
                     .padding(.vertical, 16)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.1))
+                            .fill(Color(.systemGray6).opacity(0.2))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
                             )
                     )
                     .transition(.opacity.combined(with: .scale))
@@ -309,7 +237,7 @@ struct VoiceInputView: View {
             // AI分析图标
             Image(systemName: "brain.head.profile")
                 .font(.system(size: 60))
-                .foregroundColor(.blue)
+                .foregroundColor(Color.cyan)
                 .scaleEffect(pulseAnimation ? 1.1 : 1.0)
                 .animation(
                     Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true),
@@ -336,24 +264,24 @@ struct VoiceInputView: View {
             // 进度条
             VStack(spacing: 12) {
                 ProgressView(value: analysisProgress.isNaN || analysisProgress.isInfinite ? 0.0 : min(max(analysisProgress, 0.0), 1.0))
-                    .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                    .progressViewStyle(LinearProgressViewStyle(tint: Color.cyan))
                     .frame(width: 240)
                     .scaleEffect(y: 2)
                 
                 let progressValue = analysisProgress.isNaN || analysisProgress.isInfinite ? 0.0 : min(max(analysisProgress, 0.0), 1.0)
                 Text(String(format: "%.0f%%", progressValue * 100))
                     .font(.caption)
-                    .foregroundColor(.blue.opacity(0.8))
+                    .foregroundColor(Color.cyan.opacity(0.8))
             }
             
             // 显示降级提示
             if let errorMessage = hybridParsingService.errorMessage {
                 HStack {
                     Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.orange)
+                        .foregroundColor(Color.orange)
                     Text(errorMessage)
                         .font(.caption)
-                        .foregroundColor(.orange)
+                        .foregroundColor(Color.orange)
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 8)
@@ -372,10 +300,10 @@ struct VoiceInputView: View {
                     .padding(.vertical, 16)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.1))
+                            .fill(Color(.systemGray6).opacity(0.2))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
                             )
                     )
             }
@@ -425,7 +353,7 @@ struct VoiceInputView: View {
                 }
                 .padding(.horizontal, 30)
                 .padding(.vertical, 10)
-                .background(Color.green)
+                .background(.green)
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -437,9 +365,9 @@ struct VoiceInputView: View {
         if parseConfidence >= 0.8 {
             return .green
         } else if parseConfidence >= 0.6 {
-            return .yellow
+            return Color.orange
         } else {
-            return .red
+            return Color.red
         }
     }
     
@@ -473,15 +401,15 @@ struct VoiceInputView: View {
      private func getStatusColor() -> Color {
          switch workflowState {
          case .idle:
-             return .gray
+             return Color.gray
          case .recording:
-             return .red
+             return Color.red
          case .analyzing:
-             return .blue
+             return Color.cyan
          case .editing:
-             return .orange
+             return Color.orange
          case .saving:
-             return .yellow
+             return Color.orange
          case .completed:
              return .green
          }
@@ -522,19 +450,10 @@ struct VoiceInputView: View {
             .padding(.vertical, 16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                getStatusColor().opacity(0.15),
-                                getStatusColor().opacity(0.05)
-                            ]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
+                    .fill(Color(.systemGray6).opacity(0.2))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(getStatusColor().opacity(0.3), lineWidth: 1)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                     )
             )
             
@@ -542,13 +461,13 @@ struct VoiceInputView: View {
             if workflowState == .analyzing {
                 VStack(spacing: 12) {
                     ProgressView(value: analysisProgress.isNaN || analysisProgress.isInfinite ? 0.0 : min(max(analysisProgress, 0.0), 1.0))
-                        .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                        .progressViewStyle(LinearProgressViewStyle(tint: Color.cyan))
                         .frame(width: 240)
                         .scaleEffect(y: 2)
                     
                     Text("正在分析语音内容...")
                         .font(.caption)
-                        .foregroundColor(.blue.opacity(0.8))
+                        .foregroundColor(Color.cyan.opacity(0.8))
                 }
                 .padding(.top, 8)
             }
@@ -716,15 +635,15 @@ struct VoiceInputView: View {
     private func getMicrophoneColor() -> Color {
         switch workflowState {
         case .idle:
-            return .gray
+            return Color.gray
         case .recording:
-            return .red
+            return Color.red
         case .analyzing:
-            return .blue
+            return Color.cyan
         case .editing:
             return .green
         case .saving:
-            return .orange
+            return Color.orange
         case .completed:
             return .green
         }
@@ -760,49 +679,47 @@ struct VoiceInputView: View {
     
     @ViewBuilder
     private func getBillEditingView() -> some View {
-        VStack(spacing: 18) {
+        VStack(spacing: 16) {
             // 编辑表单
-            VStack(spacing: 18) {
+            VStack(spacing: 16) {
                     // 金额输入
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack(spacing: 14) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(spacing: 12) {
                             Image(systemName: "yensign.circle")
-                                .foregroundColor(.green)
-                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(Color.cyan)
+                                .font(.system(size: 18, weight: .medium))
                             Text("金额")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.white)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(Color.white)
                         }
-                        .padding(.bottom, 6)
                         
                         TextField("0.00", text: $editableAmount)
                             .keyboardType(.decimalPad)
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 22)
-                            .padding(.vertical, 20)
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundColor(Color.white)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 16)
                             .background(
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(Color.white.opacity(0.12))
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(.systemGray6).opacity(0.2))
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 18)
-                                            .stroke(Color.green.opacity(0.7), lineWidth: 2)
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                     )
                             )
-                            .shadow(color: .green.opacity(0.15), radius: 6, x: 0, y: 3)
+                            .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                     }
                     
                     // 类别选择
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack(spacing: 14) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(spacing: 12) {
                             Image(systemName: "tag.circle")
-                                .foregroundColor(.blue)
-                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(Color.cyan)
+                                .font(.system(size: 18, weight: .medium))
                             Text("类别")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.white)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(Color.white)
                         }
-                        .padding(.bottom, 6)
                         
                         Menu {
                             ForEach(categories, id: \.id) { category in
@@ -811,105 +728,104 @@ struct VoiceInputView: View {
                                 }
                             }
                         } label: {
-                            HStack(spacing: 18) {
+                            HStack(spacing: 12) {
                                 Text(editableCategory.isEmpty ? "选择类别" : editableCategory)
-                                    .foregroundColor(editableCategory.isEmpty ? .gray.opacity(0.7) : .white)
-                                    .font(.system(size: 17, weight: .medium))
+                                    .foregroundColor(editableCategory.isEmpty ? Color.gray : Color.white)
+                                    .font(.system(size: 16, weight: .medium))
                                     .lineLimit(1)
                                 Spacer()
                                 Image(systemName: "chevron.down")
-                                    .foregroundColor(.blue.opacity(0.8))
-                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(Color.cyan)
+                                    .font(.system(size: 14, weight: .medium))
                             }
-                            .padding(.horizontal, 22)
-                            .padding(.vertical, 20)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 16)
                             .background(
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(Color.white.opacity(0.12))
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(.systemGray6).opacity(0.2))
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 18)
-                                            .stroke(Color.blue.opacity(0.7), lineWidth: 2)
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                     )
                             )
-                            .shadow(color: .blue.opacity(0.15), radius: 6, x: 0, y: 3)
+                            .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                         }
                     }
                     
                     // 备注输入
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack(spacing: 14) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(spacing: 12) {
                             Image(systemName: "note.text")
-                                .foregroundColor(.orange)
-                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(Color.cyan)
+                                .font(.system(size: 18, weight: .medium))
                             Text("备注")
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(.white)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(Color.white)
                         }
-                        .padding(.bottom, 6)
                         
                         Text(recognizedText.isEmpty ? "暂无语音识别内容" : recognizedText)
-                            .font(.system(size: 16, weight: .medium))
-                            .lineSpacing(6)
-                            .foregroundColor(recognizedText.isEmpty ? .gray.opacity(0.7) : .white)
+                            .font(.system(size: 15, weight: .medium))
+                            .lineSpacing(4)
+                            .foregroundColor(recognizedText.isEmpty ? Color.gray : Color.white)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(20)
+                            .padding(16)
                             .frame(minHeight: 80, maxHeight: 120)
                         .background(
-                            RoundedRectangle(cornerRadius: 18)
-                                .fill(Color.white.opacity(0.12))
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(.systemGray6).opacity(0.2))
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 18)
-                                        .stroke(Color.orange.opacity(0.7), lineWidth: 2)
-                                )
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                    )
                         )
-                        .shadow(color: .orange.opacity(0.15), radius: 6, x: 0, y: 3)
+                        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                     }
                 }
                 .padding(.horizontal, 24)
-                .padding(.top, 20)
+                .padding(.top, 16)
                 
                 // 如果有错误信息，显示重试按钮
                 if !errorMessage.isEmpty {
                     Button("重新解析") {
                         retryAIAnalysis()
                     }
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.orange)
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 16)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(Color.orange)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
                     .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.orange.opacity(0.18))
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.orange.opacity(0.1))
                             .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.orange.opacity(0.6), lineWidth: 1.5)
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.orange.opacity(0.3), lineWidth: 1)
                             )
                     )
-                    .shadow(color: .orange.opacity(0.1), radius: 4, x: 0, y: 2)
+                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                     .padding(.horizontal, 24)
                 }
                 
                 // 操作按钮
-                VStack(spacing: 16) {
+                VStack(spacing: 12) {
                     // 保存按钮
                     Button("保存账单") {
                         let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
                         impactFeedback.impactOccurred()
                         saveBill()
                     }
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 20)
+                    .padding(.vertical, 16)
                     .background(
                         LinearGradient(
-                            gradient: Gradient(colors: [Color.green.opacity(0.95), Color.green]),
+                            gradient: Gradient(colors: [Color.cyan, Color.cyan.opacity(0.8)]),
                             startPoint: .leading,
                             endPoint: .trailing
                         )
                     )
-                    .cornerRadius(18)
-                    .shadow(color: .green.opacity(0.5), radius: 15, x: 0, y: 8)
+                    .cornerRadius(12)
+                    .shadow(color: Color.cyan.opacity(0.3), radius: 8, x: 0, y: 4)
                     
                     // 取消按钮
                     Button("取消") {
@@ -917,24 +833,24 @@ struct VoiceInputView: View {
                         impactFeedback.impactOccurred()
                         resetToIdle()
                     }
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.white.opacity(0.85))
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(Color.gray)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 18)
+                    .padding(.vertical, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(Color.white.opacity(0.12))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 18)
-                                    .stroke(Color.white.opacity(0.3), lineWidth: 1.5)
-                            )
-                    )
-                    .shadow(color: .white.opacity(0.05), radius: 4, x: 0, y: 2)
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
+                        )
+                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                 }
                 .padding(.horizontal, 24)
                 .padding(.bottom, 16)
         }
-        .padding(.vertical, 12)
+        .padding(.vertical, 16)
     }
     
     // MARK: - 录音相关方法
@@ -1349,29 +1265,10 @@ struct VoiceInputView: View {
         .padding(.horizontal, 20)
         .background(
             RoundedRectangle(cornerRadius: 18)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.12),
-                            Color.white.opacity(0.06)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(Color(.systemGray6).opacity(0.2))
                 .overlay(
                     RoundedRectangle(cornerRadius: 18)
-                        .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    parseSource == .ai ? Color.blue.opacity(0.5) : Color.orange.opacity(0.5),
-                                    parseSource == .ai ? Color.blue.opacity(0.3) : Color.orange.opacity(0.3)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 2
-                        )
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
         .shadow(

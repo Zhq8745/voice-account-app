@@ -23,9 +23,9 @@ struct StatisticsView: View {
     @State private var chartAnimation = false
     
     enum TimePeriod: String, CaseIterable {
-        case month = "月"
+        case month = "月度"
         case quarter = "季度"
-        case year = "年"
+        case year = "年度"
     }
     
     // 当前设置
@@ -125,46 +125,9 @@ struct StatisticsView: View {
     
     var body: some View {
         ZStack {
-                // 渐变背景
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.black,
-                        Color(red: 0.05, green: 0.05, blue: 0.1),
-                        Color.black
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+            // 统一纯色背景
+            Color.black
                 .ignoresSafeArea()
-                
-                // 装饰性元素
-                GeometryReader { geometry in
-                    ForEach(0..<3, id: \.self) { index in
-                        Circle()
-                            .fill(
-                                RadialGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.blue.opacity(0.1),
-                                        Color.clear
-                                    ]),
-                                    center: .center,
-                                    startRadius: 0,
-                                    endRadius: 100
-                                )
-                            )
-                            .frame(width: 200, height: 200)
-                            .position(
-                                x: geometry.size.width * (0.2 + Double(index) * 0.3),
-                                y: geometry.size.height * (0.1 + Double(index) * 0.4)
-                            )
-                            .scaleEffect(pulseAnimation ? 1.2 : 0.8)
-                            .animation(
-                                Animation.easeInOut(duration: 3.0 + Double(index))
-                                    .repeatForever(autoreverses: true),
-                                value: pulseAnimation
-                            )
-                    }
-                }
                 
                 ScrollView {
                     VStack(spacing: 24) {
@@ -192,7 +155,7 @@ struct StatisticsView: View {
                         
                         Spacer(minLength: 100)
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                     .padding(.top, 16)
                 }
         }
@@ -233,33 +196,22 @@ struct StatisticsView: View {
                         .background(
                             Group {
                                 if selectedPeriod == period {
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color.white,
-                                            Color.white.opacity(0.9)
-                                        ]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .fill(Color.cyan.opacity(0.8))
                                 } else {
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [
-                                            Color.white.opacity(0.1),
-                                            Color.white.opacity(0.05)
-                                        ]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .fill(Color(.systemGray6).opacity(0.2))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 24)
+                                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                        )
                                 }
                             }
-                            .clipShape(RoundedRectangle(cornerRadius: 24))
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 24)
                                 .stroke(
-                                    selectedPeriod == period ? 
-                                    Color.white.opacity(0.3) : 
-                                    Color.white.opacity(0.2), 
+                                    Color.white.opacity(0.1), 
                                     lineWidth: 1
                                 )
                         )
@@ -297,7 +249,11 @@ struct StatisticsView: View {
                     .padding(.vertical, 6)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.1))
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
             }
             
@@ -352,31 +308,14 @@ struct StatisticsView: View {
         }
         .padding(24)
         .background(
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.white.opacity(0.15),
-                    Color.white.opacity(0.08)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-        )
-        .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.3),
-                            Color.white.opacity(0.1)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 10)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
     
     // 趋势图表
@@ -396,17 +335,7 @@ struct StatisticsView: View {
             if trendData.isEmpty {
                 VStack(spacing: 16) {
                     Circle()
-                        .fill(
-                            RadialGradient(
-                                gradient: Gradient(colors: [
-                                    Color.blue.opacity(0.2),
-                                    Color.clear
-                                ]),
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 50
-                            )
-                        )
+                        .fill(Color(.systemGray6).opacity(0.3))
                         .frame(width: 100, height: 100)
                         .overlay(
                             Image(systemName: "chart.line.uptrend.xyaxis")
@@ -429,26 +358,14 @@ struct StatisticsView: View {
                         x: .value("日期", dataPoint.date),
                         y: .value("金额", dataPoint.amount)
                     )
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.blue, .cyan],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
+                    .foregroundStyle(.blue)
                     .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .round))
                     
                     AreaMark(
                         x: .value("日期", dataPoint.date),
                         y: .value("金额", dataPoint.amount)
                     )
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.blue.opacity(0.4), .cyan.opacity(0.2), .clear],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
+                    .foregroundStyle(.blue.opacity(0.3))
                 }
                 .frame(height: 220)
                 .chartXAxis {
@@ -475,31 +392,14 @@ struct StatisticsView: View {
         }
         .padding(24)
         .background(
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.white.opacity(0.12),
-                    Color.white.opacity(0.06)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-        )
-        .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.25),
-                            Color.white.opacity(0.08)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .shadow(color: Color.black.opacity(0.2), radius: 15, x: 0, y: 8)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
     
     // 分类分布饼图
@@ -553,13 +453,7 @@ struct StatisticsView: View {
                         innerRadius: .ratio(0.5),
                         angularInset: 3
                     )
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [stat.category.color, stat.category.color.opacity(0.7)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .foregroundStyle(stat.category.color)
                     .opacity(0.9)
                     .shadow(color: stat.category.color.opacity(0.3), radius: 4)
                 }
@@ -568,31 +462,14 @@ struct StatisticsView: View {
         }
         .padding(24)
         .background(
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.white.opacity(0.12),
-                    Color.white.opacity(0.06)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-        )
-        .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.25),
-                            Color.white.opacity(0.08)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .shadow(color: Color.black.opacity(0.2), radius: 15, x: 0, y: 8)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
     
     // 分类详情列表
@@ -623,16 +500,10 @@ struct StatisticsView: View {
             if categoryStats.isEmpty {
                 VStack(spacing: 16) {
                     Circle()
-                        .fill(
-                            RadialGradient(
-                                gradient: Gradient(colors: [
-                                    Color.green.opacity(0.2),
-                                    Color.clear
-                                ]),
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 50
-                            )
+                        .fill(Color(.systemGray6).opacity(0.2))
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                         .frame(width: 100, height: 100)
                         .overlay(
@@ -660,31 +531,14 @@ struct StatisticsView: View {
         }
         .padding(24)
         .background(
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.white.opacity(0.12),
-                    Color.white.opacity(0.06)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-        )
-        .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.25),
-                            Color.white.opacity(0.08)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .shadow(color: Color.black.opacity(0.2), radius: 15, x: 0, y: 8)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
     
     // 获取时间段文本
@@ -720,13 +574,7 @@ struct CategoryStatRow: View {
         HStack(spacing: 16) {
             // 分类图标
             Circle()
-                .fill(
-                    LinearGradient(
-                        colors: [stat.category.color, stat.category.color.opacity(0.7)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(stat.category.color)
                 .frame(width: 44, height: 44)
                 .overlay(
                     Image(systemName: stat.category.iconName)
@@ -746,23 +594,11 @@ struct CategoryStatRow: View {
                 GeometryReader { geometry in
                     ZStack(alignment: .leading) {
                         Capsule()
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color.white.opacity(0.1), Color.white.opacity(0.05)],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
+                            .fill(Color.white.opacity(0.1))
                             .frame(height: 6)
                         
                         Capsule()
-                            .fill(
-                                LinearGradient(
-                                    colors: [stat.category.color, stat.category.color.opacity(0.8)],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
+                            .fill(stat.category.color)
                             .frame(width: geometry.size.width * (stat.percentage / 100), height: 6)
                             .shadow(color: stat.category.color.opacity(0.4), radius: 2, x: 0, y: 1)
                     }
@@ -793,28 +629,11 @@ struct CategoryStatRow: View {
         }
         .padding(16)
         .background(
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.white.opacity(0.08),
-                    Color.white.opacity(0.04)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-        )
-        .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.2),
-                            Color.white.opacity(0.05)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
         .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)

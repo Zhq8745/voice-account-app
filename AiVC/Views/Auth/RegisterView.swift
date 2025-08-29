@@ -32,13 +32,7 @@ struct RegisterView: View {
                     }
                 }
             }
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.green.opacity(0.1), Color.blue.opacity(0.1)]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+            .background(Color.black)
             .ignoresSafeArea(.all, edges: .top)
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -66,24 +60,18 @@ struct RegisterView: View {
             // 注册图标
             Image(systemName: "person.badge.plus.fill")
                 .font(.system(size: 60))
-                .foregroundStyle(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.green, .blue]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+                .foregroundColor(Color.cyan)
+                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
             
             VStack(spacing: 8) {
                 Text("创建账户")
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.white)
                 
                 Text("加入语记，开始智能记账之旅")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
             }
             
@@ -188,28 +176,28 @@ struct RegisterView: View {
                         viewModel.agreeToTerms.toggle()
                     }) {
                         Image(systemName: viewModel.agreeToTerms ? "checkmark.square.fill" : "square")
-                            .foregroundColor(viewModel.agreeToTerms ? .blue : .gray)
+                            .foregroundColor(viewModel.agreeToTerms ? Color.cyan : .gray)
                     }
                     
                     Text("我已阅读并同意")
                         .font(.subheadline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.white)
                     
                     Button("服务条款") {
                         // 显示服务条款
                     }
                     .font(.subheadline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.cyan)
                     
                     Text("和")
                         .font(.subheadline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.white)
                     
                     Button("隐私政策") {
                         // 显示隐私政策
                     }
                     .font(.subheadline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.cyan)
                     
                     Spacer()
                 }
@@ -219,12 +207,12 @@ struct RegisterView: View {
                         viewModel.subscribeToNewsletter.toggle()
                     }) {
                         Image(systemName: viewModel.subscribeToNewsletter ? "checkmark.square.fill" : "square")
-                            .foregroundColor(viewModel.subscribeToNewsletter ? .blue : .gray)
+                            .foregroundColor(viewModel.subscribeToNewsletter ? Color.cyan : .gray)
                     }
                     
                     Text("订阅产品更新和优惠信息")
                         .font(.subheadline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.white)
                     
                     Spacer()
                 }
@@ -238,30 +226,26 @@ struct RegisterView: View {
                     await viewModel.register()
                 }
             }) {
-                HStack {
+                HStack(spacing: 8) {
                     if viewModel.isLoading {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .scaleEffect(0.8)
                     } else {
                         Image(systemName: "person.badge.plus")
+                            .font(.system(size: 16, weight: .medium))
                     }
                     
                     Text(viewModel.isLoading ? "注册中..." : "创建账户")
+                        .font(.subheadline)
                         .fontWeight(.semibold)
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 50)
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: viewModel.canRegister ? [.green, .blue] : [.gray.opacity(0.3)]),
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
+                .frame(height: 48)
+                .background(viewModel.canRegister ? Color.cyan : Color(.systemGray6).opacity(0.3))
                 .foregroundColor(.white)
                 .cornerRadius(12)
-                .shadow(color: viewModel.canRegister ? .green.opacity(0.3) : .clear, radius: 8, x: 0, y: 4)
+                .shadow(color: viewModel.canRegister ? Color.cyan.opacity(0.3) : .clear, radius: 8, x: 0, y: 4)
             }
             .disabled(!viewModel.canRegister)
             
@@ -269,16 +253,16 @@ struct RegisterView: View {
             HStack {
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundColor(.gray.opacity(0.3))
+                    .foregroundColor(Color(.systemGray6).opacity(0.3))
                 
                 Text("或")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
                     .padding(.horizontal, 16)
                 
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundColor(.gray.opacity(0.3))
+                    .foregroundColor(Color(.systemGray6).opacity(0.3))
             }
             .padding(.vertical, 8)
             
@@ -288,42 +272,57 @@ struct RegisterView: View {
                 Button(action: {
                     // 实现Apple ID注册
                 }) {
-                    HStack {
+                    HStack(spacing: 8) {
                         Image(systemName: "applelogo")
+                            .font(.system(size: 16, weight: .medium))
                         Text("使用Apple ID注册")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
                     }
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(.systemGray6).opacity(0.2))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                )
+                    .foregroundColor(Color.white)
+                    .cornerRadius(12)
+                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                 }
                 
                 // Google 注册
                 Button(action: {
                     // 实现Google注册
                 }) {
-                    HStack {
+                    HStack(spacing: 8) {
                         Image(systemName: "globe")
+                            .font(.system(size: 16, weight: .medium))
                         Text("使用Google注册")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
                     }
                     .frame(maxWidth: .infinity)
                     .frame(height: 44)
                     .background(Color.red)
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(12)
+                    .shadow(color: Color.red.opacity(0.3), radius: 4, x: 0, y: 2)
                 }
             }
             
             // 登录链接
             HStack {
                 Text("已有账户？")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
                 
                 Button("立即登录") {
                     dismiss()
                 }
-                .foregroundColor(.blue)
+                .foregroundColor(Color.cyan)
                 .fontWeight(.medium)
             }
             .font(.subheadline)
@@ -334,8 +333,12 @@ struct RegisterView: View {
         .padding(.vertical, 24)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color(.systemBackground))
-                .shadow(color: .black.opacity(0.1), radius: 20, x: 0, y: 10)
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                )
+                .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
         )
     }
 }
@@ -376,7 +379,7 @@ struct PasswordStrengthIndicator: View {
             HStack {
                 Text("密码强度:")
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
                 
                 Text(strength.description)
                     .font(.caption)
@@ -391,7 +394,7 @@ struct PasswordStrengthIndicator: View {
                 ForEach(0..<4, id: \.self) { index in
                     Rectangle()
                         .frame(height: 4)
-                        .foregroundColor(index < strength.level ? strength.color : Color.gray.opacity(0.3))
+                        .foregroundColor(index < strength.level ? strength.color : Color(.systemGray6).opacity(0.3))
                         .cornerRadius(2)
                 }
             }
@@ -426,7 +429,7 @@ struct PasswordRequirement: View {
             
             Text(text)
                 .font(.caption2)
-                .foregroundColor(isMet ? .green : .secondary)
+                .foregroundColor(isMet ? .green : .gray)
         }
     }
 }
@@ -472,9 +475,9 @@ enum PasswordStrength {
     
     var color: Color {
         switch self {
-        case .weak: return .red
-        case .medium: return .orange
-        case .strong: return .blue
+        case .weak: return Color.red
+        case .medium: return Color.orange
+        case .strong: return Color.cyan
         case .veryStrong: return .green
         }
     }

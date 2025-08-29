@@ -6,32 +6,32 @@
         "comment": "",
         "key": "记账",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 22
+          "startingColumn": 22,
+          "startingLine": 24
         }
       },
       {
         "comment": "",
         "key": "统计",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 30
+          "startingColumn": 22,
+          "startingLine": 34
         }
       },
       {
         "comment": "",
         "key": "历史",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 38
+          "startingColumn": 22,
+          "startingLine": 44
         }
       },
       {
         "comment": "",
         "key": "设置",
         "location": {
-          "startingColumn": 26,
-          "startingLine": 46
+          "startingColumn": 22,
+          "startingLine": 54
         }
       }
     ]

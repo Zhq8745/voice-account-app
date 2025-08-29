@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CustomNumericKeypad: View {
     @Binding var amount: String
@@ -76,7 +77,7 @@ struct CustomNumericKeypad: View {
             .background(Color(red: 0.15, green: 0.15, blue: 0.16))
         }
         .background(Color.black)
-        .cornerRadius(16, corners: [.topLeft, .topRight])
+        .clipShape(RoundedCorner(radius: 16, corners: [.topLeft, .topRight]))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: -5)
     }
     
@@ -162,11 +163,7 @@ struct KeypadButtonStyle: ButtonStyle {
 }
 
 // 扩展用于圆角
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
-    }
-}
+
 
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity

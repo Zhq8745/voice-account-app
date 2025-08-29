@@ -76,7 +76,7 @@ struct EditCategoryView: View {
                 trailing: Button("保存") {
                     saveChanges()
                 }
-                .foregroundColor(.blue)
+                .foregroundColor(Color.cyan)
                 .disabled(categoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             )
             .preferredColorScheme(.dark)
@@ -96,7 +96,7 @@ struct EditCategoryView: View {
         VStack(spacing: 16) {
             Text("预览")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(Color.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(spacing: 16) {
@@ -106,18 +106,22 @@ struct EditCategoryView: View {
                     .overlay(
                         Image(systemName: selectedIcon)
                             .font(.system(size: 32))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.white)
                     )
                 
                 Text(categoryName.isEmpty ? "分类名称" : categoryName)
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 32)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -128,7 +132,7 @@ struct EditCategoryView: View {
             HStack {
                 Text("分类名称")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -138,11 +142,11 @@ struct EditCategoryView: View {
                 HStack {
                     Image(systemName: "textformat")
                         .font(.system(size: 18))
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.cyan)
                         .frame(width: 24, height: 24)
                     
                     TextField("请输入分类名称", text: $categoryName)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.white)
                         .textFieldStyle(PlainTextFieldStyle())
                         .disabled(category.isDefault) // 默认分类不允许修改名称
                 }
@@ -151,7 +155,11 @@ struct EditCategoryView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
             
             if category.isDefault {
@@ -173,7 +181,7 @@ struct EditCategoryView: View {
             HStack {
                 Text("选择图标")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -186,12 +194,12 @@ struct EditCategoryView: View {
                     HStack {
                         Image(systemName: "square.grid.3x3")
                             .font(.system(size: 18))
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color.cyan)
                             .frame(width: 24, height: 24)
                         
                         Text("当前图标")
                             .font(.subheadline)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color.white)
                         
                         Spacer()
                         
@@ -201,7 +209,7 @@ struct EditCategoryView: View {
                             .overlay(
                                 Image(systemName: selectedIcon)
                                     .font(.system(size: 14))
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color.white)
                             )
                         
                         Image(systemName: "chevron.right")
@@ -215,7 +223,11 @@ struct EditCategoryView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
         .sheet(isPresented: $showingIconPicker) {
@@ -229,7 +241,7 @@ struct EditCategoryView: View {
             HStack {
                 Text("选择颜色")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -275,13 +287,17 @@ struct EditCategoryView: View {
                 Text("删除分类")
                     .font(.headline)
             }
-            .foregroundColor(.red)
+            .foregroundColor(Color.red)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
-            )
+                 RoundedRectangle(cornerRadius: 12)
+                     .fill(Color(.systemGray6).opacity(0.2))
+                     .overlay(
+                         RoundedRectangle(cornerRadius: 12)
+                             .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                     )
+             )
         }
         .buttonStyle(PlainButtonStyle())
     }

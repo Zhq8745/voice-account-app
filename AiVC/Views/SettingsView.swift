@@ -46,60 +46,9 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
-                // 渐变背景
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.black,
-                        Color(red: 0.05, green: 0.05, blue: 0.1),
-                        Color.black
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+            // 统一纯色背景
+            Color.black
                 .ignoresSafeArea()
-                
-                // 装饰性元素
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            gradient: Gradient(colors: [
-                                Color.blue.opacity(0.1),
-                                Color.clear
-                            ]),
-                            center: .topTrailing,
-                            startRadius: 50,
-                            endRadius: 200
-                        )
-                    )
-                    .frame(width: 300, height: 300)
-                    .position(x: UIScreen.main.bounds.width - 50, y: 100)
-                    .scaleEffect(pulseAnimation ? 1.1 : 1.0)
-                    .animation(
-                        Animation.easeInOut(duration: 3.0)
-                            .repeatForever(autoreverses: true),
-                        value: pulseAnimation
-                    )
-                
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            gradient: Gradient(colors: [
-                                Color.purple.opacity(0.08),
-                                Color.clear
-                            ]),
-                            center: .bottomLeading,
-                            startRadius: 30,
-                            endRadius: 150
-                        )
-                    )
-                    .frame(width: 200, height: 200)
-                    .position(x: 50, y: UIScreen.main.bounds.height - 200)
-                    .scaleEffect(pulseAnimation ? 0.9 : 1.0)
-                    .animation(
-                        Animation.easeInOut(duration: 2.5)
-                            .repeatForever(autoreverses: true),
-                        value: pulseAnimation
-                    )
                 
                 ScrollView {
                     VStack(spacing: 24) {
@@ -236,7 +185,11 @@ struct SettingsView: View {
                     .padding(.vertical, 4)
                     .background(
                         Capsule()
-                            .fill(Color.gray.opacity(0.2))
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
             }
             .padding(.horizontal, 16)
@@ -254,11 +207,12 @@ struct SettingsView: View {
                 
                 Divider()
                     .background(
-                        LinearGradient(
-                            colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
+                        RoundedRectangle(cornerRadius: 1)
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
                     .padding(.horizontal, 16)
                 
@@ -272,14 +226,15 @@ struct SettingsView: View {
                 }
                 
                 Divider()
-                    .background(
-                        LinearGradient(
-                            colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
-                    .padding(.horizontal, 16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .fill(Color(.systemGray6).opacity(0.2))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 1)
+                                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                    )
+                            )
+                            .padding(.horizontal, 16)
                 
                 // 主题模式设置已隐藏
                 // SettingsRow(
@@ -292,38 +247,13 @@ struct SettingsView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.12, green: 0.12, blue: 0.15),
-                                Color(red: 0.08, green: 0.08, blue: 0.12)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color(.systemGray6).opacity(0.2))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.1),
-                                        Color.clear,
-                                        Color.white.opacity(0.05)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: 10,
-                        x: 0,
-                        y: 5
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                     )
             )
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
         }
     }
     
@@ -334,13 +264,7 @@ struct SettingsView: View {
             HStack {
                 Image(systemName: "folder.fill")
                     .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color.orange, Color.red],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .foregroundColor(.orange)
                 
                 Text("分类管理")
                     .font(.headline)
@@ -349,31 +273,33 @@ struct SettingsView: View {
                 Spacer()
                 
                 Text("\(categories.count)")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(
-                        Capsule()
-                            .fill(Color.gray.opacity(0.2))
-                    )
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(
+                            Capsule()
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
+                        )
                 
                 Button(action: {
                     showingAddCategory = true
                 }) {
                     Image(systemName: "plus")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [Color.blue, Color.cyan],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .foregroundColor(.blue)
                         .frame(width: 28, height: 28)
                         .background(
                             Circle()
-                                .fill(Color.blue.opacity(0.1))
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                         )
                 }
             }
@@ -384,29 +310,16 @@ struct SettingsView: View {
                 if categories.isEmpty {
                     VStack(spacing: 16) {
                         Circle()
-                            .fill(
-                                RadialGradient(
-                                    colors: [
-                                        Color.orange.opacity(0.3),
-                                        Color.orange.opacity(0.1),
-                                        Color.clear
-                                    ],
-                                    center: .center,
-                                    startRadius: 20,
-                                    endRadius: 60
-                                )
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
                             )
                             .frame(width: 80, height: 80)
                             .overlay(
                                 Image(systemName: "folder.badge.plus")
                                     .font(.system(size: 28, weight: .medium))
-                                    .foregroundStyle(
-                                        LinearGradient(
-                                            colors: [Color.orange, Color.red],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
+                                    .foregroundColor(.orange)
                             )
                         
                         VStack(spacing: 8) {
@@ -431,12 +344,10 @@ struct SettingsView: View {
                         .padding(.vertical, 10)
                         .background(
                             Capsule()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Color.blue, Color.cyan],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
+                                .fill(Color.blue.opacity(0.8))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                 )
                         )
                     }
@@ -457,11 +368,12 @@ struct SettingsView: View {
                         if category.id != categories.last?.id {
                             Divider()
                                 .background(
-                                    LinearGradient(
-                                        colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
+                                    RoundedRectangle(cornerRadius: 1)
+                                        .fill(Color(.systemGray6).opacity(0.2))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 1)
+                                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                        )
                                 )
                                 .padding(.horizontal, 16)
                         }
@@ -475,13 +387,7 @@ struct SettingsView: View {
                             Text("管理所有分类")
                                 .font(.subheadline)
                                 .fontWeight(.medium)
-                                .foregroundStyle(
-                                    LinearGradient(
-                                        colors: [Color.blue, Color.cyan],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
+                                .foregroundColor(.blue)
                             
                             Spacer()
                             
@@ -496,38 +402,13 @@ struct SettingsView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.12, green: 0.12, blue: 0.15),
-                                Color(red: 0.08, green: 0.08, blue: 0.12)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color(.systemGray6).opacity(0.2))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.1),
-                                        Color.clear,
-                                        Color.white.opacity(0.05)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: 10,
-                        x: 0,
-                        y: 5
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                     )
             )
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
         }
     }
     
@@ -538,13 +419,7 @@ struct SettingsView: View {
             HStack {
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color.blue, Color.purple],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .foregroundColor(.blue)
                 
                 Text("账户管理")
                     .font(.headline)
@@ -559,7 +434,11 @@ struct SettingsView: View {
                     .padding(.vertical, 4)
                     .background(
                         Capsule()
-                            .fill(Color.gray.opacity(0.2))
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
             }
             .padding(.horizontal, 16)
@@ -569,19 +448,13 @@ struct SettingsView: View {
                 // 当前用户信息
                 HStack(spacing: 12) {
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.blue, Color.cyan],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 32, height: 32)
-                        .overlay(
-                            Image(systemName: "person")
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.white)
-                        )
+                    .fill(Color.blue)
+                    .frame(width: 32, height: 32)
+                    .overlay(
+                        Image(systemName: "person")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.white)
+                    )
                     
                     Text("当前用户")
                         .font(.subheadline)
@@ -597,7 +470,11 @@ struct SettingsView: View {
                         .padding(.vertical, 4)
                         .background(
                             Capsule()
-                                .fill(Color.gray.opacity(0.2))
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                         )
                 }
                 .padding(.horizontal, 16)
@@ -605,11 +482,12 @@ struct SettingsView: View {
                 
                 Divider()
                     .background(
-                        LinearGradient(
-                            colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
+                        RoundedRectangle(cornerRadius: 1)
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
                     .padding(.horizontal, 16)
                 
@@ -619,13 +497,7 @@ struct SettingsView: View {
                 }) {
                     HStack(spacing: 12) {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color.red, Color.orange],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color.red)
                             .frame(width: 32, height: 32)
                             .overlay(
                                 Image(systemName: "rectangle.portrait.and.arrow.right")
@@ -650,38 +522,13 @@ struct SettingsView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.12, green: 0.12, blue: 0.15),
-                                Color(red: 0.08, green: 0.08, blue: 0.12)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color(.systemGray6).opacity(0.2))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.1),
-                                        Color.clear,
-                                        Color.white.opacity(0.05)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: 10,
-                        x: 0,
-                        y: 5
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                     )
             )
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
         }
     }
     
@@ -692,13 +539,7 @@ struct SettingsView: View {
             HStack {
                 Image(systemName: "info.circle.fill")
                     .font(.system(size: 18, weight: .medium))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [Color.green, Color.mint],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .foregroundColor(.green)
                 
                 Text("关于")
                     .font(.headline)
@@ -706,30 +547,67 @@ struct SettingsView: View {
                 
                 Spacer()
                 
-                Text("3")
+                Text("4")
                     .font(.caption)
                     .foregroundColor(.gray)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
                     .background(
                         Capsule()
-                            .fill(Color.gray.opacity(0.2))
+                            .fill(Color(.systemGray6).opacity(0.2))
                     )
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 12)
             
             VStack(spacing: 0) {
+                // 应用LOGO
+                HStack(spacing: 12) {
+                    Image("app_logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 32, height: 32)
+                        .clipShape(Circle())
+                    
+                    Text("应用图标")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    Text("蓝色麦克风")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(
+                            Capsule()
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
+                        )
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                
+                Divider()
+                    .background(
+                        RoundedRectangle(cornerRadius: 1)
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
+                    .padding(.horizontal, 16)
+                
                 // 版本信息
                 HStack(spacing: 12) {
                     Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.blue, Color.cyan],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(Color.blue)
                         .frame(width: 32, height: 32)
                         .overlay(
                             Image(systemName: "info.circle")
@@ -751,7 +629,11 @@ struct SettingsView: View {
                         .padding(.vertical, 4)
                         .background(
                             Capsule()
-                                .fill(Color.gray.opacity(0.2))
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                         )
                 }
                 .padding(.horizontal, 16)
@@ -759,11 +641,12 @@ struct SettingsView: View {
                 
                 Divider()
                     .background(
-                        LinearGradient(
-                            colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
+                        RoundedRectangle(cornerRadius: 1)
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
                     .padding(.horizontal, 16)
                 
@@ -771,13 +654,7 @@ struct SettingsView: View {
                 NavigationLink(destination: PrivacyPolicyView()) {
                     HStack(spacing: 12) {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color.purple, Color.pink],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color.purple)
                             .frame(width: 32, height: 32)
                             .overlay(
                                 Image(systemName: "hand.raised")
@@ -802,11 +679,12 @@ struct SettingsView: View {
                 
                 Divider()
                     .background(
-                        LinearGradient(
-                            colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
+                        RoundedRectangle(cornerRadius: 1)
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
                     )
                     .padding(.horizontal, 16)
                 
@@ -814,13 +692,7 @@ struct SettingsView: View {
                 NavigationLink(destination: TermsOfServiceView()) {
                     HStack(spacing: 12) {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color.orange, Color.red],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color.orange)
                             .frame(width: 32, height: 32)
                             .overlay(
                                 Image(systemName: "doc.text")
@@ -845,38 +717,13 @@ struct SettingsView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.12, green: 0.12, blue: 0.15),
-                                Color(red: 0.08, green: 0.08, blue: 0.12)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color(.systemGray6).opacity(0.2))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.1),
-                                        Color.clear,
-                                        Color.white.opacity(0.05)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-                    .shadow(
-                        color: Color.black.opacity(0.3),
-                        radius: 10,
-                        x: 0,
-                        y: 5
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
                     )
             )
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
         }
     }
     
@@ -902,13 +749,7 @@ struct SettingsRow<Destination: View>: View {
         NavigationLink(destination: destination()) {
             HStack(spacing: 12) {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [Color.blue, Color.cyan],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(Color.blue)
                     .frame(width: 32, height: 32)
                     .overlay(
                         Image(systemName: icon)
@@ -932,7 +773,11 @@ struct SettingsRow<Destination: View>: View {
                         .padding(.vertical, 4)
                         .background(
                             Capsule()
-                                .fill(Color.gray.opacity(0.2))
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                         )
                 }
                 
@@ -960,7 +805,6 @@ struct CategoryRow: View {
     
     @State private var showingActionSheet = false
     @State private var isPressed = false
-    @State private var iconScale: CGFloat = 1.0
     
     var body: some View {
         Button(action: {
@@ -968,42 +812,12 @@ struct CategoryRow: View {
         }) {
             HStack(spacing: 12) {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                category.color,
-                                category.color.opacity(0.7)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: 36, height: 36)
-                    .overlay(
-                        Circle()
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.3),
-                                        Color.clear
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
+                    .fill(category.color)
+                    .frame(width: 32, height: 32)
                     .overlay(
                         Image(systemName: category.iconName)
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(.white)
-                            .scaleEffect(iconScale)
-                    )
-                    .shadow(
-                        color: category.color.opacity(0.3),
-                        radius: 4,
-                        x: 0,
-                        y: 2
                     )
                     .scaleEffect(isPressed ? 0.95 : 1.0)
                 
@@ -1027,13 +841,21 @@ struct CategoryRow: View {
                         .padding(.vertical, 4)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.gray.opacity(0.3))
+                                .fill(Color(.systemGray6).opacity(0.2))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                                )
                         )
                         .foregroundColor(.gray)
                 }
                 
                 Circle()
-                    .fill(Color.gray.opacity(0.2))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        Circle()
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
                     .frame(width: 28, height: 28)
                     .overlay(
                         Image(systemName: "ellipsis")
@@ -1051,11 +873,7 @@ struct CategoryRow: View {
                 isPressed = pressing
             }
         }, perform: {})
-        .onAppear {
-            withAnimation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
-                iconScale = 1.1
-            }
-        }
+
         .actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(
                 title: Text(category.name),

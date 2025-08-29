@@ -6,8 +6,8 @@
         "comment": "",
         "key": "记账",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 127
+          "startingColumn": 26,
+          "startingLine": 91
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "本月支出",
         "location": {
           "startingColumn": 26,
-          "startingLine": 151
+          "startingLine": 116
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "%@%@",
         "location": {
           "startingColumn": 26,
-          "startingLine": 164
+          "startingLine": 129
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "总支出",
         "location": {
           "startingColumn": 26,
-          "startingLine": 168
+          "startingLine": 133
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "较上月",
         "location": {
           "startingColumn": 26,
-          "startingLine": 192
+          "startingLine": 157
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "+12.5%",
         "location": {
           "startingColumn": 30,
-          "startingLine": 180
+          "startingLine": 145
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "语音记账",
         "location": {
           "startingColumn": 26,
-          "startingLine": 265
+          "startingLine": 202
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "手动记账",
         "location": {
           "startingColumn": 26,
-          "startingLine": 325
+          "startingLine": 244
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "今日记录",
         "location": {
           "startingColumn": 26,
-          "startingLine": 361
+          "startingLine": 271
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "%@%@",
         "location": {
           "startingColumn": 26,
-          "startingLine": 370
+          "startingLine": 280
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "今日总计",
         "location": {
           "startingColumn": 26,
-          "startingLine": 373
+          "startingLine": 283
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "今日暂无记录",
         "location": {
           "startingColumn": 30,
-          "startingLine": 401
+          "startingLine": 302
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "开始记录您的第一笔支出吧",
         "location": {
           "startingColumn": 30,
-          "startingLine": 404
+          "startingLine": 305
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "-%@%@",
         "location": {
           "startingColumn": 18,
-          "startingLine": 554
+          "startingLine": 432
         }
       }
     ]

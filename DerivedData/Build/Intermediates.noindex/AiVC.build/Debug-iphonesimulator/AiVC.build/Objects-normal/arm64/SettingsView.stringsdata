@@ -4,18 +4,18 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "确认注销",
+        "key": "设置",
         "location": {
-          "startingColumn": 16,
-          "startingLine": 174
+          "startingColumn": 26,
+          "startingLine": 106
         }
       },
       {
         "comment": "",
-        "key": "设置",
+        "key": "确认注销",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 158
+          "startingColumn": 16,
+          "startingLine": 122
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 20,
-          "startingLine": 175
+          "startingLine": 123
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "注销",
         "location": {
           "startingColumn": 20,
-          "startingLine": 176
+          "startingLine": 124
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "注销后将清除所有本地数据，确定要继续吗？",
         "location": {
           "startingColumn": 18,
-          "startingLine": 182
+          "startingLine": 130
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "基本设置",
         "location": {
           "startingColumn": 22,
-          "startingLine": 227
+          "startingLine": 175
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "3",
         "location": {
           "startingColumn": 22,
-          "startingLine": 233
+          "startingLine": 181
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "分类管理",
         "location": {
           "startingColumn": 22,
-          "startingLine": 346
+          "startingLine": 269
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "%lld",
         "location": {
           "startingColumn": 22,
-          "startingLine": 352
+          "startingLine": 275
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "添加分类",
         "location": {
           "startingColumn": 32,
-          "startingLine": 425
+          "startingLine": 337
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "暂无自定义分类",
         "location": {
           "startingColumn": 34,
-          "startingLine": 414
+          "startingLine": 326
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "创建分类来更好地管理您的支出",
         "location": {
           "startingColumn": 34,
-          "startingLine": 419
+          "startingLine": 331
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "管理所有分类",
         "location": {
           "startingColumn": 34,
-          "startingLine": 476
+          "startingLine": 387
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "账户管理",
         "location": {
           "startingColumn": 22,
-          "startingLine": 550
+          "startingLine": 416
         }
       },
       {
@@ -119,7 +119,7 @@
         "key": "2",
         "location": {
           "startingColumn": 22,
-          "startingLine": 556
+          "startingLine": 422
         }
       },
       {
@@ -127,7 +127,7 @@
         "key": "当前用户",
         "location": {
           "startingColumn": 26,
-          "startingLine": 587
+          "startingLine": 451
         }
       },
       {
@@ -135,7 +135,7 @@
         "key": "注销登录",
         "location": {
           "startingColumn": 30,
-          "startingLine": 637
+          "startingLine": 500
         }
       },
       {
@@ -143,7 +143,7 @@
         "key": "关于",
         "location": {
           "startingColumn": 22,
-          "startingLine": 704
+          "startingLine": 528
         }
       },
       {
@@ -151,7 +151,7 @@
         "key": "3",
         "location": {
           "startingColumn": 22,
-          "startingLine": 710
+          "startingLine": 534
         }
       },
       {
@@ -159,7 +159,7 @@
         "key": "版本",
         "location": {
           "startingColumn": 26,
-          "startingLine": 741
+          "startingLine": 559
         }
       },
       {
@@ -167,7 +167,7 @@
         "key": "1.0.0",
         "location": {
           "startingColumn": 26,
-          "startingLine": 748
+          "startingLine": 566
         }
       },
       {
@@ -175,7 +175,7 @@
         "key": "隐私政策",
         "location": {
           "startingColumn": 30,
-          "startingLine": 789
+          "startingLine": 606
         }
       },
       {
@@ -183,7 +183,7 @@
         "key": "用户协议",
         "location": {
           "startingColumn": 30,
-          "startingLine": 832
+          "startingLine": 644
         }
       },
       {
@@ -191,7 +191,7 @@
         "key": "默认",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1031
+          "startingLine": 771
         }
       },
       {
@@ -199,7 +199,7 @@
         "key": "分类",
         "location": {
           "startingColumn": 26,
-          "startingLine": 1023
+          "startingLine": 763
         }
       },
       {
@@ -207,7 +207,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 34,
-          "startingLine": 1070
+          "startingLine": 814
         }
       },
       {
@@ -215,7 +215,7 @@
         "key": "✏️ 编辑分类",
         "location": {
           "startingColumn": 35,
-          "startingLine": 1072
+          "startingLine": 816
         }
       },
       {
@@ -223,7 +223,7 @@
         "key": "🗑️ 删除分类",
         "location": {
           "startingColumn": 39,
-          "startingLine": 1075
+          "startingLine": 819
         }
       },
       {
@@ -231,7 +231,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 34,
-          "startingLine": 1078
+          "startingLine": 822
         }
       }
     ]

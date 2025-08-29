@@ -13,19 +13,16 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
-            // 背景渐变
-            LinearGradient(
-                gradient: Gradient(colors: [Color.blue.opacity(0.8), Color.purple.opacity(0.6)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // 背景
+            Color.black
+                .ignoresSafeArea()
             
             VStack(spacing: 30) {
                 // App Logo
-                Image(systemName: "mic.circle.fill")
-                    .font(.system(size: 100))
-                    .foregroundColor(.white)
+                Image("app_logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
                     .scaleEffect(isAnimating ? 1.2 : 1.0)
                     .rotationEffect(.degrees(isAnimating ? 360 : 0))
                     .animation(.easeInOut(duration: 2.0).repeatForever(autoreverses: false), value: isAnimating)

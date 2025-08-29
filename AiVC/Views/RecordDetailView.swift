@@ -19,42 +19,18 @@ struct RecordDetailView: View {
     
     var body: some View {
         ZStack {
-            // 渐变背景
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.black,
-                    Color(red: 0.05, green: 0.05, blue: 0.1),
-                    Color.black
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            .gesture(
-                DragGesture()
-                    .onEnded { value in
-                        // 检测右滑手势
-                        if value.translation.width > 100 && abs(value.translation.height) < 50 {
-                            dismiss()
+            // 纯色背景
+            Color.black
+                .ignoresSafeArea()
+                .gesture(
+                    DragGesture()
+                        .onEnded { value in
+                            // 检测右滑手势
+                            if value.translation.width > 100 && abs(value.translation.height) < 50 {
+                                dismiss()
+                            }
                         }
-                    }
-            )
-            
-            // 装饰性元素
-            Circle()
-                .fill(
-                    RadialGradient(
-                        gradient: Gradient(colors: [
-                            Color.blue.opacity(0.1),
-                            Color.clear
-                        ]),
-                        center: .topTrailing,
-                        startRadius: 50,
-                        endRadius: 200
-                    )
                 )
-                .frame(width: 300, height: 300)
-                .position(x: UIScreen.main.bounds.width - 50, y: 100)
             
             ScrollView {
                 VStack(spacing: 24) {
@@ -70,14 +46,7 @@ struct RecordDetailView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 32)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white.opacity(0.1))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                                )
-                        )
+                        .modifier(ThemeCard(variant: .primary))
                         .padding(.horizontal, 20)
                         .padding(.top, 24)
                         
@@ -122,14 +91,7 @@ struct RecordDetailView: View {
                                 )
                             }
                         }
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.white.opacity(0.1))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                                )
-                        )
+                        .modifier(ThemeCard(variant: .primary))
                         .padding(.horizontal, 20)
                         
                         // 操作按钮
@@ -144,16 +106,13 @@ struct RecordDetailView: View {
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 12)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.blue.opacity(0.8))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color.blue, lineWidth: 1)
-                                        )
-                                )
+                                .padding(.vertical, 14)
+                                .background(Color.blue)
+                                .cornerRadius(12)
+                                .shadow(color: Color.blue.opacity(0.3), radius: 8, x: 0, y: 4)
                             }
+                            .scaleEffect(1.0)
+                            .animation(.easeInOut(duration: 0.1), value: showingEditView)
                             
                             Button(action: {
                                 showingDeleteAlert = true
@@ -165,16 +124,13 @@ struct RecordDetailView: View {
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 12)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.red.opacity(0.8))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color.red, lineWidth: 1)
-                                        )
-                                )
+                                .padding(.vertical, 14)
+                                .background(Color.red)
+                                .cornerRadius(12)
+                                .shadow(color: Color.red.opacity(0.3), radius: 8, x: 0, y: 4)
                             }
+                            .scaleEffect(1.0)
+                            .animation(.easeInOut(duration: 0.1), value: showingDeleteAlert)
                         }
                         .padding(.horizontal, 20)
                         .padding(.bottom, 40)
@@ -182,7 +138,14 @@ struct RecordDetailView: View {
                         Spacer(minLength: 100)
                     }
             }
-            .background(Color.gray.opacity(0.1))
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
+            )
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)

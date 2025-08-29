@@ -4,10 +4,26 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "记账提醒",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 161
+        }
+      },
+      {
+        "comment": "",
         "key": "需要通知权限",
         "location": {
           "startingColumn": 16,
-          "startingLine": 348
+          "startingLine": 187
+        }
+      },
+      {
+        "comment": "",
+        "key": "启用提醒",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 43
         }
       },
       {
@@ -15,12 +31,12 @@
         "key": "",
         "location": {
           "startingColumn": 32,
-          "startingLine": 93
+          "startingLine": 49
         }
       },
       {
         "comment": "",
-        "key": "启用提醒",
+        "key": "提醒时间",
         "location": {
           "startingColumn": 34,
           "startingLine": 81
@@ -28,42 +44,18 @@
       },
       {
         "comment": "",
-        "key": "开启每日记账提醒",
+        "key": "每日提醒时间",
         "location": {
-          "startingColumn": 34,
-          "startingLine": 86
-        }
-      },
-      {
-        "comment": "",
-        "key": "提醒时间",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 139
+          "startingColumn": 38,
+          "startingLine": 96
         }
       },
       {
         "comment": "",
         "key": "",
         "location": {
-          "startingColumn": 40,
-          "startingLine": 175
-        }
-      },
-      {
-        "comment": "",
-        "key": "每日提醒时间",
-        "location": {
-          "startingColumn": 38,
-          "startingLine": 163
-        }
-      },
-      {
-        "comment": "",
-        "key": "设置每天的提醒时间",
-        "location": {
-          "startingColumn": 38,
-          "startingLine": 168
+          "startingColumn": 44,
+          "startingLine": 102
         }
       },
       {
@@ -71,7 +63,7 @@
         "key": "提醒说明",
         "location": {
           "startingColumn": 38,
-          "startingLine": 245
+          "startingLine": 117
         }
       },
       {
@@ -79,15 +71,15 @@
         "key": "每天在设定时间提醒您记录当日支出，帮助养成良好的记账习惯。",
         "location": {
           "startingColumn": 38,
-          "startingLine": 250
+          "startingLine": 121
         }
       },
       {
         "comment": "",
-        "key": "记账提醒",
+        "key": "设置",
         "location": {
-          "startingColumn": 22,
-          "startingLine": 334
+          "startingColumn": 30,
+          "startingLine": 172
         }
       },
       {
@@ -95,7 +87,7 @@
         "key": "去设置",
         "location": {
           "startingColumn": 20,
-          "startingLine": 349
+          "startingLine": 188
         }
       },
       {
@@ -103,7 +95,7 @@
         "key": "取消",
         "location": {
           "startingColumn": 20,
-          "startingLine": 352
+          "startingLine": 191
         }
       },
       {
@@ -111,7 +103,7 @@
         "key": "请在设置中允许通知权限，以便接收记账提醒。",
         "location": {
           "startingColumn": 18,
-          "startingLine": 354
+          "startingLine": 193
         }
       }
     ]

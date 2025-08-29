@@ -29,6 +29,15 @@ class AuthenticationManager: ObservableObject {
     
     /// 检查认证状态
     func checkAuthenticationStatus() {
+        // 首先检查Apple登录状态
+        if let appleUserIdentifier = keychain.getAppleUserIdentifier() {
+            // 验证Apple登录状态
+            Task {
+                await checkAppleSignInStatus(appleUserIdentifier: appleUserIdentifier)
+            }
+            return
+        }
+        
         // 检查是否有保存的令牌
         let tokens = keychain.getAuthTokens()
         if let accessToken = tokens.accessToken, let refreshToken = tokens.refreshToken {
@@ -161,6 +170,46 @@ class AuthenticationManager: ObservableObject {
         
         // 如果令牌在5分钟内过期，认为即将过期
         return timeUntilExpiration < 300
+    }
+    
+    /// 检查Apple登录状态
+    private func checkAppleSignInStatus(appleUserIdentifier: String) async {
+        let credentialState = await AppleSignInService.shared.checkAppleSignInStatus(for: appleUserIdentifier)
+        
+        switch credentialState {
+        case .authorized:
+            // Apple登录状态有效，恢复用户登录状态
+            if let savedUser = loadUserFromDefaults() {
+                DispatchQueue.main.async {
+                    self.currentUser = savedUser
+                    self.isAuthenticated = true
+                }
+            } else {
+                // 没有保存的用户信息，清除Apple登录状态
+                keychain.clearAppleUserInfo()
+                DispatchQueue.main.async {
+                    self.logout()
+                }
+            }
+        case .revoked, .notFound:
+            // Apple登录状态无效，清除相关数据并注销
+            keychain.clearAppleUserInfo()
+            DispatchQueue.main.async {
+                self.logout()
+            }
+        case .transferred:
+            // 用户ID已转移，需要重新登录
+            keychain.clearAppleUserInfo()
+            DispatchQueue.main.async {
+                self.logout()
+            }
+        @unknown default:
+            // 未知状态，清除相关数据并注销
+            keychain.clearAppleUserInfo()
+            DispatchQueue.main.async {
+                self.logout()
+            }
+        }
     }
     
     // MARK: - Private Methods

@@ -20,24 +20,26 @@ struct LoginView: View {
                     
                     // Apple ID登录区域
                     appleSignInSection
-                        .padding(.horizontal, 32)
+                        .padding(.horizontal, 24)
                         .frame(height: geometry.size.height * 0.4)
                 }
             }
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.black,
-                        Color.gray.opacity(0.9)
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+            .background(Color.black)
+            .overlay(
+                // 装饰性背景元素
+                ZStack {
+                    // 装饰性元素已移除
+                }
+                .ignoresSafeArea()
             )
             .ignoresSafeArea(.all, edges: .top)
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .toolbar(.hidden, for: .tabBar)
+        .onAppear {
+            // 检查是否有已保存的Apple登录状态
+            checkSavedAppleSignInStatus()
+        }
         .alert("登录失败", isPresented: $viewModel.showingError) {
             Button("确定", role: .cancel) { }
         } message: {
@@ -57,26 +59,21 @@ struct LoginView: View {
             Spacer()
             
             // App Logo
-            Image(systemName: "mic.circle.fill")
-                .font(.system(size: 120))
-                .foregroundStyle(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.blue, .purple]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .shadow(color: .blue.opacity(0.3), radius: 20, x: 0, y: 10)
+            Image("app_logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 120, height: 120)
+                .shadow(color: Color.cyan.opacity(0.3), radius: 20, x: 0, y: 10)
             
             VStack(spacing: 8) {
                 // App Name
                 Text("语记")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 
                 Text("智能语音记账助手")
                     .font(.title3)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(Color.white.opacity(0.8))
             }
             
             Spacer()
@@ -91,11 +88,11 @@ struct LoginView: View {
                 Text("欢迎使用")
                     .font(.title2)
                     .fontWeight(.medium)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(Color.white.opacity(0.9))
                 
                 Text("使用您的 Apple ID 安全登录")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(Color.white.opacity(0.7))
                     .multilineTextAlignment(.center)
             }
             
@@ -112,20 +109,19 @@ struct LoginView: View {
                             .scaleEffect(0.9)
                     } else {
                         Image(systemName: "applelogo")
-                            .font(.system(size: 20, weight: .medium))
+                            .font(.system(size: 18, weight: .medium))
                     }
                     
                     Text(viewModel.isLoading ? "登录中..." : "使用 Apple ID 登录")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 56)
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.white)
-                        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-                )
-                .foregroundColor(.black)
+                .frame(height: 48)
+                .background(Color.cyan)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+                .shadow(color: Color.cyan.opacity(0.3), radius: 8, x: 0, y: 4)
                 .scaleEffect(viewModel.isLoading ? 0.98 : 1.0)
                 .animation(.easeInOut(duration: 0.1), value: viewModel.isLoading)
             }
@@ -134,11 +130,11 @@ struct LoginView: View {
             VStack(spacing: 8) {
                 Text("安全 • 私密 • 便捷")
                     .font(.caption)
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(Color.white.opacity(0.6))
                 
                 Text("您的隐私信息将受到 Apple 的保护")
                     .font(.caption2)
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(Color.white.opacity(0.5))
                     .multilineTextAlignment(.center)
             }
             
@@ -151,6 +147,35 @@ struct LoginView: View {
     
     private func attemptAppleSignIn() async {
         await viewModel.signInWithApple()
+    }
+    
+    private func checkSavedAppleSignInStatus() {
+        // 检查是否有保存的Apple用户标识符
+        if let appleUserIdentifier = KeychainManager.shared.getAppleUserIdentifier() {
+            Task {
+                // 验证Apple登录状态
+                let credentialState = await AppleSignInService.shared.checkAppleSignInStatus(for: appleUserIdentifier)
+                
+                DispatchQueue.main.async {
+                    switch credentialState {
+                    case .authorized:
+                        // Apple登录状态有效，通过AuthenticationManager恢复登录状态
+                        Task {
+                            await AuthenticationManager.shared.checkAuthenticationStatus()
+                        }
+                    case .revoked, .notFound:
+                        // Apple登录状态无效，清除相关数据
+                        KeychainManager.shared.clearAppleUserInfo()
+                    case .transferred:
+                        // 账户已转移，清除相关数据
+                        KeychainManager.shared.clearAppleUserInfo()
+                    @unknown default:
+                        // 未知状态，清除相关数据
+                        KeychainManager.shared.clearAppleUserInfo()
+                    }
+                }
+            }
+        }
     }
 }
 

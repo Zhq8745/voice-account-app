@@ -7,7 +7,7 @@
         "key": "错误",
         "location": {
           "startingColumn": 16,
-          "startingLine": 115
+          "startingLine": 95
         }
       },
       {
@@ -15,23 +15,7 @@
         "key": "手动记账",
         "location": {
           "startingColumn": 30,
-          "startingLine": 94
-        }
-      },
-      {
-        "comment": "",
-        "key": "取消",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 99
-        }
-      },
-      {
-        "comment": "",
-        "key": "保存",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 106
+          "startingLine": 89
         }
       },
       {
@@ -39,14 +23,14 @@
         "key": "确定",
         "location": {
           "startingColumn": 20,
-          "startingLine": 116
+          "startingLine": 96
         }
       },
       {
         "comment": "",
-        "key": "金额",
+        "key": "输入金额",
         "location": {
-          "startingColumn": 22,
+          "startingColumn": 26,
           "startingLine": 132
         }
       },
@@ -54,48 +38,80 @@
         "comment": "",
         "key": "0.00",
         "location": {
-          "startingColumn": 27,
-          "startingLine": 143
+          "startingColumn": 31,
+          "startingLine": 146
         }
       },
       {
         "comment": "",
-        "key": "分类",
+        "key": "金额有效",
         "location": {
-          "startingColumn": 22,
-          "startingLine": 170
+          "startingColumn": 30,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "选择分类",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 221
         }
       },
       {
         "comment": "",
         "key": "添加备注信息（可选）",
         "location": {
-          "startingColumn": 23,
-          "startingLine": 205
+          "startingColumn": 27,
+          "startingLine": 280
         }
       },
       {
         "comment": "",
-        "key": "备注",
+        "key": "添加备注",
         "location": {
-          "startingColumn": 22,
-          "startingLine": 199
+          "startingColumn": 30,
+          "startingLine": 272
+        }
+      },
+      {
+        "comment": "",
+        "key": "选择日期和时间",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 363
         }
       },
       {
         "comment": "",
         "key": "选择日期",
         "location": {
-          "startingColumn": 17,
-          "startingLine": 238
+          "startingColumn": 30,
+          "startingLine": 309
         }
       },
       {
         "comment": "",
         "key": "日期",
         "location": {
+          "startingColumn": 34,
+          "startingLine": 324
+        }
+      },
+      {
+        "comment": "",
+        "key": "时间",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 336
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存记录",
+        "location": {
           "startingColumn": 22,
-          "startingLine": 231
+          "startingLine": 450
         }
       }
     ]

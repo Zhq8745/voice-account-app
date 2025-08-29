@@ -23,38 +23,43 @@ struct EditRecordView: View {
     @State private var showingCategoryPicker = false
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // 顶部标题栏
-                HStack {
-                    Button("取消") {
-                        dismiss()
+        ZStack {
+            // 背景
+            Color.black
+                .ignoresSafeArea()
+            
+            NavigationView {
+                VStack(spacing: 0) {
+                    // 顶部标题栏
+                    HStack {
+                        Button("取消") {
+                            dismiss()
+                        }
+                        .foregroundColor(.blue)
+                        
+                        Spacer()
+                        
+                        Text("编辑记录")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        Button("保存") {
+                            saveRecord()
+                        }
+                        .foregroundColor(.blue)
+                        .disabled(!isValidInput)
                     }
-                    .foregroundColor(.blue)
-                    
-                    Spacer()
-                    
-                    Text("编辑记录")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    
-                    Spacer()
-                    
-                    Button("保存") {
-                        saveRecord()
-                    }
-                    .foregroundColor(.blue)
-                    .disabled(!isValidInput)
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 15)
-                .background(Color.white)
-                .overlay(
-                    Rectangle()
-                        .frame(height: 0.5)
-                        .foregroundColor(Color.gray.opacity(0.3))
-                        .offset(y: 15)
-                )
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 15)
+                    .background(Color.white)
+                    .overlay(
+                        Rectangle()
+                            .frame(height: 0.5)
+                            .foregroundColor(Color(.systemGray6).opacity(0.3))
+                            .offset(y: 15)
+                    )
                 
                 ScrollView {
                     VStack(spacing: 24) {
@@ -73,10 +78,7 @@ struct EditRecordView: View {
                                     .font(.system(size: 20, weight: .medium))
                                     .keyboardType(.decimalPad)
                             }
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 16)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
+                            .modifier(ThemeCard(variant: .primary))
                         }
                         .padding(.horizontal, 20)
                         .padding(.top, 24)
@@ -85,7 +87,7 @@ struct EditRecordView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("支出分类")
                                 .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.primary)
+                                .foregroundColor(.white)
                             
                             Button(action: {
                                 showingCategoryPicker = true
@@ -96,32 +98,29 @@ struct EditRecordView: View {
                                             .font(.system(size: 20))
                                         Text(category.name)
                                             .font(.system(size: 16))
-                                            .foregroundColor(.primary)
+                                            .foregroundColor(.white)
                                     } else {
                                         Text("选择分类")
                                             .font(.system(size: 16))
-                                            .foregroundColor(.secondary)
+                                            .foregroundColor(.white.opacity(0.7))
                                     }
                                     
                                     Spacer()
                                     
                                     Image(systemName: "chevron.right")
                                         .font(.system(size: 14, weight: .medium))
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.white.opacity(0.7))
                                 }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 16)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(12)
                             }
                         }
+                        .modifier(ThemeCard(variant: .primary))
                         .padding(.horizontal, 20)
                         
                         // 记录时间
                         VStack(alignment: .leading, spacing: 12) {
                             Text("记录时间")
                                 .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.primary)
+                                .foregroundColor(.white)
                             
                             DatePicker(
                                 "",
@@ -129,34 +128,30 @@ struct EditRecordView: View {
                                 displayedComponents: [.date, .hourAndMinute]
                             )
                             .datePickerStyle(.compact)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 12)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
+                            .colorScheme(.dark)
                         }
+                        .modifier(ThemeCard(variant: .primary))
                         .padding(.horizontal, 20)
                         
                         // 备注输入
                         VStack(alignment: .leading, spacing: 12) {
                             Text("备注信息")
                                 .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.primary)
+                                .foregroundColor(.white)
                             
                             TextField("添加备注（可选）", text: $note, axis: .vertical)
                                 .font(.system(size: 16))
                                 .lineLimit(3...6)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(12)
+                                .foregroundColor(.white)
                         }
+                        .modifier(ThemeCard(variant: .primary))
                         .padding(.horizontal, 20)
                         
                         // 输入方式显示
                         VStack(alignment: .leading, spacing: 12) {
                             Text("输入方式")
                                 .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.primary)
+                                .foregroundColor(.white)
                             
                             HStack {
                                 Image(systemName: record.isVoiceInput ? "mic.fill" : "keyboard.fill")
@@ -165,22 +160,20 @@ struct EditRecordView: View {
                                 
                                 Text(record.isVoiceInput ? "语音输入" : "手动输入")
                                     .font(.system(size: 16))
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.white.opacity(0.8))
                                 
                                 Spacer()
                             }
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 16)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
                         }
+                        .modifier(ThemeCard(variant: .primary))
                         .padding(.horizontal, 20)
                         
                         Spacer(minLength: 100)
                     }
                 }
+                }
+                .background(Color.black)
             }
-            .background(Color(.systemBackground))
         }
         .toolbar(.hidden, for: .tabBar)
         .sheet(isPresented: $showingCategoryPicker) {
@@ -256,11 +249,18 @@ struct EditCategoryPickerView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 15)
-                .background(Color(.systemBackground))
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(.systemGray6).opacity(0.2))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                )
                 .overlay(
                     Rectangle()
                         .frame(height: 0.5)
-                        .foregroundColor(Color(.separator))
+                        .foregroundColor(Color(.systemGray6).opacity(0.3))
                         .offset(y: 15)
                 )
                 
@@ -311,7 +311,7 @@ struct EditCategoryPickerView: View {
                     .listStyle(PlainListStyle())
                 }
             }
-            .background(Color(.systemBackground))
+            .background(Color.black)
         }
     }
 }

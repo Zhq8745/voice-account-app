@@ -61,44 +61,9 @@ struct AccountingView: View {
     var body: some View {
         GeometryReader { geometry in
                 ZStack {
-                    // 现代化渐变背景
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.black.opacity(0.95),
-                            Color.blue.opacity(0.1),
-                            Color.purple.opacity(0.1),
-                            Color.black.opacity(0.95)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                    .ignoresSafeArea()
-                    
-                    // 装饰性背景元素
-                    ForEach(0..<3, id: \.self) { index in
-                        Circle()
-                            .fill(
-                                RadialGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.blue.opacity(0.08),
-                                        Color.clear
-                                    ]),
-                                    center: .center,
-                                    startRadius: 0,
-                                    endRadius: 150
-                                )
-                            )
-                            .frame(width: 300, height: 300)
-                            .offset(
-                                x: CGFloat.random(in: -geometry.size.width/3...geometry.size.width/3),
-                                y: CGFloat.random(in: -geometry.size.height/3...geometry.size.height/3)
-                            )
-                            .animation(
-                                .easeInOut(duration: Double.random(in: 4...7))
-                                .repeatForever(autoreverses: true),
-                                value: pulseAnimation
-                            )
-                    }
+                    // 统一纯色背景
+                    Color.black
+                        .ignoresSafeArea()
                     
                     ScrollView {
                         VStack(spacing: 24) {
@@ -118,7 +83,7 @@ struct AccountingView: View {
                             
                             Spacer(minLength: 100) // 为底部导航留出空间
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 24)
                         .padding(.top, 10)
                     }
                 }
@@ -126,6 +91,7 @@ struct AccountingView: View {
         .navigationTitle("记账")
         .navigationBarTitleDisplayMode(.large)
         .preferredColorScheme(.dark)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         .sheet(isPresented: $showingManualInput) {
             ManualInputView()
         }
@@ -136,7 +102,7 @@ struct AccountingView: View {
             initializeDefaultData()
             startAnimations()
         }
-        .toolbar(.visible, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
     }
     
     // 本月支出卡片
@@ -197,32 +163,13 @@ struct AccountingView: View {
         .padding(24)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.15),
-                            Color.white.opacity(0.05)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(Color(.systemGray6).opacity(0.2))
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.white.opacity(0.3),
-                                    Color.white.opacity(0.1)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
     
     // 输入按钮区域
@@ -243,18 +190,9 @@ struct AccountingView: View {
                 VStack(spacing: 12) {
                     ZStack {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.red.opacity(0.8),
-                                        Color.orange.opacity(0.6)
-                                    ]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color.red)
                             .frame(width: 50, height: 50)
-                            .shadow(color: .red.opacity(0.3), radius: 8, x: 0, y: 4)
+                            .shadow(color: Color.red.opacity(0.3), radius: 8, x: 0, y: 4)
                         
                         Image(systemName: "mic.fill")
                             .font(.system(size: 24, weight: .semibold))
@@ -270,19 +208,10 @@ struct AccountingView: View {
                 .frame(height: 100)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.white.opacity(0.1),
-                                    Color.white.opacity(0.05)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(Color(.systemGray6).opacity(0.2))
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                 )
             }
@@ -303,18 +232,9 @@ struct AccountingView: View {
                 VStack(spacing: 12) {
                     ZStack {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.blue.opacity(0.8),
-                                        Color.cyan.opacity(0.6)
-                                    ]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color.cyan)
                             .frame(width: 50, height: 50)
-                            .shadow(color: .blue.opacity(0.3), radius: 8, x: 0, y: 4)
+                            .shadow(color: Color.cyan.opacity(0.3), radius: 8, x: 0, y: 4)
                         
                         Image(systemName: "plus")
                             .font(.system(size: 24, weight: .semibold))
@@ -329,19 +249,10 @@ struct AccountingView: View {
                 .frame(height: 100)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.white.opacity(0.1),
-                                    Color.white.opacity(0.05)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(Color(.systemGray6).opacity(0.2))
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
                 )
             }
@@ -379,16 +290,7 @@ struct AccountingView: View {
                 VStack(spacing: 12) {
                     ZStack {
                         Circle()
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color.gray.opacity(0.3),
-                                        Color.gray.opacity(0.1)
-                                    ]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
+                            .fill(Color(.systemGray6).opacity(0.5))
                             .frame(width: 60, height: 60)
                         
                         Image(systemName: "tray")
@@ -413,22 +315,13 @@ struct AccountingView: View {
                         ExpenseRowView(expense: expense, settings: currentSettings)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(
-                                        LinearGradient(
-                                            gradient: Gradient(colors: [
-                                                Color.white.opacity(0.08),
-                                                Color.white.opacity(0.03)
-                                            ]),
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
+                                    .fill(Color(.systemGray6).opacity(0.2))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 12)
                                             .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                     )
                             )
-                            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                            .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                     }
                 }
             }
@@ -436,35 +329,14 @@ struct AccountingView: View {
         .padding(24)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color.white.opacity(0.12),
-                            Color.white.opacity(0.04)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .fill(Color(.systemGray6).opacity(0.2))
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.white.opacity(0.25),
-                                    Color.white.opacity(0.08)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                 )
         )
-        .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
-    
-
     
     // 获取当前月份文本
     private func getCurrentMonthText() -> String {
@@ -503,47 +375,55 @@ struct AccountingView: View {
         try? modelContext.save()
     }
 
+}
+
 // 支出记录行视图
 struct ExpenseRowView: View {
     let expense: ExpenseRecord
     let settings: AppSettings
+    @State private var isPressed = false
     
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 16) {
             // 分类图标
-            Circle()
-                .fill(expense.category?.color ?? .gray)
-                .frame(width: 40, height: 40)
-                .overlay(
-                    Image(systemName: expense.category?.iconName ?? "questionmark")
-                        .font(.system(size: 16))
-                        .foregroundColor(.white)
-                )
+            ZStack {
+                Circle()
+                    .fill(expense.category?.color ?? Color.cyan)
+                    .frame(width: 32, height: 32)
+                    .shadow(color: (expense.category?.color ?? Color.cyan).opacity(0.3), radius: 4, x: 0, y: 2)
+                
+                Image(systemName: expense.category?.iconName ?? "questionmark")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.white)
+            }
+            .scaleEffect(isPressed ? 0.95 : 1.0)
+            .animation(.easeInOut(duration: 0.1), value: isPressed)
             
             // 记录信息
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
                     Text(expense.category?.name ?? "未分类")
                         .font(.subheadline)
+                        .fontWeight(.medium)
                         .foregroundColor(.white)
                     
                     if expense.isVoiceInput {
                         Image(systemName: "mic.fill")
                             .font(.caption2)
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color.cyan)
                     }
                 }
                 
                 if !expense.note.isEmpty {
                     Text(expense.note)
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white.opacity(0.6))
                         .lineLimit(1)
                 }
                 
                 Text(expense.formattedTime)
                     .font(.caption2)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white.opacity(0.5))
             }
             
             Spacer()
@@ -551,16 +431,22 @@ struct ExpenseRowView: View {
             // 金额
             Text("-\(settings.currencySymbol)\(expense.formattedAmount)")
                 .font(.subheadline)
-                .fontWeight(.medium)
+                .fontWeight(.semibold)
                 .foregroundColor(.white)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.1)) {
+                isPressed = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    isPressed = false
+                }
+            }
+        }
     }
-}
-
-
-
 }
 
 #Preview {

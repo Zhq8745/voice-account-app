@@ -40,20 +40,60 @@ struct CategoryManagerView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.black
-                    .ignoresSafeArea()
+            VStack(spacing: 0) {
+                searchBar
                 
-                VStack(spacing: 0) {
-                    // 搜索栏
-                    searchBar
-                    
-                    // 分类列表
-                    categoryList
+                ScrollView {
+                    LazyVStack(spacing: 20) {
+                        if !defaultCategories.isEmpty {
+                            CategorySection(
+                                title: "默认分类",
+                                categories: defaultCategories,
+                                onEdit: { category in
+                                    editingCategory = category
+                                },
+                                onDelete: deleteCategory
+                            )
+                        }
+                        
+                        if !customCategories.isEmpty {
+                            CategorySection(
+                                title: "自定义分类",
+                                categories: customCategories,
+                                onEdit: { category in
+                                    editingCategory = category
+                                },
+                                onDelete: deleteCategory
+                            )
+                        }
+                        
+                        if filteredCategories.isEmpty {
+                            VStack(spacing: 16) {
+                                Image(systemName: "folder.badge.plus")
+                                    .font(.system(size: 48))
+                                    .foregroundColor(.gray.opacity(0.6))
+                                
+                                Text(searchText.isEmpty ? "暂无分类" : "未找到匹配的分类")
+                                    .font(.headline)
+                                    .foregroundColor(.gray)
+                                
+                                if searchText.isEmpty {
+                                    Text("点击右上角的 + 按钮添加新分类")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray.opacity(0.8))
+                                        .multilineTextAlignment(.center)
+                                }
+                            }
+                            .padding(.top, 60)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 32)
                 }
             }
+            .background(Color.black)
             .navigationTitle("分类管理")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar(.hidden, for: .tabBar)
             .navigationBarItems(
                 leading: Button("完成") {
@@ -63,7 +103,19 @@ struct CategoryManagerView: View {
                     showingAddCategory = true
                 }) {
                     Image(systemName: "plus")
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.white)
+                        .frame(width: 32, height: 32)
+                        .background(
+                            Circle()
+                                .fill(Color.cyan)
+                                .shadow(
+                                    color: Color.blue.opacity(0.3),
+                                    radius: 4,
+                                    x: 0,
+                                    y: 2
+                                )
+                        )
                 }
             )
             .preferredColorScheme(.dark)
@@ -80,100 +132,46 @@ struct CategoryManagerView: View {
     private var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray)
+                .foregroundColor(.gray.opacity(0.6))
+                .font(.system(size: 16))
             
             TextField("搜索分类", text: $searchText)
                 .foregroundColor(.white)
                 .textFieldStyle(PlainTextFieldStyle())
+                .font(.system(size: 16))
             
             if !searchText.isEmpty {
                 Button(action: {
                     searchText = ""
                 }) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.gray.opacity(0.6))
+                        .font(.system(size: 16))
                 }
             }
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
         .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemGray6).opacity(0.2))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                )
         )
         .padding(.horizontal, 16)
-        .padding(.bottom, 16)
+        .padding(.bottom, 24)
     }
     
-    // 分类列表
-    private var categoryList: some View {
-        ScrollView {
-            LazyVStack(spacing: 24) {
-                // 默认分类
-                if !defaultCategories.isEmpty {
-                    CategorySection(
-                        title: "默认分类",
-                        categories: defaultCategories,
-                        onEdit: { category in
-                            editingCategory = category
-                        },
-                        onDelete: { category in
-                            deleteCategory(category)
-                        }
-                    )
-                }
-                
-                // 自定义分类
-                if !customCategories.isEmpty {
-                    CategorySection(
-                        title: "自定义分类",
-                        categories: customCategories,
-                        onEdit: { category in
-                            editingCategory = category
-                        },
-                        onDelete: { category in
-                            deleteCategory(category)
-                        }
-                    )
-                }
-                
-                // 空状态
-                if filteredCategories.isEmpty {
-                    VStack(spacing: 16) {
-                        Image(systemName: searchText.isEmpty ? "folder" : "magnifyingglass")
-                            .font(.system(size: 50))
-                            .foregroundColor(.gray)
-                        
-                        Text(searchText.isEmpty ? "暂无分类" : "未找到相关分类")
-                            .font(.headline)
-                            .foregroundColor(.gray)
-                        
-                        if searchText.isEmpty {
-                            Button("添加分类") {
-                                showingAddCategory = true
-                            }
-                            .font(.subheadline)
-                            .foregroundColor(.blue)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 100)
-                }
-                
-                Spacer(minLength: 100)
-            }
-            .padding(.horizontal, 16)
-        }
-    }
+
     
     // 删除分类
     private func deleteCategory(_ category: ExpenseCategory) {
-        withAnimation {
-            modelContext.delete(category)
-            try? modelContext.save()
-            // 触发自动同步
-            cloudSyncService.triggerAutoSync(for: category.id)
-        }
+        modelContext.delete(category)
+        try? modelContext.save()
+        // 触发自动同步
+        cloudSyncService.triggerAutoSync(for: category.id)
     }
 }
 
@@ -190,15 +188,26 @@ struct CategorySection: View {
             HStack {
                 Text(title)
                     .font(.headline)
+                    .fontWeight(.semibold)
                     .foregroundColor(.white)
                 Spacer()
                 
-                Text("\(categories.count)个")
-                    .font(.caption)
+                Text("\(categories.count)")
+                    .font(.subheadline)
                     .foregroundColor(.gray)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Color(.systemGray6).opacity(0.2))
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
             }
             .padding(.horizontal, 16)
-            .padding(.bottom, 12)
+            .padding(.bottom, 16)
             
             // 分类列表
             VStack(spacing: 0) {
@@ -211,14 +220,18 @@ struct CategorySection: View {
                     
                     if category.id != categories.last?.id {
                         Divider()
-                            .background(Color.gray.opacity(0.3))
+                            .background(Color(.systemGray6).opacity(0.2))
                             .padding(.horizontal, 16)
                     }
                 }
             }
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -231,6 +244,7 @@ struct CategoryManagerRow: View {
     let onDelete: () -> Void
     
     @State private var showingActionSheet = false
+    @State private var isPressed = false
     
     var body: some View {
         Button(action: {
@@ -241,47 +255,49 @@ struct CategoryManagerRow: View {
             HStack(spacing: 12) {
                 Circle()
                     .fill(category.color)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 36, height: 36)
                     .overlay(
                         Image(systemName: category.iconName)
-                            .font(.system(size: 16))
+                            .font(.system(size: 16, weight: .medium))
                             .foregroundColor(.white)
                     )
+                    .scaleEffect(1.0) // 固定缩放比例
+                    .animation(nil, value: showingActionSheet) // 禁用所有动画
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(category.name)
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                    
-                    if category.isDefault {
-                        Text("系统默认分类")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                }
+                Text(category.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.white)
                 
                 Spacer()
                 
                 if category.isDefault {
                     Text("默认")
-                        .font(.caption)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
+                        .font(.caption2)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
                         .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.gray.opacity(0.3))
+                            Capsule()
+                                .fill(category.color)
                         )
-                        .foregroundColor(.gray)
                 } else {
-                    Image(systemName: "ellipsis")
+                    Image(systemName: "chevron.right")
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.gray.opacity(0.6))
                 }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
+            .scaleEffect(isPressed ? 0.98 : 1.0)
         }
         .buttonStyle(PlainButtonStyle())
+        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                isPressed = pressing
+            }
+        }, perform: {})
         .actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(
                 title: Text(category.name),

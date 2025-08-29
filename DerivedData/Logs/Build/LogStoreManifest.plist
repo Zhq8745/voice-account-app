@@ -6,7 +6,7 @@
 	<integer>11</integer>
 	<key>logs</key>
 	<dict>
-		<key>E9F6C78E-EA3D-404B-A4BC-CEF454BA4CFF</key>
+		<key>011ACFF8-746E-4368-AD69-6B6938EBD11D</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,49 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>E9F6C78E-EA3D-404B-A4BC-CEF454BA4CFF.xcactivitylog</string>
+			<string>011ACFF8-746E-4368-AD69-6B6938EBD11D.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>AiVC project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>AiVC</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Cleaning project AiVC with scheme AiVC</string>
+			<key>timeStartedRecording</key>
+			<real>778091680.52711904</real>
+			<key>timeStoppedRecording</key>
+			<real>778091681.28447998</real>
+			<key>title</key>
+			<string>Cleaning project AiVC with scheme AiVC</string>
+			<key>uniqueIdentifier</key>
+			<string>011ACFF8-746E-4368-AD69-6B6938EBD11D</string>
+		</dict>
+		<key>345AF3A0-5BCF-4490-ACB2-49010CC7C80E</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>345AF3A0-5BCF-4490-ACB2-49010CC7C80E.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -29,7 +71,7 @@
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
-				<integer>16</integer>
+				<integer>45</integer>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>AiVC project</string>
@@ -38,15 +80,15 @@
 			<key>schemeIdentifier-sharedScheme</key>
 			<integer>1</integer>
 			<key>signature</key>
-			<string>Archiving project AiVC with scheme AiVC</string>
+			<string>Building project AiVC with scheme AiVC</string>
 			<key>timeStartedRecording</key>
-			<real>777839740.30608106</real>
+			<real>778091361.02979302</real>
 			<key>timeStoppedRecording</key>
-			<real>777839894.19333196</real>
+			<real>778091441.28861701</real>
 			<key>title</key>
-			<string>Archiving project AiVC with scheme AiVC</string>
+			<string>Building project AiVC with scheme AiVC</string>
 			<key>uniqueIdentifier</key>
-			<string>E9F6C78E-EA3D-404B-A4BC-CEF454BA4CFF</string>
+			<string>345AF3A0-5BCF-4490-ACB2-49010CC7C80E</string>
 		</dict>
 	</dict>
 </dict>

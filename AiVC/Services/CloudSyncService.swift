@@ -336,9 +336,8 @@ class CloudSyncService: ObservableObject {
         stopAutoSyncTimer()
         
         // 请求后台任务时间
-        var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid
-        backgroundTaskID = UIApplication.shared.beginBackgroundTask {
-            UIApplication.shared.endBackgroundTask(backgroundTaskID)
+        let backgroundTaskID = UIApplication.shared.beginBackgroundTask {
+            // 后台任务即将到期时的清理工作
         }
         
         Task {

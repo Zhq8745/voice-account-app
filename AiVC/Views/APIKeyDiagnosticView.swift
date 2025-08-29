@@ -14,16 +14,9 @@ struct APIKeyDiagnosticView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                // 背景渐变
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.05, green: 0.05, blue: 0.08),
-                        Color(red: 0.02, green: 0.02, blue: 0.05)
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
+                // 背景
+                Color.black
+                    .ignoresSafeArea()
                 
                 ScrollView {
                     VStack(spacing: 20) {
@@ -31,13 +24,7 @@ struct APIKeyDiagnosticView: View {
                         VStack(spacing: 12) {
                             Image(systemName: "key.fill")
                                 .font(.system(size: 40, weight: .medium))
-                                .foregroundStyle(
-                                    LinearGradient(
-                                        colors: [Color.orange, Color.red],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .foregroundColor(Color.orange)
                             
                             Text("API密钥诊断")
                                 .font(.title2)
@@ -52,30 +39,10 @@ struct APIKeyDiagnosticView: View {
                         .padding(24)
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color(red: 0.12, green: 0.12, blue: 0.15),
-                                            Color(red: 0.08, green: 0.08, blue: 0.12)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .fill(Color(.systemGray6).opacity(0.2))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 20)
-                                        .stroke(
-                                            LinearGradient(
-                                                colors: [
-                                                    Color.white.opacity(0.1),
-                                                    Color.clear,
-                                                    Color.white.opacity(0.05)
-                                                ],
-                                                startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            ),
-                                            lineWidth: 1
-                                        )
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                 )
                                 .shadow(
                                     color: Color.black.opacity(0.3),
@@ -115,30 +82,10 @@ struct APIKeyDiagnosticView: View {
                         .padding(20)
                         .background(
                             RoundedRectangle(cornerRadius: 16)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color(red: 0.12, green: 0.12, blue: 0.15),
-                                            Color(red: 0.08, green: 0.08, blue: 0.12)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                                .fill(Color(.systemGray6).opacity(0.2))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 16)
-                                        .stroke(
-                                            LinearGradient(
-                                                colors: [
-                                                    Color.white.opacity(0.1),
-                                                    Color.clear,
-                                                    Color.white.opacity(0.05)
-                                                ],
-                                                startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            ),
-                                            lineWidth: 1
-                                        )
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                 )
                                 .shadow(
                                     color: Color.black.opacity(0.3),
@@ -162,13 +109,7 @@ struct APIKeyDiagnosticView: View {
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 14)
-                                .background(
-                                    LinearGradient(
-                                        colors: [Color.blue, Color.cyan],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
+                                .background(Color.blue)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                             
@@ -184,13 +125,7 @@ struct APIKeyDiagnosticView: View {
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 14)
-                                .background(
-                                    LinearGradient(
-                                        colors: [Color.gray.opacity(0.6), Color.gray.opacity(0.4)],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
+                                .background(Color(.systemGray6).opacity(0.5))
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                         }

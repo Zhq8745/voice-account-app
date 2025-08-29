@@ -27,33 +27,9 @@ struct ReminderSettingsView: View {
     
     var body: some View {
         ZStack {
-            // 渐变背景
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color.black,
-                    Color(red: 0.05, green: 0.05, blue: 0.1),
-                    Color.black
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            
-            // 装饰性元素
-            Circle()
-                .fill(
-                    RadialGradient(
-                        gradient: Gradient(colors: [
-                            Color.green.opacity(0.1),
-                            Color.clear
-                        ]),
-                        center: .topTrailing,
-                        startRadius: 50,
-                        endRadius: 200
-                    )
-                )
-                .frame(width: 300, height: 300)
-                .position(x: UIScreen.main.bounds.width - 50, y: 100)
+            // 深色背景
+            Color.black
+                .ignoresSafeArea()
             
             VStack(spacing: 24) {
                 // 提醒开关
@@ -84,34 +60,13 @@ struct ReminderSettingsView: View {
                     .padding(.vertical, 12)
                 }
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    Color(red: 0.12, green: 0.12, blue: 0.15),
-                                    Color(red: 0.08, green: 0.08, blue: 0.12)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(.systemGray6).opacity(0.2))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(
-                                    LinearGradient(
-                                        colors: [Color.white.opacity(0.1), Color.clear],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-                                    lineWidth: 1
-                                )
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
                         )
-                        .shadow(
-                            color: Color.black.opacity(0.3),
-                            radius: 10,
-                            x: 0,
-                            y: 5
-                        )
+                        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
                 )
                 
                 // 时间设置
@@ -150,13 +105,7 @@ struct ReminderSettingsView: View {
                             .padding(.vertical, 12)
                             
                             Divider()
-                                .background(
-                                    LinearGradient(
-                                        colors: [Color.clear, Color.gray.opacity(0.3), Color.clear],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
+                                .background(Color(.systemGray6).opacity(0.3))
                                 .padding(.horizontal, 16)
                             
                             VStack(alignment: .leading, spacing: 8) {
@@ -174,34 +123,13 @@ struct ReminderSettingsView: View {
                             .padding(.vertical, 12)
                         }
                         .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color(red: 0.12, green: 0.12, blue: 0.15),
-                                            Color(red: 0.08, green: 0.08, blue: 0.12)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color(.systemGray6).opacity(0.2))
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(
-                                            LinearGradient(
-                                                colors: [Color.white.opacity(0.1), Color.clear],
-                                                startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            ),
-                                            lineWidth: 1
-                                        )
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
                                 )
-                                .shadow(
-                                    color: Color.black.opacity(0.3),
-                                    radius: 10,
-                                    x: 0,
-                                    y: 5
-                                )
+                                .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
                         )
                     }
                     .transition(.opacity.combined(with: .scale(scale: 0.95)))

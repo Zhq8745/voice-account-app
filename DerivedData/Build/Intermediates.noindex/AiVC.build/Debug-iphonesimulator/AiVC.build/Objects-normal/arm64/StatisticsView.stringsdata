@@ -6,8 +6,8 @@
         "comment": "",
         "key": "统计",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 200
+          "startingColumn": 26,
+          "startingLine": 162
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "支出总览",
         "location": {
           "startingColumn": 26,
-          "startingLine": 288
+          "startingLine": 239
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "总支出",
         "location": {
           "startingColumn": 30,
-          "startingLine": 308
+          "startingLine": 263
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "%@%@",
         "location": {
           "startingColumn": 30,
-          "startingLine": 311
+          "startingLine": 266
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "日均支出",
         "location": {
           "startingColumn": 30,
-          "startingLine": 327
+          "startingLine": 282
         }
       },
       {
@@ -47,7 +47,7 @@
         "key": "%@%@",
         "location": {
           "startingColumn": 30,
-          "startingLine": 330
+          "startingLine": 285
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "+8.2% 同比上期",
         "location": {
           "startingColumn": 26,
-          "startingLine": 347
+          "startingLine": 302
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "支出趋势",
         "location": {
           "startingColumn": 22,
-          "startingLine": 390
+          "startingLine": 328
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "暂无数据",
         "location": {
           "startingColumn": 26,
-          "startingLine": 417
+          "startingLine": 345
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "开始记录支出后，这里将显示趋势图表",
         "location": {
           "startingColumn": 26,
-          "startingLine": 420
+          "startingLine": 348
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "日期",
         "location": {
           "startingColumn": 35,
-          "startingLine": 430
+          "startingLine": 358
         }
       },
       {
@@ -95,7 +95,7 @@
         "key": "金额",
         "location": {
           "startingColumn": 35,
-          "startingLine": 431
+          "startingLine": 359
         }
       },
       {
@@ -103,7 +103,7 @@
         "key": "日期",
         "location": {
           "startingColumn": 35,
-          "startingLine": 443
+          "startingLine": 365
         }
       },
       {
@@ -111,7 +111,7 @@
         "key": "金额",
         "location": {
           "startingColumn": 35,
-          "startingLine": 444
+          "startingLine": 366
         }
       },
       {
@@ -119,7 +119,7 @@
         "key": "分类分布",
         "location": {
           "startingColumn": 22,
-          "startingLine": 513
+          "startingLine": 412
         }
       },
       {
@@ -127,7 +127,7 @@
         "key": "暂无数据",
         "location": {
           "startingColumn": 26,
-          "startingLine": 540
+          "startingLine": 439
         }
       },
       {
@@ -135,7 +135,7 @@
         "key": "添加支出记录后，这里将显示分类分布",
         "location": {
           "startingColumn": 26,
-          "startingLine": 543
+          "startingLine": 442
         }
       },
       {
@@ -143,7 +143,7 @@
         "key": "金额",
         "location": {
           "startingColumn": 39,
-          "startingLine": 553
+          "startingLine": 452
         }
       },
       {
@@ -151,7 +151,7 @@
         "key": "分类详情",
         "location": {
           "startingColumn": 22,
-          "startingLine": 606
+          "startingLine": 482
         }
       },
       {
@@ -159,7 +159,7 @@
         "key": "%lld 个分类",
         "location": {
           "startingColumn": 26,
-          "startingLine": 612
+          "startingLine": 488
         }
       },
       {
@@ -167,7 +167,7 @@
         "key": "暂无数据",
         "location": {
           "startingColumn": 26,
-          "startingLine": 644
+          "startingLine": 514
         }
       },
       {
@@ -175,7 +175,7 @@
         "key": "记录支出后，这里将显示详细的分类统计",
         "location": {
           "startingColumn": 26,
-          "startingLine": 647
+          "startingLine": 517
         }
       },
       {
@@ -183,7 +183,7 @@
         "key": "%@%@",
         "location": {
           "startingColumn": 22,
-          "startingLine": 779
+          "startingLine": 613
         }
       },
       {
@@ -191,7 +191,7 @@
         "key": "%@%%",
         "location": {
           "startingColumn": 22,
-          "startingLine": 784
+          "startingLine": 618
         }
       }
     ]

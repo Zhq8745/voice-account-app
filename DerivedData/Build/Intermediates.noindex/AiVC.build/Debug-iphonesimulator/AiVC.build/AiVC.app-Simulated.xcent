@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>73XM69R3R6.com.AiVoiceAccount.AiVC</string>
+	<string>73XM69R3R6.com.AIVoiceAccount.zhq</string>
 	<key>aps-environment</key>
 	<string>development</string>
 	<key>com.apple.developer.applesignin</key>
@@ -12,7 +12,7 @@
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.aivc.expense-tracker</string>
+		<string>iCloud.com.AIVoiceNote</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
@@ -20,7 +20,7 @@
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>73XM69R3R6.com.AiVoiceAccount.AiVC</string>
+		<string>73XM69R3R6.com.AIVoiceNote</string>
 	</array>
 </dict>
 </plist>

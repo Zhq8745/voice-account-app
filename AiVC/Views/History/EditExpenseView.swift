@@ -31,7 +31,14 @@ struct EditExpenseView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color.cyan,
+                        Color.cyan.opacity(0.8)
+                    ]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
                     .ignoresSafeArea()
                 
                 ScrollView {
@@ -67,7 +74,7 @@ struct EditExpenseView: View {
                 trailing: Button("保存") {
                     saveChanges()
                 }
-                .foregroundColor(.blue)
+                .foregroundColor(Color.cyan)
                 .disabled(!isValidInput)
             )
             .preferredColorScheme(.dark)
@@ -98,7 +105,7 @@ struct EditExpenseView: View {
             HStack {
                 Text("金额")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -108,12 +115,12 @@ struct EditExpenseView: View {
                 HStack {
                     Image(systemName: "yensign.circle")
                         .font(.system(size: 18))
-                        .foregroundColor(.green)
+                        .foregroundColor(Color.cyan)
                         .frame(width: 24, height: 24)
                     
                     TextField("0.00", text: $amount)
                         .keyboardType(.decimalPad)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.white)
                         .textFieldStyle(PlainTextFieldStyle())
                         .font(.title2)
                         .fontWeight(.medium)
@@ -123,7 +130,11 @@ struct EditExpenseView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -134,7 +145,7 @@ struct EditExpenseView: View {
             HStack {
                 Text("分类")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -163,7 +174,7 @@ struct EditExpenseView: View {
             HStack {
                 Text("备注")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -173,12 +184,12 @@ struct EditExpenseView: View {
                 HStack(alignment: .top) {
                     Image(systemName: "note.text")
                         .font(.system(size: 18))
-                        .foregroundColor(.orange)
+                        .foregroundColor(Color.cyan)
                         .frame(width: 24, height: 24)
                         .padding(.top, 2)
                     
                     TextField("添加备注（可选）", text: $note, axis: .vertical)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.white)
                         .textFieldStyle(PlainTextFieldStyle())
                         .lineLimit(3...6)
                 }
@@ -187,7 +198,11 @@ struct EditExpenseView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -198,7 +213,7 @@ struct EditExpenseView: View {
             HStack {
                 Text("日期")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                 Spacer()
             }
             .padding(.horizontal, 16)
@@ -208,7 +223,7 @@ struct EditExpenseView: View {
                 HStack {
                     Image(systemName: "calendar")
                         .font(.system(size: 18))
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.cyan)
                         .frame(width: 24, height: 24)
                     
                     DatePicker(
@@ -224,7 +239,11 @@ struct EditExpenseView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
     }
@@ -240,12 +259,16 @@ struct EditExpenseView: View {
                 Text("删除记录")
                     .font(.headline)
             }
-            .foregroundColor(.red)
+            .foregroundColor(Color.red)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    .fill(Color(.systemGray6).opacity(0.2))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
             )
         }
         .buttonStyle(PlainButtonStyle())

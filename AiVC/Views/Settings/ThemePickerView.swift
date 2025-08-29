@@ -147,7 +147,7 @@ struct ThemeOptionRow: View {
                         LinearGradient(
                             colors: isSelected ? 
                                 getThemeColors(theme.0) : 
-                                [Color.gray.opacity(0.3), Color.gray.opacity(0.2)],
+                                [Color(.systemGray6).opacity(0.3), Color(.systemGray6).opacity(0.2)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )

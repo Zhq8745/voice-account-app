@@ -55,21 +55,21 @@ struct MainTabView: View {
             }
             .tag(3)
         }
-        .accentColor(.blue)
+        .accentColor(Color.cyan)
         .preferredColorScheme(.dark)
         .onAppear {
             // 设置TabBar样式
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(red: 0.11, green: 0.11, blue: 0.12, alpha: 1.0)
+            appearance.backgroundColor = UIColor(Color(.systemGray6))
             
             // 设置选中状态的颜色
-            appearance.stackedLayoutAppearance.selected.iconColor = UIColor.systemBlue
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.systemBlue]
+            appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.cyan)
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor(Color.cyan)]
             
             // 设置未选中状态的颜色
-            appearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.systemGray]
+            appearance.stackedLayoutAppearance.normal.iconColor = UIColor(Color.white.opacity(0.8))
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(Color.white.opacity(0.8))]
             
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
